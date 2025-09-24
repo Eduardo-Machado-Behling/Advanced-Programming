@@ -28,68 +28,96 @@ public:
 
   Vector() {}
 
-  size_t size(){
-	return D * sizeof(S);
+  size_t size() { return D * sizeof(S); }
+
+  bool operator==(Vector<D, S> &vec) {
+    for (size_t i = 0; i < D; i++) {
+      if (m_data[i] != vec[i]) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
-  S mag(){
-	S sum = 0;
-	for (size_t i = 0; i < D; i++) {
-		sum += m_data[i] * m_data[i];
-	}
-	return sqrt(sum);
+  S mag() {
+    S sum = 0;
+    for (size_t i = 0; i < D; i++) {
+      sum += m_data[i] * m_data[i];
+    }
+    return sqrt(sum);
   }
 
-  void norm(){
-	  S len = mag();
+  void norm() {
+    S len = mag();
 
-	  for (size_t i = 0; i < D; i++) {
-		  m_data[i] /= len;
-	  }
+    for (size_t i = 0; i < D; i++) {
+      m_data[i] /= len;
+    }
   }
 
-  S angle(Vector<D> vec){
-	  float cos_theta = dot(vec);
-	  if (cos_theta > 1.0) cos_theta = 1.0;
-	  else if (cos_theta < -1.0) cos_theta = -1.0;
-	  return acos(cos_theta);
+  S angle(Vector<D> vec) {
+    float cos_theta = dot(vec);
+    if (cos_theta > 1.0)
+      cos_theta = 1.0;
+    else if (cos_theta < -1.0)
+      cos_theta = -1.0;
+    return acos(cos_theta);
   }
 
   S &operator[](size_t i) { return m_data[i]; }
 
-  Vector operator+=(S scalar) {
+  void operator+=(S scalar) {
     for (size_t i = 0; i < D; i++) {
       m_data[i] += scalar;
     }
   }
 
-  Vector operator-=(S scalar) {
+  void operator+=(Vector<D, S> vec) {
+    for (size_t i = 0; i < D; i++) {
+      m_data[i] += vec.m_data[i];
+    }
+  }
+
+  Vector<D, S> operator+(Vector<D, S> vec) {
+    Vector<D, S> v(*this);
+    v += vec;
+    return v;
+  }
+
+  void operator-=(S scalar) {
     for (size_t i = 0; i < D; i++) {
       m_data[i] -= scalar;
     }
   }
 
-  Vector operator-(Vector<D> o) {
-	Vector vec;
+  Vector<D, S> operator-(Vector<D, S> o) {
+    Vector<D, S> vec;
 
     for (size_t i = 0; i < D; i++) {
-		vec[i] = m_data[i] -  o[i];
+      vec[i] = m_data[i] - o[i];
     }
 
-	return vec;
+    return vec;
   }
 
-  Vector operator*=(S scalar) {
+  void operator*=(S scalar) {
     for (size_t i = 0; i < D; i++) {
-      m_data[i] -= scalar;
+      m_data[i] *= scalar;
     }
   }
 
-  void print(){
-	for (size_t i = 0; i < D; i++) {
-		std::cout << m_data[i] << ' ';
-	}
-	std::cout << '\n';
+  Vector<D, S> operator*(S scalar) {
+    Vector<D, S> vec(*this);
+    vec *= scalar;
+    return vec;
+  }
+
+  void print() {
+    for (size_t i = 0; i < D; i++) {
+      std::cout << m_data[i] << ' ';
+    }
+    std::cout << '\n';
   }
 
   S sum() {

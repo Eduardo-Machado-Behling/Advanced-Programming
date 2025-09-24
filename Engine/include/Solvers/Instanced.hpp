@@ -35,38 +35,49 @@ public:
         glBufferData(GL_ARRAY_BUFFER, size, data.data(), GL_STATIC_DRAW);
       }
 
-      for (size_t i = 0; i < 19; i++) {
+      printf("%u ", ((uint32_t *)(data.data()))[0]);
+      for (size_t i = 1; i < 19; i++) {
         printf("%f ", ((float *)(data.data()))[i]);
       }
       putchar('\n');
-
     }
 
-	size_t stride = sizeof(data[0]);
-	size_t offset = 0;
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, stride, (void *)offset);
-	glVertexAttribDivisor(1, 1);
-	offset += 3 * sizeof(float);
+    size_t stride = sizeof(data[0]);
+    size_t offset = 0;
+    size_t loc = 1;
+    glEnableVertexAttribArray(loc);
+    glVertexAttribIPointer(loc, 1, GL_UNSIGNED_INT, stride, (void *)offset);
+    glVertexAttribDivisor(loc, 1);
+    loc++;
+    offset += 1 * sizeof(uint32_t);
 
-	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, stride, (void *)offset);
-	glVertexAttribDivisor(2, 1);
-	offset += 4 * sizeof(float);
+    glEnableVertexAttribArray(loc);
+    glVertexAttribPointer(loc, 3, GL_FLOAT, GL_FALSE, stride, (void *)offset);
+    glVertexAttribDivisor(loc, 1);
+    loc++;
+    offset += 3 * sizeof(float);
 
-	glEnableVertexAttribArray(3);
-	glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, stride, (void *)offset);
-	glVertexAttribDivisor(3, 1);
-	offset += 4 * sizeof(float);
+    glEnableVertexAttribArray(loc);
+    glVertexAttribPointer(loc, 4, GL_FLOAT, GL_FALSE, stride, (void *)offset);
+    glVertexAttribDivisor(loc, 1);
+    loc++;
+    offset += 4 * sizeof(float);
 
-	glEnableVertexAttribArray(4);
-	glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, stride, (void *)offset);
-	glVertexAttribDivisor(4, 1);
-	offset += 4 * sizeof(float);
+    glEnableVertexAttribArray(loc);
+    glVertexAttribPointer(loc, 4, GL_FLOAT, GL_FALSE, stride, (void *)offset);
+    glVertexAttribDivisor(loc, 1);
+    loc++;
+    offset += 4 * sizeof(float);
 
-	glEnableVertexAttribArray(5);
-	glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, stride, (void *)offset);
-	glVertexAttribDivisor(5, 1);
+    glEnableVertexAttribArray(loc);
+    glVertexAttribPointer(loc, 4, GL_FLOAT, GL_FALSE, stride, (void *)offset);
+    glVertexAttribDivisor(loc, 1);
+    loc++;
+    offset += 4 * sizeof(float);
+
+    glEnableVertexAttribArray(loc);
+    glVertexAttribPointer(loc, 4, GL_FLOAT, GL_FALSE, stride, (void *)offset);
+    glVertexAttribDivisor(loc, 1);
 
     data[0].shader->bind();
     glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, amount);

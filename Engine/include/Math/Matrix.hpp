@@ -24,7 +24,12 @@ public:
       for (size_t j = 0; j < COLS; j++) {
         std::cout << at(i, j) << ' ';
       }
-	  std::cout << '\n';
+      std::cout << '\n';
+    }
+  }
+  void identity() {
+    for (size_t i = 0; i < ROWS * COLS; i++) {
+      m_data[i] = (i % (COLS + 1) == 0) ? 1 : 0;
     }
   }
 
@@ -34,17 +39,17 @@ public:
 
   void model(Vector<2, S> pos, Vector<2, S> scale, float rot = 0) {
     //! Assumes original Indentity
-	
-	float c = cos(rot);
-	float s = sin(rot);
 
-	// Column Major 4x4 matrix
+    float c = cos(rot);
+    float s = sin(rot);
+
+    // Column Major 4x4 matrix
     m_data[0] = c * scale[0];
     m_data[1] = s * scale[0];
     m_data[4] = -s * scale[1];
     m_data[5] = c * scale[1];
-	m_data[12] = pos[0];
-	m_data[13] = pos[1];
+    m_data[12] = pos[0];
+    m_data[13] = pos[1];
   }
 
   S &operator[](size_t i) { return m_data[i]; }

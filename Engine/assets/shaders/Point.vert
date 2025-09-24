@@ -2,14 +2,16 @@
 
 layout (location = 0) in vec2 aPos;
 
-layout (location = 1) in vec3 aColor;
-layout (location = 2) in mat4 aModel;
+layout (location = 1) in uint aUUID;
+layout (location = 2) in vec3 aColor;
+layout (location = 3) in mat4 aModel;
 
 layout(std140, binding = 0) uniform Matrices {
 	mat4 mProj;
 };
 
 flat out vec3 color;
+flat out uint UUID;
 
 flat out float radius;
 flat out mat4 invProj;
@@ -23,4 +25,5 @@ void main(){
 	radius = rad * rad;
 	color = aColor;
 	invProj = inverse(mProj);
+	UUID = aUUID;
 }

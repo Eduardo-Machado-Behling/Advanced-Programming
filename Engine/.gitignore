@@ -1,4 +1,3 @@
+.cache
 build
 bin
-.nvim
-.cache

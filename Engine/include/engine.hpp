@@ -8,6 +8,8 @@
 #include "Math/Vector.hpp"
 #include "Objects/ObjectManager.hpp"
 
+#include "Objects/ObjectUUID.hpp"
+#include "Wrappers/Point.hpp"
 #include "engine_api.hpp"
 #include "shader.hpp"
 
@@ -18,24 +20,25 @@ public:
   static Engine *init(GLADloadproc proc, Math::Vector<2, uint32_t> &windowSize);
   static Engine *get();
 
-  void resize(double w, double h);
+  bool resize(double w, double h);
 
   void update(double dt);
   void draw();
 
-  std::variant<Objects::ObjectData *, Objects::PolyData *>
-  get(Objects::ObjectManager::ID &id);
+  Objects::ObjectUUID::UUID lookupObjectUUID(int x, int y);
 
-  Objects::ObjectManager::ID createPoint(Math::Vector<2> pos,
-                                         Math::Vector<3> color, float radius,
-                                         Shader *shader = nullptr);
-  Objects::ObjectManager::ID createLine(Math::Vector<2> pos0,
-                                        Math::Vector<2> pos1,
-                                        Math::Vector<3> color, float stroke,
-                                        Shader *shader = nullptr);
-  Objects::ObjectManager::ID createPoly(std::vector<Math::Vector<2>> &verts,
-                                        Math::Vector<3> color,
-                                        Shader *shader = nullptr);
+  std::variant<Objects::PolyData *, Objects::ObjectData *>
+  get(Objects::ObjectUUID::UUID &id);
+
+  Point createPoint(Math::Vector<2> pos, Math::Vector<3> color, float radius,
+                    Shader *shader = nullptr);
+  Objects::ObjectUUID::UUID createLine(Math::Vector<2> pos0,
+                                       Math::Vector<2> pos1,
+                                       Math::Vector<3> color, float stroke,
+                                       Shader *shader = nullptr);
+  Objects::ObjectUUID::UUID createPoly(std::vector<Math::Vector<2>> &verts,
+                                       Math::Vector<3> color,
+                                       Shader *shader = nullptr);
 
   Math::Vector<2, uint32_t> winSize();
 
@@ -55,6 +58,11 @@ private:
   inline static std::unique_ptr<Engine> m_instance = nullptr;
   ShaderManager m_shaderManager;
   Shader *currentShader;
+
+  uint32_t m_fboID = 0;
+  uint32_t m_colorTextureID = 0;
+  uint32_t m_idTextureID = 0;
+  uint32_t m_rboDepthStencil = 0;
 };
 
 } // namespace Engine

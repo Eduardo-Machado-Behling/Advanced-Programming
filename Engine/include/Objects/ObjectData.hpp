@@ -12,16 +12,19 @@ namespace Engine {
 namespace Objects {
 
 struct __attribute__((packed)) ObjectData {
+  uint32_t uuid;
   float color[3];
   float model[16];
   Shader *shader;
 };
 
 struct PolyData {
+  uint32_t uuid;
+  float color[3];
+
   uint32_t VAO;
   uint32_t count;
   Shader *shader;
-  float color[3];
 };
 
 } // namespace Objects
