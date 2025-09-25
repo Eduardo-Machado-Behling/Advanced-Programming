@@ -9,6 +9,7 @@
 #include "Objects/ObjectManager.hpp"
 
 #include "Objects/ObjectUUID.hpp"
+#include "Wrappers/Line.hpp"
 #include "Wrappers/Point.hpp"
 #include "Wrappers/Poly.hpp"
 #include "engine_api.hpp"
@@ -34,10 +35,9 @@ public:
 
   Point createPoint(Math::Vector<2> pos, Math::Vector<3> color, float radius,
                     Shader *shader = nullptr);
-  Objects::ObjectUUID::UUID createLine(Math::Vector<2> pos0,
-                                       Math::Vector<2> pos1,
-                                       Math::Vector<3> color, float stroke,
-                                       Shader *shader = nullptr);
+  Line createLine(Math::Vector<2> pos0, Math::Vector<2> pos1,
+                  Math::Vector<3> color, float stroke,
+                  Shader *shader = nullptr);
   Poly createPoly(std::vector<Math::Vector<2>> &verts, Math::Vector<3> color,
                   Shader *shader = nullptr);
 

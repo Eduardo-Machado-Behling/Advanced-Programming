@@ -54,12 +54,14 @@ private:
     m_model.identity();
     m_model.model(m_pos, {m_radius, m_radius});
     Objects::ObjectData *data = std::get<1>(m_manager.get(m_id));
-    memcpy(data->model, &m_model[0], m_model.size());
+    if (data)
+      memcpy(data->model, &m_model[0], m_model.size());
   }
 
   void updateColor() {
     Objects::ObjectData *data = std::get<1>(m_manager.get(m_id));
-    memcpy(data->color, &m_color[0], m_color.size());
+    if (data)
+      memcpy(data->color, &m_color[0], m_color.size());
   }
 
   Math::Matrix<4, 4> m_model;

@@ -5,6 +5,7 @@
 
 #include "Objects/ObjectUUID.hpp"
 #include "Solvers/Instanced.hpp"
+#include "Wrappers/Line.hpp"
 #include "Wrappers/Point.hpp"
 
 #include <glad/glad.h>
@@ -178,29 +179,13 @@ Point Engine::createPoint(Math::Vector<2> pos, Math::Vector<3> color,
       m_objManager);
 }
 
-Objects::ObjectUUID::UUID Engine::createLine(Math::Vector<2> pos0,
-                                             Math::Vector<2> pos1,
-                                             Math::Vector<3> color,
-                                             float stroke, Shader *shader) {
-  Objects::ObjectData data;
-
-  Math::Vector<2> pos = pos0;
-  Math::Vector<2> dir = pos1 - pos0;
-  float width = dir.mag();
-  float angle = dir.angle();
-
-  memcpy(data.color, &color[0], color.size());
-  Math::Matrix<4, 4> model;
-  model.model(pos, {width, stroke}, angle);
-  memcpy(data.model, &model[0], model.size());
-
+Line Engine::createLine(Math::Vector<2> pos0, Math::Vector<2> pos1,
+                        Math::Vector<3> color, float stroke, Shader *shader) {
   if (!shader) {
-    data.shader = &m_shaderManager.at("Line");
-  } else {
-    data.shader = shader;
+    shader = &m_shaderManager.at("Line");
   }
 
-  return m_objManager.add(Objects::ObjectManager::Types::LINE, std::move(data));
+  return Line(pos0, pos1, color, stroke, shader, m_objManager);
 }
 
 Poly Engine::createPoly(std::vector<Math::Vector<2>> &verts,

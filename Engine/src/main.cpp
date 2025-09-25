@@ -1,8 +1,10 @@
 #include "GLFW/glfw3.h"
+#include "Wrappers/Line.hpp"
 #include "Wrappers/Point.hpp"
 #include "Wrappers/Poly.hpp"
 #include "engine.hpp"
 #include "window.hpp"
+#include <cmath>
 #include <cstdint>
 #include <iostream>
 #include <memory>
@@ -11,12 +13,12 @@
 struct MyWindow : public Engine::Window {
   MyWindow()
       : p0(m_engine->createPoint({100, 100}, {1, 0, 0}, 20)),
-        p1(m_engine->createPoint({200, 200}, {1, 0, 0}, 20)) {
+        p1(m_engine->createPoint({200, 200}, {1, 0, 0}, 20)),
+        l(std::move(
+            m_engine->createLine({250, 250}, {300, 300}, {1, 1, 0}, 10))) {
     std::cout << "[Client App] Created window" << std::endl;
 
     std::vector<Engine::Math::Vector<2>> verts;
-
-    m_engine->createLine({250, 250}, {300, 300}, {1, 1, 0}, 10);
 
     verts.push_back({100, 100});
     verts.push_back({200, 100});
@@ -26,9 +28,27 @@ struct MyWindow : public Engine::Window {
   }
 
   Engine::Math::Vector<2> vel = {-100.0, 50.0};
+  float period = 1.000;
+  float width = 100;
+  double count = 0;
+
   void update(double dt) override {
     auto newPos = p0.getPos() + (vel * (float)dt);
     auto winSize = m_engine->winSize();
+
+    // M_PI * 2 -> 0.050
+    // x -> y
+
+    float angle = (count * M_PI * 2) / period;
+    Engine::Math::Vector<2> dir = {cosf(angle), sinf(angle)};
+    auto pos0 = std::get<0>(l.getVerts());
+    auto pos1 = pos0 + (dir * width);
+    count += dt;
+    if (count > period) {
+      count -= period;
+    }
+
+    l.setVerts(pos0, pos1);
 
     if (newPos[0] > winSize[0] || newPos[0] < 0) {
       vel[0] *= -1;
@@ -45,6 +65,7 @@ struct MyWindow : public Engine::Window {
 private:
   Engine::Point p0;
   Engine::Point p1;
+  Engine::Line l;
   std::unique_ptr<Engine::Poly> p;
 
   void mouseButtonCallback(int button, int action, int mods) override {
