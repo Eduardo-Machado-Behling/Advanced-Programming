@@ -5,7 +5,7 @@ This repository contains algorithms from the Advanced Programming (TEC II - 2025
 ## Progress Table
 | Assignment | Work | Submission Date | Code | Finished all requirements in time? |
 | --: | :-: | :-: | :-: | :-:|
-| 1 | 2D Rendering Engine | | [link](https://github.com/Eduardo-Machado-Behling/Advanced-Programming/tree/main/Engine) | Yes |
+| 1 | 2D Rendering Engine |25/09/25, 17:35 | [link](https://github.com/Eduardo-Machado-Behling/Advanced-Programming/tree/main/Engine) | Yes |
 | 2 | | | [link]() | |
 | 3 | | | [link]() | |
 | 4 | | | [link]() | |
