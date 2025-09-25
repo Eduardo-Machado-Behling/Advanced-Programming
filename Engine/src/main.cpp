@@ -25,9 +25,21 @@ struct MyWindow : public Engine::Window {
         new Engine::Poly(std::move(m_engine->createPoly(verts, {0, 1, 0}))));
   }
 
+  Engine::Math::Vector<2> vel = {-100.0, 50.0};
   void update(double dt) override {
-    Engine::Math::Vector<2> vel = {100.0, 50.0};
-    // p0.setPos(p0.getPos() + (vel * (float)dt));
+    auto newPos = p0.getPos() + (vel * (float)dt);
+    auto winSize = m_engine->winSize();
+
+    if (newPos[0] > winSize[0] || newPos[0] < 0) {
+      vel[0] *= -1;
+    }
+
+    if (newPos[1] > winSize[1] || newPos[1] < 0) {
+      vel[1] *= -1;
+    }
+
+    newPos = p0.getPos() + (vel * (float)dt);
+    p0.setPos(newPos);
   }
 
 private:
@@ -75,7 +87,7 @@ private:
     if (action == GLFW_PRESS) {
       switch (key) {
       case GLFW_KEY_Q:
-        m_engine->createPoint(pos, {1, 0, 0}, 8);
+        m_engine->createPoint(pos, {1, 0, 0}, 24);
         break;
       case GLFW_KEY_W:
         lineStart = pos;

@@ -38,10 +38,6 @@ add_subdirectory(vendor/glad)
 # For shared object Engine
 set_target_properties(glad PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
-# Specify the public include directories for the 'glad' library.
-# The "PUBLIC" keyword means that any other target that links against 'glad'
-# will automatically get this include path added.
-
 
 # Set the output directory for the executable to './bin/'
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
@@ -54,24 +50,20 @@ target_link_libraries(${name} PUBLIC glfw glad)
 target_compile_definitions(${name} PUBLIC GLFW_INCLUDE_NONE)
 target_compile_definitions(${name} PUBLIC BUILDING_ENGINE_DLL)
 target_include_directories(${name} PUBLIC
-	"${CMAKE_SOURCE_DIR}/include"               # General include directory (e.g., for GLAD headers)
+	"${CMAKE_SOURCE_DIR}/include"               
 )
 
-add_custom_command(
-    TARGET ${name} POST_BUILD
+add_custom_target(CopyResources ALL
     COMMAND ${CMAKE_COMMAND} -E copy_directory
             ${CMAKE_SOURCE_DIR}/assets
-            ${CMAKE_BINARY_DIR}/bin/assets
-    COMMENT "Copying assets directory..."
-)
-
-add_custom_command(
-    TARGET ${name} POST_BUILD
+			${CMAKE_SOURCE_DIR}/bin/assets
     COMMAND ${CMAKE_COMMAND} -E copy
             ${CMAKE_SOURCE_DIR}/graph.py
-            ${CMAKE_BINARY_DIR}/bin
-    COMMENT "Copying graph script..."
+			${CMAKE_SOURCE_DIR}/bin
+    COMMENT "Copying assets and scripts on every build..."
 )
+
+add_dependencies(CopyResources ${name})
 
 # On Unix-like systems (excluding macOS), link against specific OpenGL and threading libraries.
 if(UNIX AND NOT APPLE)
