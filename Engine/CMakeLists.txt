@@ -57,7 +57,21 @@ target_include_directories(${name} PUBLIC
 	"${CMAKE_SOURCE_DIR}/include"               # General include directory (e.g., for GLAD headers)
 )
 
-file(COPY "${CMAKE_SOURCE_DIR}/assets" DESTINATION "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+add_custom_command(
+    TARGET ${name} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${CMAKE_SOURCE_DIR}/assets
+            ${CMAKE_BINARY_DIR}/bin/assets
+    COMMENT "Copying assets directory..."
+)
+
+add_custom_command(
+    TARGET ${name} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy
+            ${CMAKE_SOURCE_DIR}/graph.py
+            ${CMAKE_BINARY_DIR}/bin
+    COMMENT "Copying graph script..."
+)
 
 # On Unix-like systems (excluding macOS), link against specific OpenGL and threading libraries.
 if(UNIX AND NOT APPLE)

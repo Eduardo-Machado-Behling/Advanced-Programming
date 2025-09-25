@@ -50,10 +50,8 @@ bool Engine::resize(double w, double h) {
   m_windowSize[0] = w;
   m_windowSize[1] = h;
 
-  // 1. Create the Framebuffer Object (FBO)
   glBindFramebuffer(GL_FRAMEBUFFER, m_fboID);
 
-  // 2. Create the Color Texture Attachment
   glBindTexture(GL_TEXTURE_2D, m_colorTextureID);
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, m_windowSize[0], m_windowSize[1], 0,
                GL_RGBA, GL_UNSIGNED_BYTE, NULL);
@@ -62,7 +60,6 @@ bool Engine::resize(double w, double h) {
   glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D,
                          m_colorTextureID, 0);
 
-  // 3. Create the Integer ID Texture Attachment
   glBindTexture(GL_TEXTURE_2D, m_idTextureID);
   glTexImage2D(GL_TEXTURE_2D, 0, GL_R32UI, m_windowSize[0], m_windowSize[1], 0,
                GL_RED_INTEGER, GL_UNSIGNED_INT, NULL);
@@ -71,23 +68,19 @@ bool Engine::resize(double w, double h) {
   glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, GL_TEXTURE_2D,
                          m_idTextureID, 0);
 
-  // 4. Tell OpenGL we're rendering to two color attachments
   unsigned int attachments[2] = {GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1};
   glDrawBuffers(2, attachments);
 
-  // 5. Create Depth/Stencil Renderbuffer (RBO)
   glBindRenderbuffer(GL_RENDERBUFFER, m_rboDepthStencil);
   glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, m_windowSize[0],
                         m_windowSize[1]);
   glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT,
                             GL_RENDERBUFFER, m_rboDepthStencil);
 
-  // 6. Check for completeness
   if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
     std::cout << "ERROR::FRAMEBUFFER:: Framebuffer is not complete!"
               << std::endl;
-    // Clean up and return an empty framebuffer object on failure
-    return false; // Return empty struct
+    return false;
   }
 
   glViewport(0, 0, w, h);
@@ -133,6 +126,10 @@ void Engine::draw() {
   glBindFramebuffer(GL_READ_FRAMEBUFFER, 0);
 }
 
+int Engine::getType(Objects::ObjectUUID::UUID id) {
+  return m_objManager.type(id);
+}
+
 Objects::ObjectUUID::UUID Engine::lookupObjectUUID(int x, int y) {
   glBindFramebuffer(GL_READ_FRAMEBUFFER, m_fboID);
   glReadBuffer(GL_COLOR_ATTACHMENT1);
@@ -169,9 +166,6 @@ Point Engine::createPoint(Math::Vector<2> pos, Math::Vector<3> color,
   model.model(pos, {radius, radius});
   memcpy(data.model, &model[0], model.size());
 
-  model.print();
-  color.print();
-
   if (!shader) {
     data.shader = &m_shaderManager.at("Point");
   } else {
@@ -191,15 +185,9 @@ Objects::ObjectUUID::UUID Engine::createLine(Math::Vector<2> pos0,
   Objects::ObjectData data;
 
   Math::Vector<2> pos = pos0;
-  float width = (pos1 - pos0).mag();
-  pos0.norm();
-  pos1.norm();
-
-  std::cout << "pos:\n";
-  pos0.print();
-  pos1.print();
-  float angle = pos0.angle({1, 0});
-  std::cout << "angle: " << angle << '\n';
+  Math::Vector<2> dir = pos1 - pos0;
+  float width = dir.mag();
+  float angle = dir.angle();
 
   memcpy(data.color, &color[0], color.size());
   Math::Matrix<4, 4> model;
@@ -215,39 +203,27 @@ Objects::ObjectUUID::UUID Engine::createLine(Math::Vector<2> pos0,
   return m_objManager.add(Objects::ObjectManager::Types::LINE, std::move(data));
 }
 
-Objects::ObjectUUID::UUID
-Engine::createPoly(std::vector<Math::Vector<2>> &verts, Math::Vector<3> color,
-                   Shader *shader) {
-  Objects::PolyData data;
-
+Poly Engine::createPoly(std::vector<Math::Vector<2>> &verts,
+                        Math::Vector<3> color, Shader *shader) {
   if (!shader) {
-    data.shader = &m_shaderManager.at("Poly");
-  } else {
-    data.shader = shader;
+    shader = &m_shaderManager.at("Poly");
   }
 
-  data.count = verts.size();
-  memcpy(data.color, &color[0], color.size());
-
-  glGenVertexArrays(1, &data.VAO);
-  glBindVertexArray(data.VAO);
-
-  uint32_t vbo;
-  glGenBuffers(1, &vbo);
-  glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
-  glBufferData(GL_ARRAY_BUFFER, verts.size() * sizeof(verts[0]), verts.data(),
-               GL_STATIC_DRAW);
-
-  glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void *)0);
-  glEnableVertexAttribArray(0);
-
-  glBindBuffer(GL_ARRAY_BUFFER, 0);
-  glBindVertexArray(0);
-
-  return m_objManager.add(std::move(data));
+  return Poly(verts, color, shader, m_objManager);
 }
 
+void Engine::remove(Objects::ObjectUUID::UUID id) {
+  std::variant<Objects::PolyData *, Objects::ObjectData *> s =
+      m_objManager.get(id);
+
+  m_objManager.remove(id);
+}
+
+uint32_t Engine::drawCalls() { return m_objManager.drawCalls(); }
+uint32_t Engine::entities() { return m_objManager.entities(); }
+Objects::ObjectManager::ObjectCount Engine::count() {
+  return m_objManager.count();
+}
 Math::Vector<2, uint32_t> Engine::winSize() { return m_windowSize; }
 
 } // namespace Engine

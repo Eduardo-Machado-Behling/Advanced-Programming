@@ -1,8 +1,11 @@
 #include "GLFW/glfw3.h"
+#include "Wrappers/Point.hpp"
+#include "Wrappers/Poly.hpp"
 #include "engine.hpp"
 #include "window.hpp"
-#include <functional>
+#include <cstdint>
 #include <iostream>
+#include <memory>
 #include <vector>
 
 struct MyWindow : public Engine::Window {
@@ -18,11 +21,8 @@ struct MyWindow : public Engine::Window {
     verts.push_back({100, 100});
     verts.push_back({200, 100});
     verts.push_back({200, 200});
-    m_engine->createPoly(verts, {0, 1, 0});
-
-    glfwSetWindowUserPointer(m_window, this);
-    glfwSetKeyCallback(m_window, &MyWindow::StaticKeyCallback);
-    glfwSetMouseButtonCallback(m_window, &MyWindow::StaticMouseCallback);
+    p.reset(
+        new Engine::Poly(std::move(m_engine->createPoly(verts, {0, 1, 0}))));
   }
 
   void update(double dt) override {
@@ -33,32 +33,37 @@ struct MyWindow : public Engine::Window {
 private:
   Engine::Point p0;
   Engine::Point p1;
+  std::unique_ptr<Engine::Poly> p;
 
-  void mouseCallback(int button, int action, int mods) {
-    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
-      // 1. Get mouse position in screen coordinates
+  void mouseButtonCallback(int button, int action, int mods) override {
+    if (action == GLFW_PRESS) {
       double xpos, ypos;
       glfwGetCursorPos(m_window, &xpos, &ypos);
 
-      // 2. Get window size to invert the Y-axis
       int width, height;
       glfwGetWindowSize(m_window, &width, &height);
 
-      // 3. Convert to framebuffer coordinates (Y-inversion)
       int fb_x = static_cast<int>(xpos);
       int fb_y = height - static_cast<int>(ypos);
 
-      // 4. Call a helper function to perform the pixel read
-      std::cout << "UUID: " << m_engine->lookupObjectUUID(fb_x, fb_y) << '\n';
+      uint32_t uuid = m_engine->lookupObjectUUID(fb_x, fb_y);
+      if (uuid == 0) {
+        return;
+      }
+
+      if (button == GLFW_MOUSE_BUTTON_LEFT) {
+        std::cout << "Pressed: " << uuid << '\n';
+      } else if (button == GLFW_MOUSE_BUTTON_RIGHT) {
+        m_engine->remove(uuid);
+      }
     }
   }
 
   Engine::Math::Vector<2> lineStart;
   std::vector<Engine::Math::Vector<2>> polyVerts;
   bool captureVerts = false;
-  ;
 
-  void keyCallback(int key, int scancode, int action, int mode) {
+  void keyCallback(int key, int scancode, int action, int mode) override {
     double x, y;
     glfwGetCursorPos(m_window, &x, &y);
 
@@ -77,7 +82,8 @@ private:
         break;
       case GLFW_KEY_E:
         if (captureVerts) {
-          polyVerts.push_back(pos);
+          m_engine->createPoint(pos, {1, 0, 0}, 8);
+          p->addVert(pos);
         }
         break;
 
@@ -103,37 +109,11 @@ private:
       case GLFW_KEY_LEFT_SHIFT:
       case GLFW_KEY_RIGHT_SHIFT:
         captureVerts = false;
-        if (!polyVerts.empty()) {
-          m_engine->createPoly(polyVerts, {1, 1, 1});
-          polyVerts.clear();
-        }
         break;
 
       default:
         break;
       }
-    }
-  }
-
-  static void StaticKeyCallback(GLFWwindow *win, int key, int scancode,
-                                int action, int mode) {
-    // Retrieve the MyWindow instance that we stored
-    MyWindow *self = static_cast<MyWindow *>(glfwGetWindowUserPointer(win));
-
-    // If the pointer is valid, call the actual member function
-    if (self) {
-      self->keyCallback(key, scancode, action, mode);
-    }
-  }
-
-  static void StaticMouseCallback(GLFWwindow *win, int button, int action,
-                                  int mode) {
-    // Retrieve the MyWindow instance that we stored
-    MyWindow *self = static_cast<MyWindow *>(glfwGetWindowUserPointer(win));
-
-    // If the pointer is valid, call the actual member function
-    if (self) {
-      self->mouseCallback(button, action, mode);
     }
   }
 };

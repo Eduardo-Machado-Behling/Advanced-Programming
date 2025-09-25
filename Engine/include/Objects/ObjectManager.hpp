@@ -21,6 +21,14 @@ public:
     virtual void operator()(size_t i, std::vector<ObjectData> &data,
                             bool update) = 0;
     virtual void operator()(std::vector<PolyData> &data, bool update) = 0;
+
+    virtual uint32_t getDrawCalls() = 0;
+  };
+
+  struct ObjectCount {
+    uint32_t points = 0;
+    uint32_t lines = 0;
+    uint32_t polys = 0;
   };
 
   enum class Types {
@@ -36,7 +44,14 @@ public:
     data.update[1] = false;
     (*solver)(data.polys, data.update[2]);
     data.update[2] = false;
+    m_drawCalls = solver->getDrawCalls();
   }
+
+  uint32_t drawCalls() { return m_drawCalls; }
+  uint32_t entities() { return data.uuid2ii.size(); }
+  ObjectCount count() { return m_count; }
+
+  int type(ObjectUUID::UUID id) { return data.uuid2ii[id].first; }
 
   void remove(ObjectUUID::UUID id) {
     std::pair<uint32_t, uint32_t> ii = data.uuid2ii.at(id);
@@ -44,6 +59,7 @@ public:
     std::pair<uint32_t, uint32_t> iiTemp[2];
     switch (ii.first) {
     case 0:
+      m_count.points -= 1;
       iiTemp[0].first = 0;
       iiTemp[1].first = 0;
       for (size_t i = ii.second + 1; i < data.points.size(); i++) {
@@ -61,6 +77,7 @@ public:
       break;
 
     case 1:
+      m_count.lines -= 1;
       iiTemp[0].first = 1;
       iiTemp[1].first = 1;
       for (size_t i = ii.second + 1; i < data.lines.size(); i++) {
@@ -77,6 +94,7 @@ public:
       data.lines.erase(std::next(data.lines.begin(), ii.second));
       break;
     case 2:
+      m_count.polys -= 1;
       iiTemp[0].first = 2;
       iiTemp[1].first = 2;
       for (size_t i = ii.second + 1; i < data.polys.size(); i++) {
@@ -96,11 +114,13 @@ public:
 
     data.ii2uuid.erase(ii);
     data.uuid2ii.erase(id);
+    uuid.remove(id);
   }
 
   ObjectUUID::UUID add(Types type, ObjectData &&data) {
     switch (type) {
     case Types::POINT: {
+      m_count.points += 1;
       ObjectUUID::UUID id = this->uuid.get();
       data.uuid = id;
 
@@ -117,6 +137,7 @@ public:
     } break;
 
     case Types::LINE: {
+      m_count.lines += 1;
       ObjectUUID::UUID id = this->uuid.get();
       data.uuid = id;
 
@@ -140,6 +161,7 @@ public:
   }
 
   ObjectUUID::UUID add(PolyData &&data) {
+    m_count.polys += 1;
     ObjectUUID::UUID id = this->uuid.get();
     data.uuid = id;
 
@@ -216,8 +238,10 @@ private:
 
     bool update[3] = {true, true, true};
   } data;
-};
 
+  uint32_t m_drawCalls;
+  ObjectCount m_count;
+};
 } // namespace Objects
 } // namespace Engine
 

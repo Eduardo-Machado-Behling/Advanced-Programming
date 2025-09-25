@@ -22,6 +22,8 @@ struct ENGINE_API Shader {
   void bind();
   void unbind();
 
+  template <typename T> void set(const char *name, T val);
+
   bool add(GLenum type, const char *source);
   bool link();
 

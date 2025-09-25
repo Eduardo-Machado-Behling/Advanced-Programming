@@ -7,6 +7,6 @@ layout (location = 0) out vec4 FragColor;
 layout (location = 1) out uint outUUID;
 
 void main(){
-	FragColor = vec4(0.0, 1.0, 0.0, 1.0);
+	FragColor = vec4(color, 1.0);
 	outUUID = UUID;
 }

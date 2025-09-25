@@ -10,6 +10,7 @@
 
 #include "Objects/ObjectUUID.hpp"
 #include "Wrappers/Point.hpp"
+#include "Wrappers/Poly.hpp"
 #include "engine_api.hpp"
 #include "shader.hpp"
 
@@ -26,6 +27,7 @@ public:
   void draw();
 
   Objects::ObjectUUID::UUID lookupObjectUUID(int x, int y);
+  int getType(Objects::ObjectUUID::UUID id);
 
   std::variant<Objects::PolyData *, Objects::ObjectData *>
   get(Objects::ObjectUUID::UUID &id);
@@ -36,14 +38,19 @@ public:
                                        Math::Vector<2> pos1,
                                        Math::Vector<3> color, float stroke,
                                        Shader *shader = nullptr);
-  Objects::ObjectUUID::UUID createPoly(std::vector<Math::Vector<2>> &verts,
-                                       Math::Vector<3> color,
-                                       Shader *shader = nullptr);
+  Poly createPoly(std::vector<Math::Vector<2>> &verts, Math::Vector<3> color,
+                  Shader *shader = nullptr);
+
+  void remove(Objects::ObjectUUID::UUID id);
 
   Math::Vector<2, uint32_t> winSize();
 
   Engine(const Engine &) = delete;
   Engine &operator=(const Engine &) = delete;
+
+  uint32_t drawCalls();
+  uint32_t entities();
+  Objects::ObjectManager::ObjectCount count();
 
 private:
   Engine() = default;

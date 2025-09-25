@@ -56,6 +56,10 @@ public:
     }
   }
 
+  S angle() {
+    return atan2(m_data[1], m_data[0]); // atan2(y, x)
+  }
+
   S angle(Vector<D> vec) {
     float cos_theta = dot(vec);
     if (cos_theta > 1.0)

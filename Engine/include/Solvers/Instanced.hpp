@@ -16,6 +16,12 @@ class Instanced : public Objects::ObjectManager::Solver {
 public:
   Instanced() { glGenBuffers(3, VBO); }
 
+  uint32_t getDrawCalls() override {
+    uint32_t d = m_drawCalls;
+    m_drawCalls = 0;
+    return d;
+  }
+
   void operator()(size_t type, std::vector<Objects::ObjectData> &data,
                   bool update) override {
     const uint32_t amount = data.size();
@@ -28,18 +34,11 @@ public:
     glBindBuffer(GL_ARRAY_BUFFER, VBO[type]);
 
     if (update) {
-      printf("Type: %d, update: %d\n", (int)type, update);
       const uint32_t size = amount * sizeof(data[0]);
 
       if (this->size < size) {
         glBufferData(GL_ARRAY_BUFFER, size, data.data(), GL_STATIC_DRAW);
       }
-
-      printf("%u ", ((uint32_t *)(data.data()))[0]);
-      for (size_t i = 1; i < 19; i++) {
-        printf("%f ", ((float *)(data.data()))[i]);
-      }
-      putchar('\n');
     }
 
     size_t stride = sizeof(data[0]);
@@ -80,6 +79,7 @@ public:
     glVertexAttribDivisor(loc, 1);
 
     data[0].shader->bind();
+    m_drawCalls++;
     glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, amount);
     data[0].shader->unbind();
 
@@ -88,10 +88,20 @@ public:
   }
 
   void operator()(std::vector<Objects::PolyData> &polys, bool update) override {
+    if (polys.empty()) {
+      return;
+    }
+
     for (auto &poly : polys) {
       glBindVertexArray(poly.VAO);
       poly.shader->bind();
-      glDrawArrays(GL_TRIANGLE_STRIP, 0, poly.count);
+
+      m_drawCalls++;
+      glDrawElements(GL_TRIANGLES, poly.count, GL_UNSIGNED_INT, 0);
+
+      poly.shader->set("UUID", poly.uuid);
+      poly.shader->set("fillColor", poly.color);
+
       poly.shader->unbind();
     }
   }
@@ -99,6 +109,7 @@ public:
 private:
   uint32_t VBO[3];
   uint32_t size = 0;
+  uint32_t m_drawCalls = 0;
 };
 
 } // namespace Solver

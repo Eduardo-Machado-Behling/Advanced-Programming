@@ -20,7 +20,7 @@ struct __attribute__((packed)) ObjectData {
 
 struct PolyData {
   uint32_t uuid;
-  float color[3];
+  Math::Vector<3> color;
 
   uint32_t VAO;
   uint32_t count;

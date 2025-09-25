@@ -1,10 +1,15 @@
 #version 430 core
 
-flat in vec3 color;
+layout (location = 0) out vec4 FragColor;
+layout (location = 1) out uint outUUID;
 
-out vec4 FragColor;
+uniform uint UUID;
+uniform vec3 borderColor;
+uniform float borderSize;
+uniform vec3 fillColor;
 
 void main(){
-	FragColor = vec4(0.0, 1.0, 0.0, 1.0);
+	FragColor = vec4(fillColor, 1.0);
+	outUUID = UUID;
 }
 
