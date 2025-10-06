@@ -14,6 +14,14 @@ public:
       : m_pos(pos), m_color(color), m_radius(radius), m_id(id),
         m_manager(manager) {}
 
+  Point(Point &&p)
+      : m_pos(p.m_pos), m_color(p.m_color), m_radius(p.m_radius), m_id(p.m_id),
+        m_manager(p.m_manager) {}
+
+  Point(Point &p)
+      : m_pos(p.m_pos), m_color(p.m_color), m_radius(p.m_radius), m_id(p.m_id),
+        m_manager(p.m_manager) {}
+
   void setPos(Math::Vector<2> newPos) {
     if (newPos == m_pos) {
       return;

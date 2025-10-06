@@ -4,6 +4,7 @@
 #include "Wrappers/Poly.hpp"
 #include "engine.hpp"
 #include "window.hpp"
+#include <algorithm>
 #include <cmath>
 #include <cstdint>
 #include <iostream>
@@ -23,8 +24,8 @@ struct MyWindow : public Engine::Window {
     verts.push_back({100, 100});
     verts.push_back({200, 100});
     verts.push_back({200, 200});
-    p.reset(
-        new Engine::Poly(std::move(m_engine->createPoly(verts, {0, 1, 0}))));
+    p.reset(new Engine::Poly(
+        std::move(m_engine->createPoly(verts, {0, 1, 0}, {0, 1, 0}, 0.00))));
   }
 
   Engine::Math::Vector<2> vel = {-100.0, 50.0};
@@ -67,6 +68,7 @@ private:
   Engine::Point p1;
   Engine::Line l;
   std::unique_ptr<Engine::Poly> p;
+  std::vector<std::unique_ptr<Engine::Line>> ls;
 
   void mouseButtonCallback(int button, int action, int mods) override {
     if (action == GLFW_PRESS) {
@@ -116,6 +118,9 @@ private:
       case GLFW_KEY_E:
         if (captureVerts) {
           m_engine->createPoint(pos, {1, 0, 0}, 8);
+          const auto &verts = p->getVerts();
+          size_t len = verts.size();
+
           p->addVert(pos);
         }
         break;

@@ -5,6 +5,10 @@
 #include <chrono>
 #include <cstdint>
 #include <fstream>
+#include <string>
+#include <unordered_map>
+#include <variant>
+#include <vector>
 
 #include "Math/Vector.hpp"
 
@@ -14,9 +18,9 @@
 namespace Engine {
 
 class ENGINE_API Window {
+public:
   using Clock = std::chrono::high_resolution_clock;
 
-public:
   Window(Math::Vector<2, uint32_t> windowSize);
   Window();
   ~Window();
@@ -45,24 +49,32 @@ public:
 
 private:
   struct LogState {
-    double mouseX = 0;
-    double mouseY = 0;
-    uint32_t mouseClickAmount = 0;
-    uint32_t uuid = 0;
-    int32_t uuidType = -1;
-    double fps;
-    uint32_t drawCalls = 0;
-    uint32_t entities = 0;
-    uint32_t pointAmount = 0;
-    uint32_t linesAmount = 0;
-    uint32_t polyAmount = 0;
+    using Var = std::variant<std::string, int32_t, uint32_t, double>;
 
     void reset() {
-      uuid = 0;
-      uuidType = -1;
+      m_vars["uuid"] = 0;
+      m_vars["uuidType"] = -1;
     }
 
-  } m_state;
+    const std::vector<std::string> &headers() { return m_headers; }
+
+    void addHeader(const char *header) { m_headers.push_back(header); }
+    Var &get(const char *header) { return m_vars[header]; }
+
+    LogState() {
+      m_vars["mouseClickAmount"] = 0u;
+      m_vars["entities"] = 0;
+      m_vars["uuid"] = 0;
+      m_vars["uuidType"] = -1;
+    }
+
+  private:
+    std::vector<std::string> m_headers = {
+        "mouseX",      "mouseY",      "mouseClickAmount", "uuid",
+        "uuidType",    "fps",         "drawCalls",        "entities",
+        "pointAmount", "linesAmount", "polyAmount"};
+    std::unordered_map<std::string, Var> m_vars;
+  };
 
   void initOpenGL(int major, int minor);
   void init(Math::Vector<2, uint32_t> windowSize);
@@ -70,6 +82,7 @@ private:
   // Variables
 public:
 protected:
+  LogState m_state;
   std::ofstream m_log;
   GLFWwindow *m_window;
   Engine *m_engine;

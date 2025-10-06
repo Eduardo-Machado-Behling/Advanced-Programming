@@ -1,13 +1,11 @@
 #ifndef POLY_HPP
 #define POLY_HPP
 
-#include "Math/Matrix.hpp"
 #include "Math/Vector.hpp"
 #include "Objects/ObjectData.hpp"
 #include "Objects/ObjectManager.hpp"
 #include "Objects/ObjectUUID.hpp"
 #include "shader.hpp"
-#include <algorithm>
 #include <cstddef>
 #include <cstdint>
 #include <cstring>
@@ -17,15 +15,11 @@
 namespace Engine {
 class Poly {
 public:
-  Poly(Poly &&p)
-      : m_manager(p.m_manager), m_verts(std::move(p.m_verts)),
-        m_indices(std::move(p.m_indices)), m_id(p.m_id), VAO(p.VAO), VBO(p.VBO),
-        m_color(p.m_color), EBO(p.EBO) {}
-
   Poly(std::vector<Math::Vector<2>> verts, Math::Vector<3> color,
-       Shader *shader, Objects::ObjectManager &manager)
-      : m_verts(verts), m_indices({0, 1, 2}), m_color(color),
-        m_manager(manager) {
+       Math::Vector<3> borderColor, float borderSize, Shader *shader,
+       Objects::ObjectManager &manager)
+      : m_verts(verts), m_indices({0, 1, 2}), m_borderColor(borderColor),
+        m_borderSize(borderSize), m_color(color), m_manager(&manager) {
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glGenBuffers(1, &EBO);
@@ -38,6 +32,9 @@ public:
     m_id = manager.add(std::move(data));
   }
 
+  const std::vector<Math::Vector<2>> &getVerts() { return m_verts; }
+  const std::vector<uint32_t> &getIndices() { return m_indices; }
+
   void removeVert(size_t i) {
     m_verts.erase(std::next(m_verts.begin(), i));
 
@@ -47,7 +44,7 @@ public:
     m_indices.push_back(2);
     mesh();
 
-    setup(*std::get<0>(m_manager.get(m_id)));
+    setup(*std::get<0>(m_manager->get(m_id)));
   }
 
   void addVert(Math::Vector<2> vert) {
@@ -55,7 +52,7 @@ public:
 
     mesh();
 
-    setup(*std::get<0>(m_manager.get(m_id)));
+    setup(*std::get<0>(m_manager->get(m_id)));
   }
 
 private:
@@ -75,6 +72,8 @@ private:
   void setup(Objects::PolyData &data) {
     data.count = m_indices.size();
     data.color = m_color;
+    data.borderColor = m_borderColor;
+    data.borderSize = m_borderSize;
     data.VAO = VAO;
 
     glBindVertexArray(VAO);
@@ -98,10 +97,12 @@ private:
   std::vector<uint32_t> m_indices;
 
   Math::Vector<3> m_color;
+  Math::Vector<3> m_borderColor;
+  float m_borderSize;
   uint32_t VAO, VBO, EBO;
 
   Objects::ObjectUUID::UUID m_id;
-  Objects::ObjectManager &m_manager;
+  Objects::ObjectManager *m_manager;
 };
 
 } // namespace Engine

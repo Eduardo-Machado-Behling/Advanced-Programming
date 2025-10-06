@@ -25,6 +25,13 @@ struct ObjectUUID {
     return uuid;
   }
 
+  void reset() {
+    while (!available.empty()) {
+      available.pop();
+    }
+
+    available.push(1);
+  }
   void remove(UUID uuid) { available.push(uuid); }
 
 private:

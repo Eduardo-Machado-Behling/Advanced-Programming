@@ -2,6 +2,7 @@
 #include "Math/Vector.hpp"
 
 #include <cstdint>
+#include <cstdlib>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -19,6 +20,16 @@ template <> void Shader::set<uint32_t>(const char *name, uint32_t val) {
   }
 
   glUniform1ui(loc, val);
+}
+
+template <> void Shader::set<float>(const char *name, float val) {
+  uint32_t loc = glGetUniformLocation(m_id, name);
+  if (loc == -1) {
+    std::cout << "Unifrom \"" << name << "\" not found\n";
+    return;
+  }
+
+  glUniform1f(loc, val);
 }
 
 template <>
@@ -73,10 +84,11 @@ bool Shader::link() {
   if (linkStatus == GL_FALSE) {
     GLint length;
     glGetProgramiv(m_id, GL_INFO_LOG_LENGTH, &length);
-    char *message = (char *)alloca(length * sizeof(char));
+    char *message = (char *)malloc(length * sizeof(char));
     glGetProgramInfoLog(m_id, length, &length, message);
     std::cerr << "Failed to link program!" << std::endl;
     std::cerr << message << std::endl;
+    free(message);
     return false;
   }
 
@@ -105,21 +117,15 @@ void ShaderManager::load(std::string_view name) {
 
   std::string strName = std::string(name);
   Shader &shader = m_shaders[strName];
-  std::cout << "Loading: " << name << '\n';
   for (size_t i = 0; i < (sizeof(EXTS) / sizeof(EXTS[0])); i++) {
     std::filesystem::path file = m_root / (strName + EXTS[i]);
 
     std::stringstream source;
-    std::cout << "\tSearching: " << file;
     if (std::filesystem::exists(file)) {
-      std::cout << " Found\n";
       std::ifstream sourceFile(file);
       source << sourceFile.rdbuf();
 
-      std::cout << "Shader added: " << file.string() << '\n';
       shader.add(EXTS_ENUM[i], source.str().c_str());
-    } else {
-      std::cout << " Not Found\n";
     }
   }
 

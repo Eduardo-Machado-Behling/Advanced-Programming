@@ -40,7 +40,7 @@ set_target_properties(glad PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 
 # Set the output directory for the executable to './bin/'
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 file(GLOB_RECURSE EXECUTABLE_SOURCES
 	"${CMAKE_CURRENT_SOURCE_DIR}/lib/*.cpp"
 )
@@ -50,16 +50,16 @@ target_link_libraries(${name} PUBLIC glfw glad)
 target_compile_definitions(${name} PUBLIC GLFW_INCLUDE_NONE)
 target_compile_definitions(${name} PUBLIC BUILDING_ENGINE_DLL)
 target_include_directories(${name} PUBLIC
-	"${CMAKE_SOURCE_DIR}/include"               
+	"${CMAKE_CURRENT_SOURCE_DIR}/include"               
 )
 
 add_custom_target(CopyResources ALL
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-            ${CMAKE_SOURCE_DIR}/assets
+            ${CMAKE_CURRENT_SOURCE_DIR}/assets
 			${CMAKE_SOURCE_DIR}/bin/assets
     COMMAND ${CMAKE_COMMAND} -E copy
-            ${CMAKE_SOURCE_DIR}/graph.py
-			${CMAKE_SOURCE_DIR}/bin
+            ${CMAKE_CURRENT_SOURCE_DIR}/graph.py
+			${CMAKE_CURRENT_SOURCE_DIR}/bin
     COMMENT "Copying assets and scripts on every build..."
 )
 

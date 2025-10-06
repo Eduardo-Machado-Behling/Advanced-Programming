@@ -26,4 +26,5 @@ void main(){
 	color = aColor;
 	invProj = inverse(mProj);
 	UUID = aUUID;
+
 }

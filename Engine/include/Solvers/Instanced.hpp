@@ -101,6 +101,8 @@ public:
 
       poly.shader->set("UUID", poly.uuid);
       poly.shader->set("fillColor", poly.color);
+      poly.shader->set("borderColor", poly.borderColor);
+      poly.shader->set("borderSize", poly.borderSize);
 
       poly.shader->unbind();
     }

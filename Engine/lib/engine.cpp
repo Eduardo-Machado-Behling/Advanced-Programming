@@ -128,6 +128,10 @@ void Engine::draw() {
 }
 
 int Engine::getType(Objects::ObjectUUID::UUID id) {
+  if (id == 0) {
+    return -1;
+  }
+
   return m_objManager.type(id);
 }
 
@@ -189,12 +193,13 @@ Line Engine::createLine(Math::Vector<2> pos0, Math::Vector<2> pos1,
 }
 
 Poly Engine::createPoly(std::vector<Math::Vector<2>> &verts,
-                        Math::Vector<3> color, Shader *shader) {
+                        Math::Vector<3> color, Math::Vector<3> borderColor,
+                        float borderSize, Shader *shader) {
   if (!shader) {
     shader = &m_shaderManager.at("Poly");
   }
 
-  return Poly(verts, color, shader, m_objManager);
+  return Poly(verts, color, borderColor, borderSize, shader, m_objManager);
 }
 
 void Engine::remove(Objects::ObjectUUID::UUID id) {
@@ -203,6 +208,8 @@ void Engine::remove(Objects::ObjectUUID::UUID id) {
 
   m_objManager.remove(id);
 }
+
+void Engine::clear() { m_objManager.clear(); }
 
 uint32_t Engine::drawCalls() { return m_objManager.drawCalls(); }
 uint32_t Engine::entities() { return m_objManager.entities(); }

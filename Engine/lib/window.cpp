@@ -3,9 +3,11 @@
 #include <chrono>
 #include <cstdint>
 #include <iostream>
+#include <variant>
 
 #include "GLFW/glfw3.h"
 #include "Math/Vector.hpp"
+#include "Objects/ObjectUUID.hpp"
 #include "engine.hpp"
 
 namespace Engine {
@@ -31,24 +33,39 @@ bool Window::isActivate() { return !glfwWindowShouldClose(m_window); }
 void Window::log() {
   auto now = Clock::now();
   double time = std::chrono::duration<double>(now - m_startTime).count();
+  auto &headers = m_state.headers();
 
   if (!m_log.is_open()) {
     m_log.open("log.csv");
-    m_log << "time,mouseX,mouseY,mouseClicks,uuid,uuidType,fps,drawCalls,"
-             "entities,pointsAmount,linesAmount,polyAmount\n";
+
+    m_log << "time,";
+    for (size_t i = 0; i < headers.size(); i++) {
+      m_log << headers[i];
+      if (i == headers.size() - 1) {
+        m_log << '\n';
+      } else {
+        m_log << ',';
+      }
+    }
   }
 
   auto c = m_engine->count();
 
-  m_state.pointAmount = c.points;
-  m_state.linesAmount = c.lines;
-  m_state.polyAmount = c.polys;
+  m_state.get("pointAmount") = c.points;
+  m_state.get("linesAmount") = c.lines;
+  m_state.get("polyAmount") = c.polys;
 
-  m_log << time << ',' << m_state.mouseX << ',' << m_state.mouseY << ','
-        << m_state.mouseClickAmount << ',' << m_state.uuid << ','
-        << m_state.uuidType << ',' << m_state.fps << ',' << m_state.drawCalls
-        << ',' << m_state.entities << ',' << m_state.pointAmount << ','
-        << m_state.linesAmount << ',' << m_state.polyAmount << '\n';
+  m_log << time << ',';
+  for (size_t i = 0; i < headers.size(); i++) {
+    auto &var = m_state.get(headers[i].c_str());
+    std::visit([&](const auto &value) { m_log << value; }, var);
+
+    if (i == headers.size() - 1) {
+      m_log << '\n';
+    } else {
+      m_log << ',';
+    }
+  }
 
   m_state.reset();
 }
@@ -58,10 +75,15 @@ void Window::gameloop() {
   double dt = std::chrono::duration<double>(now - m_lastTime).count();
 
   glfwPollEvents();
-  glfwGetCursorPos(m_window, &m_state.mouseX, &m_state.mouseY);
-  m_state.fps = 1.0 / dt;
-  m_state.entities = m_engine->entities();
-  m_state.drawCalls = m_engine->drawCalls();
+  double x, y;
+  glfwGetCursorPos(m_window, &x, &y);
+
+  m_state.get("mouseX") = x;
+  m_state.get("mouseY") = y;
+
+  m_state.get("fps") = 1.0 / dt;
+  m_state.get("entities") = m_engine->entities();
+  m_state.get("drawCalls") = m_engine->drawCalls();
 
   log();
   this->update(dt);
@@ -121,14 +143,19 @@ void Window::staticMouseButtonCallback(GLFWwindow *win, int button, int action,
   Window *self = static_cast<Window *>(glfwGetWindowUserPointer(win));
 
   if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
-    self->m_state.mouseClickAmount += 1;
-    glfwGetCursorPos(self->m_window, &self->m_state.mouseX,
-                     &self->m_state.mouseY);
+    std::get<2>(self->m_state.get("mouseClickAmount")) += 1;
+
+    double x, y;
+    glfwGetCursorPos(self->m_window, &x, &y);
     int w, h;
     glfwGetWindowSize(self->m_window, &w, &h);
-    self->m_state.uuid = self->m_engine->lookupObjectUUID(
-        self->m_state.mouseX, h - self->m_state.mouseY);
-    self->m_state.uuidType = self->m_engine->getType(self->m_state.uuid);
+
+    Objects::ObjectUUID::UUID uuid = self->m_engine->lookupObjectUUID(x, y);
+    self->m_state.get("uuid") = uuid;
+    self->m_state.get("uuidType") = self->m_engine->getType(uuid);
+
+    self->m_state.get("mouseX") = x;
+    self->m_state.get("mouseY") = y;
     self->log();
   }
 

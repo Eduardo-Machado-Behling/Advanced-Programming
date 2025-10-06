@@ -47,6 +47,21 @@ public:
     m_drawCalls = solver->getDrawCalls();
   }
 
+  void clear() {
+    data.points.clear();
+    data.lines.clear();
+    data.polys.clear();
+
+    data.uuid2ii.clear();
+    data.ii2uuid.clear();
+
+    data.update[0] = true;
+    data.update[1] = true;
+    data.update[2] = true;
+
+    uuid.reset();
+  }
+
   uint32_t drawCalls() { return m_drawCalls; }
   uint32_t entities() { return data.uuid2ii.size(); }
   ObjectCount count() { return m_count; }

@@ -71,6 +71,8 @@ public:
 
   S &operator[](size_t i) { return m_data[i]; }
 
+  const S &operator[](size_t i) const { return m_data[i]; }
+
   void operator+=(S scalar) {
     for (size_t i = 0; i < D; i++) {
       m_data[i] += scalar;
@@ -86,6 +88,12 @@ public:
   Vector<D, S> operator+(Vector<D, S> vec) {
     Vector<D, S> v(*this);
     v += vec;
+    return v;
+  }
+
+  Vector<D, S> operator*(Vector<D, S> vec) {
+    Vector<D, S> v(*this);
+    v *= vec;
     return v;
   }
 
@@ -111,6 +119,12 @@ public:
     }
   }
 
+  void operator*=(Vector<D, S> vec) {
+    for (size_t i = 0; i < D; i++) {
+      m_data[i] *= vec[i];
+    }
+  }
+
   Vector<D, S> operator*(S scalar) {
     Vector<D, S> vec(*this);
     vec *= scalar;
@@ -129,6 +143,8 @@ public:
     for (size_t i = 0; i < D; i++) {
       sum += m_data[i];
     }
+
+    return sum;
   }
 
   S dot(Vector<D, S> vec) {
@@ -138,6 +154,8 @@ public:
     }
     return sum;
   }
+
+  Vector<D, S> cross(Vector<D, S> vec) {}
 
 private:
   S m_data[D] = {0};
