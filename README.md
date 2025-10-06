@@ -3,20 +3,20 @@
 This repository contains algorithms from the Advanced Programming (TEC II - 2025/2) course, taught by Dr. Rafael Tolcheski at the Federal University of Pelotas.
 
 ## Progress Table
-| Assignment | Work | Submission Date | Code | Finished all requirements in time? |
-| --: | :-: | :-: | :-: | :-:|
-| 1 | 2D Rendering Engine |25/09/25, 18:08 | [link](https://github.com/Eduardo-Machado-Behling/Advanced-Programming/tree/main/Engine) | Yes |
-| 2 | | | [link]() | |
-| 3 | | | [link]() | |
-| 4 | | | [link]() | |
-| 5 | | | [link]() | |
-| 6 | | | [link]() | |
-| 7 | | | [link]() | |
-| 8 | | | [link]() | |
-| 9 | | | [link]() | |
-| 10 | | | [link]() | |
-| 11 | | | [link]() | |
-| 12 | | | [link]() | |
-| 13 | | | [link]() | |
-| 14 | | | [link]() | |
-| 15 | | | [link]() | |
+| Assignment | Work | Submission Date | Code | Video | Finished all requirements in time? |
+| --: | :-: | :-: | :-: | :-: | :-:|
+| 1 | 2D Rendering Engine |25/09/25, 18:08 | [link](https://github.com/Eduardo-Machado-Behling/Advanced-Programming/tree/main/Engine) | [link](https://youtu.be/Hqp6Rz2vocM) | Yes |
+| 2 | Voronoi Diagram | 10/05/25, 23:38 | [link](https://github.com/Eduardo-Machado-Behling/Advanced-Programming/tree/main/Voronoi-Diagram) |[link](https://youtu.be/ZEbilKO9Sj8) | Yes |
+| 3 | | | [link]() | [link]() | |
+| 4 | | | [link]() | [link]() | |
+| 5 | | | [link]() | [link]() | |
+| 6 | | | [link]() | [link]() | |
+| 7 | | | [link]() | [link]() | |
+| 8 | | | [link]() | [link]() | |
+| 9 | | | [link]() | [link]() | |
+| 10 | | | [link]() | [link]() | |
+| 11 | | | [link]() | [link]() | |
+| 12 | | | [link]() | [link]() | |
+| 13 | | | [link]() | [link]() | |
+| 14 | | | [link]() | [link]() | |
+| 15 | | | [link]() | [link]() | |
