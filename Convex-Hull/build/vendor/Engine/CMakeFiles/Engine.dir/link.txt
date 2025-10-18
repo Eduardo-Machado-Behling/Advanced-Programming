@@ -1,1 +1,0 @@
-/usr/sbin/c++ -fPIC -g -Wl,--dependency-file=CMakeFiles/Engine.dir/link.d -shared -Wl,-soname,libEngine.so -o libEngine.so CMakeFiles/Engine.dir/lib/engine.cpp.o CMakeFiles/Engine.dir/lib/shader.cpp.o CMakeFiles/Engine.dir/lib/window.cpp.o  ../../_deps/glfw-build/src/libglfw3.a vendor/glad/libglad.a -lGL -ldl -lpthread /usr/lib/librt.a -lm -ldl

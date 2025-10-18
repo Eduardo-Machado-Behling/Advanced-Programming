@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
 set(BUILD_DEMO OFF)
 add_subdirectory(vendor/Engine)
@@ -23,9 +23,8 @@ target_link_libraries(${name} PRIVATE Engine)
 
 add_custom_target(ApplicationScripts ALL
     COMMAND ${CMAKE_COMMAND} -E copy
-            ${CMAKE_CURRENT_SOURCE_DIR}/graph.py
-			${CMAKE_CURRENT_SOURCE_DIR}/bin
-    COMMENT "Copying assets and scripts on every build..."
+            "${CMAKE_SOURCE_DIR}/graph.py"
+            "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"         # Correct: Copy to executable's folder
 )
 
 
