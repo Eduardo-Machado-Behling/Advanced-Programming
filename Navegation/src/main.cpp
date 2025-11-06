@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <cstdio>
 #include <cstdlib>
-#include <random>
+#include <optional>
 #include <unordered_map>
 #include <vector>
 
@@ -20,6 +20,7 @@ struct Empty {};
 struct Start {
   Cell end;
 
+  Start() {}
   Start(Cell end) : end(end) {}
 };
 
@@ -57,7 +58,20 @@ public:
     return mat + gridSize[1] * row + col;
   }
 
-  Vec2U getCoord(size_t uuid) { return uuidToCell[uuid]; }
+  Vec2U getCoord(Vec2 mousePos) {
+    mousePos -= box[0];
+    Vec2 delta = box[1] - box[0];
+    delta[0] /= gridSize[0];
+    delta[1] /= gridSize[1];
+
+    return {static_cast<unsigned int>((mousePos[0] / delta[0])),
+            static_cast<unsigned int>((mousePos[1] / delta[1]))};
+  }
+
+  Cell *get(Vec2 mousePos) {
+    Vec2U gridPos = getCoord(mousePos);
+    return mat + gridPos[1] * gridSize[1] + gridPos[0];
+  }
 
   Cell *get(size_t uuid) {
     auto coord = uuidToCell[uuid];
@@ -150,139 +164,175 @@ struct MyWindow : public Engine::Window {
 
             std::vector<Vec2> vertices = {corner[0], corner[1], corner[2],
                                           corner[3]};
+
             std::visit(
                 [this, pos0, xstep, ystep, &vertices, i, j](auto &&arg) {
-              using T = std::decay_t<decltype(arg)>;
-              std::cout << i << ", " << j << ": ";
-              if constexpr (std::is_same_v<T, CellTypes::Start>) {
-                std::cout << "start\n";
-                m_points.emplace_back(
-                    m_engine->createPoint(pos0 + Vec2{xstep / 2, ystep / 2},
-                                          START_COLOR, POINT_RADIUS));
-              }
+                  using T = std::decay_t<decltype(arg)>;
+                  if constexpr (std::is_same_v<T, CellTypes::Start>) {
+                    std::cout << "x=" << j << ", y= " << i << "[" << i << ", "
+                              << j << "]: ";
+                    std::cout << "start -> " << arg.end[0] << ", " << arg.end[1]
+                              << '\n';
+                    m_points.emplace_back(
+                        m_engine->createPoint(pos0 + Vec2{xstep / 2, ystep / 2},
+                                              START_COLOR, POINT_RADIUS));
+                  }
 
-              else if constexpr (std::is_same_v<T, CellTypes::End>) {
-                std::cout << "end\n";
+                  else if constexpr (std::is_same_v<T, CellTypes::End>) {
+                    std::cout << i << ", " << j << ": ";
+                    std::cout << "end\n";
 
-                m_points.emplace_back(
-                    m_engine->createPoint(pos0 + Vec2{xstep / 2, ystep / 2},
-                                          END_COLOR, POINT_RADIUS));
-              } else if constexpr (std::is_same_v<T, CellTypes::Obs>) {
-                std::cout << "obs\n";
-                m_polys.emplace_back(
-                    m_engine->createPoly(vertices, OBS_COLOR, OBS_COLOR, 0.0));
+                    m_points.emplace_back(
+                        m_engine->createPoint(pos0 + Vec2{xstep / 2, ystep / 2},
+                                              END_COLOR, POINT_RADIUS));
+                  } else if constexpr (std::is_same_v<T, CellTypes::Obs>) {
+                    std::cout << i << ", " << j << ": ";
+                    std::cout << "obs\n";
 
-              } else if constexpr (std::is_same_v<T, CellTypes::Empty>) { std::cout << "\n";
+                    m_polys.emplace_back(m_engine->createPoly(
+                        vertices, OBS_COLOR, OBS_COLOR, 0.0, false));
+
+                  } else if constexpr (std::is_same_v<T, CellTypes::Empty>) {
                   } else
                     static_assert(false, "non-exhaustive visitor!");
-          },
+                },
                 grid.get(i, j)->type);
+          }
         }
       }
     }
+
+    refresh = false;
   }
 
-  refresh = false;
-}
+private:
+  Vec2 start;
+  Vec2 end;
+  int mouseHolding = 0;
 
-private : Vec2 start;
-Vec2 end;
+  void mouseButtonCallback(int button, int action, int mods) override {
+    float glx = m_mouse[0];
+    float gly = m_windowSize[1] - m_mouse[1];
 
-void mouseButtonCallback(int button, int action, int mods) override {
-  float glx = m_mouse[0];
-  float gly = m_windowSize[1] - m_mouse[1];
+    if (action == GLFW_PRESS) {
+      auto uid = m_engine->lookupObjectUUID(glx, gly);
+      int type = m_engine->getType(uid);
 
-  if (action == GLFW_PRESS) {
+      if (button == GLFW_MOUSE_BUTTON_LEFT) {
+        if (!grid.allocated()) {
+          start = {glx, gly};
+        } else {
+          mouseHolding = button;
+        }
+      }
+    } else if (action == GLFW_RELEASE) {
+      mouseHolding = 0;
+      if (button == GLFW_MOUSE_BUTTON_LEFT) {
+
+        if (!grid.allocated()) {
+          end = {glx, gly};
+
+          size_t rows = 10, cols = 10;
+
+          // std::cout << "Rows : ";
+          // std::cin >> rows;
+          // std::cout << "cols : ";
+          // std::cin >> cols;
+
+          grid.allocate(rows, cols, start, end);
+
+          refresh = true;
+        }       }
+    }
+  }
+
+  void clear() { grid.deallocate(); }
+
+  std::optional<Vec2> startUidTemp = std::nullopt;
+
+  void keyCallback(int key, int scancode, int action, int mode) override {
+    float glx = m_mouse[0];
+    float gly = m_windowSize[1] - m_mouse[1];
+
     auto uid = m_engine->lookupObjectUUID(glx, gly);
-    int type = m_engine->getType(uid);
 
-    if (button == GLFW_MOUSE_BUTTON_LEFT) {
-      if (!grid.allocated()) {
-        start = {glx, gly};
-      }
-    }
-  } else if (action == GLFW_RELEASE) {
-    if (button == GLFW_MOUSE_BUTTON_LEFT) {
-      if (!grid.allocated()) {
-        end = {glx, gly};
+    if (action == GLFW_PRESS) {
+      bool num = false;
+      switch (key) {
+      case GLFW_KEY_Q:
+        clear();
+        break;
 
-        size_t rows = 10, cols = 10;
+      case GLFW_KEY_ESCAPE:
+        terminate();
+        break;
 
-        // std::cout << "Rows : ";
-        // std::cin >> rows;
-        // std::cout << "cols : ";
-        // std::cin >> cols;
+      case GLFW_KEY_F1:
+        if (!startUidTemp) {
+          startUidTemp = Vec2({glx, gly});
 
-        grid.allocate(rows, cols, start, end);
+          grid.get(*startUidTemp)->type = CellTypes::Start();
 
+          refresh = true;
+        }
+        break;
+
+      case GLFW_KEY_F2:
+        grid.get({glx, gly})->type = CellTypes::Obs();
         refresh = true;
+        break;
+
+      case GLFW_KEY_LEFT_SHIFT:
+        break;
+
+      default:
+        break;
+      }
+
+    } else if (action == GLFW_RELEASE) {
+      switch (key) {
+      case GLFW_KEY_F1:
+        if (startUidTemp) {
+          Vec2 end = {glx, gly};
+          Vec2U endGrid = grid.getCoord(end);
+          Vec2U startGrid = grid.getCoord(*startUidTemp);
+
+          std::cout << "F1 R:" << startGrid[0] << ", " << startGrid[1] << " -> "
+                    << endGrid[0] << ", " << endGrid[1] << '\n';
+
+          if (endGrid == startGrid) {
+            grid.get(*startUidTemp)->type = CellTypes::Empty();
+            std::cout << "short\n";
+          } else {
+            std::get<CellTypes::Start>(grid.get(*startUidTemp)->type).end =
+                endGrid;
+            grid.get(end)->type = CellTypes::End();
+          }
+
+          startUidTemp = std::nullopt;
+          refresh = true;
+        }
+        break;
+
+      default:
+        break;
       }
     }
   }
-}
 
-void clear() { grid.deallocate(); }
+  void cursorPosCallback(double xpos, double ypos) override {
+    float glx = m_mouse[0];
+    float gly = m_windowSize[1] - m_mouse[1];
 
-size_t startUidTemp = 0;
-Grid::Cell *cellTemp = nullptr;
-
-void keyCallback(int key, int scancode, int action, int mode) override {
-  float glx = m_mouse[0];
-  float gly = m_windowSize[1] - m_mouse[1];
-
-  auto uid = m_engine->lookupObjectUUID(glx, gly);
-
-  if (action == GLFW_PRESS) {
-    bool num = false;
-    switch (key) {
-    case GLFW_KEY_Q:
-      clear();
-      break;
-
-    case GLFW_KEY_ESCAPE:
-      terminate();
-      break;
-
-    case GLFW_KEY_F1:
-      if (!startUidTemp) {
-        startUidTemp = uid;
-        refresh = true;
-      }
-      break;
-
-    case GLFW_KEY_F2:
-      grid.get(uid)->type = CellTypes::Obs();
+    if (mouseHolding == GLFW_MOUSE_BUTTON_LEFT) {
+      grid.get({glx, gly})->type = CellTypes::Obs();
       refresh = true;
-      break;
-
-    case GLFW_KEY_LEFT_SHIFT:
-      break;
-
-    default:
-      break;
-    }
-
-  } else if (action == GLFW_RELEASE) {
-    switch (key) {
-    case GLFW_KEY_F1:
-      if (startUidTemp) {
-        grid.get(startUidTemp)->type = CellTypes::Start(grid.getCoord(uid));
-        grid.get(uid)->type = CellTypes::End();
-
-		std::cout << startUidTemp << " -> " << uid << '\n';
-
-        startUidTemp = 0;
-        refresh = true;
-      }
-      break;
-
-    default:
-      break;
+    } else if (mouseHolding == GLFW_MOUSE_BUTTON_RIGHT) {
+      grid.get({glx, gly})->type = CellTypes::Empty();
+      refresh = true;
     }
   }
-}
-}
-;
+};
 
 int main() {
   MyWindow win;

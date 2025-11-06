@@ -114,6 +114,12 @@ public:
     }
   }
 
+  void operator-=(Vector<D, S> vec) {
+    for (size_t i = 0; i < D; i++) {
+      m_data[i] -= vec.m_data[i];
+    }
+  }
+
   Vector<D, S> operator-(Vector<D, S> o) const {
     Vector<D, S> vec;
 

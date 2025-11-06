@@ -17,16 +17,17 @@
 namespace Engine {
 class Poly {
 public:
-  Poly(std::vector<Math::Vector<2>> verts, Math::Vector<3> color,
+  Poly(std::vector<Math::Vector<2>> verts, bool anchor, Math::Vector<3> color,
        Math::Vector<3> borderColor, float borderSize, Shader *shader,
        Objects::ObjectManager &manager)
       : m_verts(verts), m_indices({0, 1, 2}), m_borderColor(borderColor),
-        m_borderSize(borderSize), m_color(color), m_manager(&manager) {
+        m_anchor(anchor), m_borderSize(borderSize), m_color(color),
+        m_manager(&manager) {
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glGenBuffers(1, &EBO);
 
-    mesh();
+    mesh(anchor);
 
     Objects::PolyData data;
     data.shader = shader;
@@ -103,7 +104,7 @@ public:
     m_indices.push_back(0);
     m_indices.push_back(1);
     m_indices.push_back(2);
-    mesh();
+    mesh(m_anchor);
 
     setup(*std::get<0>(m_manager->get(m_id)));
   }
@@ -111,22 +112,28 @@ public:
   void addVert(Math::Vector<2> vert) {
     m_verts.push_back(vert);
 
-    mesh();
+    mesh(m_anchor);
 
     setup(*std::get<0>(m_manager->get(m_id)));
   }
 
 private:
-  void mesh() {
+  void mesh(bool anchor) {
     m_indices.clear();
     if (m_verts.size() < 3)
       return;
 
     // Create a fan of triangles from the first vertex
     for (size_t i = 1; i < m_verts.size() - 1; ++i) {
-      m_indices.push_back(0); // The anchor vertex
-      m_indices.push_back(i);
-      m_indices.push_back(i + 1);
+      if (anchor) {
+        m_indices.push_back(0); // The anchor vertex
+        m_indices.push_back(i);
+        m_indices.push_back(i + 1);
+      } else {
+        m_indices.push_back(i - 1);
+        m_indices.push_back(i);
+        m_indices.push_back(i + 1);
+      }
     }
   }
 
@@ -161,6 +168,7 @@ private:
   Math::Vector<3> m_borderColor;
   float m_borderSize;
   uint32_t VAO, VBO, EBO;
+  bool m_anchor;
 
   Objects::ObjectUUID::UUID m_id;
   Objects::ObjectManager *m_manager;

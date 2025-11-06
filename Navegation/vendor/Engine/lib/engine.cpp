@@ -199,12 +199,13 @@ Line Engine::createLine(Math::Vector<2> pos0, Math::Vector<2> pos1,
 
 Poly Engine::createPoly(std::vector<Math::Vector<2>> &verts,
                         Math::Vector<3> color, Math::Vector<3> borderColor,
-                        float borderSize, Shader *shader) {
+                        float borderSize, bool anchor, Shader *shader) {
   if (!shader) {
     shader = &m_shaderManager.at("Poly");
   }
 
-  return Poly(verts, color, borderColor, borderSize, shader, m_objManager);
+  return Poly(verts, anchor, color, borderColor, borderSize, shader,
+              m_objManager);
 }
 
 void Engine::remove(Objects::ObjectUUID::UUID id) {

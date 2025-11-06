@@ -40,7 +40,7 @@ public:
                   Shader *shader = nullptr);
   Poly createPoly(std::vector<Math::Vector<2>> &verts, Math::Vector<3> color,
                   Math::Vector<3> borderColor, float borderSize,
-                  Shader *shader = nullptr);
+                  bool anchor = true, Shader *shader = nullptr);
 
   void remove(Objects::ObjectUUID::UUID id);
   void clear();
