@@ -19,8 +19,8 @@ def readLog() -> Union[pd.DataFrame, None]:
     df = None
     for parent in ['.', 'Debug', 'Release']:
         par = Path(parent)
-        if os.path.exists(par / 'log.csv'):
-            df = pd.read_csv(par / 'log.csv')
+        if os.path.exists(par / 'data.csv'):
+            df = pd.read_csv(par / 'data.csv')
             break
 
     return df
@@ -150,22 +150,68 @@ def DrawEngineLog(df: pd.DataFrame) -> None:
     fig.savefig("EngineMetrics.png")
 
 
-def DrawConvexHull(df: pd.DataFrame) -> None:
-    fig, ax = plt.subplots(1, 1, figsize=(18, 20))
+def DrawNavegation(df: pd.DataFrame) -> None:
+    fig, axes = plt.subplots(2, 2, figsize=(18, 20))
 
-    def plot(ax: Axes, y: str) -> None:
-        data = df[df[y] != 0]
+    df['config'] = df['rows'].astype(str) + 'x' + df['cols'].astype(str) + '|' + df['pathAmount'].astype(str) + '/' + df['obsAmount'].astype(str)
 
-        sns.lineplot(data=data, x='objPoints',
-                     y=y, ax=ax)
-        ax.grid(True)
-        ax.set_xlabel("Quantidade de Pontos")
-        ax.set_ylabel("Tempo de Processamento (s)")
+    dfAll= df.groupby(['config', 'sample', 'run']).agg(
+        {
+            'pathTime': 'sum',
+            'pathDist': 'sum',
+            'obsAmount': 'mean',
+            'pathAmount': 'mean',
+            'rows': 'mean',
+            'cols': 'mean'
+        }
+    )
+    dfAll.reset_index(inplace=True)
 
-    plot(ax, 'sumTime')
+    dfAll['pathAmount'] = dfAll['pathAmount'].astype(int)
+    dfAll['obsAmount'] = dfAll['obsAmount'].astype(int)
+    dfAll['rows'] = dfAll['rows'].astype(int)
+    dfAll['cols'] = dfAll['cols'].astype(int)
+    dfAll['pathTime'] /= 1e6
+
+    dfAll['grid'] = dfAll['rows'].astype(str) + 'x' + dfAll['cols'].astype(str)
+
+    dfFrame = dfAll[dfAll['rows'] == 64]
+
+    ax = axes[0,0]
+    sns.lineplot(data=dfFrame, x='pathAmount', y='pathTime', hue='obsAmount', ax=ax)
+    ax.grid(True)
+    ax.set_xticks(sorted(dfFrame['pathAmount'].unique()))
+    ax.set_xlabel("Quantidade de Caminhos")
+    ax.set_ylabel("Tempo Dijkstra Frame (ms)")
+    ax.legend().set_title("Qtde de Obstaculos:")
+
+    ax = axes[0, 1]
+    sns.lineplot(data=dfFrame, x='obsAmount', y='pathTime', hue='pathAmount', ax=ax)
+    ax.grid(True)
+    ax.set_xticks(sorted(dfFrame['obsAmount'].unique()))
+    ax.set_xlabel("Quantidade de Obstaculos")
+    ax.set_ylabel("Tempo Dijkstra Frame (ms)")
+    ax.legend().set_title("Qtde de Caminhos:")
+
+    ax = axes[1, 0]
+    sns.lineplot(data=dfAll[dfAll['pathAmount'] == 64], x='obsAmount', y='pathTime', hue='grid', ax=axes[1,0])
+    ax.grid(True)
+    ax.set_xticks(sorted(dfFrame['obsAmount'].unique()))
+    ax.set_xlabel("Quantidade de Obstaculos")
+    ax.set_ylabel("Tempo Dijkstra Frame (ms)")
+    ax.legend().set_title("Grid:")
+    ax.set_title("Quantidade de Caminhos = 64")
+
+    ax = axes[1, 1]
+    sns.lineplot(data=dfAll, x='pathDist', y='pathTime', hue='grid', ax=axes[1,1])
+    ax.grid(True)
+    ax.set_xlabel("Soma da Distâncias dos Caminhos:")
+    ax.set_ylabel("Tempo Dijkstra Frame (ms)")
+    ax.legend().set_title("Grid:")
+
 
     fig.tight_layout()
-    fig.savefig("MinkowsiSum.png")
+    fig.savefig("Navegation.png")
 
 
 def main() -> None:
@@ -173,8 +219,7 @@ def main() -> None:
     if df is None:
         return
 
-    DrawEngineLog(df)
-    DrawConvexHull(df)
+    DrawNavegation(df)
 
     plt.tight_layout()
     plt.show()

@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 # Project name and language
-project(minkowski-sum LANGUAGES CXX C)
+project(navegation LANGUAGES CXX C)
 set(name ${PROJECT_NAME})
 
 # Set C++ standard to C++20
