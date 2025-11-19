@@ -10,7 +10,7 @@ This repository contains algorithms from the Advanced Programming (TEC II - 2025
 | 3 | Convex Hull | 18/10/2025, 20:52 | [link](https://github.com/Eduardo-Machado-Behling/Advanced-Programming/tree/main/Convex-Hull) | [link](https://youtu.be/GTdW49AQ9TA) | No, didn't talked about voronoi and 3D convex hull relation. |
 | 4 | Minskowski Sum | 26/10/2025, 18:46 | [link](https://github.com/Eduardo-Machado-Behling/Advanced-Programming/tree/main/Minkowski-Sum) | [link](https://youtu.be/Z23xlrSOHP4) | Yes |
 | 5 | Navegation | 09/11/2025, 19:39 | [link](https://github.com/Eduardo-Machado-Behling/Advanced-Programming/tree/main/Navegation) | [link](https://youtu.be/de69VCh_t88) | Yes |
-| 6 | | | [link]() | [link]() | |
+| 6 | Navegation (Factories) | 18/11/2025, 23:44 | [link](https://github.com/Eduardo-Machado-Behling/Advanced-Programming/tree/main/Navegation%20(Factory)) | N/A | Yes |
 | 7 | | | [link]() | [link]() | |
 | 8 | | | [link]() | [link]() | |
 | 9 | | | [link]() | [link]() | |
