@@ -11,7 +11,7 @@ This repository contains algorithms from the Advanced Programming (TEC II - 2025
 | 4 | Minskowski Sum | 26/10/2025, 18:46 | [link](https://github.com/Eduardo-Machado-Behling/Advanced-Programming/tree/main/Minkowski-Sum) | [link](https://youtu.be/Z23xlrSOHP4) | Yes |
 | 5 | Navegation | 09/11/2025, 19:39 | [link](https://github.com/Eduardo-Machado-Behling/Advanced-Programming/tree/main/Navegation) | [link](https://youtu.be/de69VCh_t88) | Yes |
 | 6 | Navegation (Factories) | 18/11/2025, 23:44 | [link](https://github.com/Eduardo-Machado-Behling/Advanced-Programming/tree/main/Navegation%20(Factory)) | N/A | Yes |
-| 7 | | | [link]() | [link]() | |
+| 7 | Navegation (Singleton,Adapter,Decorator) | 25/11/2025, 22:06 | [link](https://github.com/Eduardo-Machado-Behling/Advanced-Programming/tree/main/Navegation%20(Singleton%2CAdapter%2CDecorator)) | N/A | Yes |
 | 8 | | | [link]() | [link]() | |
 | 9 | | | [link]() | [link]() | |
 | 10 | | | [link]() | [link]() | |

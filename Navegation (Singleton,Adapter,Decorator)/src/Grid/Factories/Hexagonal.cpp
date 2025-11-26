@@ -7,7 +7,6 @@
 #include <cfloat>
 #include <cmath>
 
-
 namespace GridFactories {
 
 Grid::IGrid *HexagonalFactory::createGrid(Vec2u pos) const {
