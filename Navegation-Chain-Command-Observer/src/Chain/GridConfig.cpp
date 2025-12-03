@@ -7,6 +7,6 @@ namespace Chain {
 		std::cout << "Cols: ";
 		std::cin >> param.gridConfig[1];
 
-		return true;
+		return param.gridConfig[0] > 0 && param.gridConfig[1] > 0;
 	}
 }

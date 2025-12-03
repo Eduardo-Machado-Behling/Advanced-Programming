@@ -21,6 +21,8 @@
 
 struct MyWindow : public Engine::Window {
   MyWindow(int argc, const char **argv) {
+	glfwSwapInterval(1);
+
     m_state.addHeader("obsAmount");
     m_state.addHeader("pathAmount");
     m_state.addHeader("rows");
