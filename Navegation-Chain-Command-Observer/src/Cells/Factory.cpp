@@ -5,7 +5,6 @@
 #include "Cells/PathDestination.hpp"
 #include "Cells/PathOrigin.hpp"
 
-
 Cells::ICell *CellFactory::Create(CellType type, Vec2u pos, Vec2u arg) const {
   Cells::ICell *newCell = nullptr;
 

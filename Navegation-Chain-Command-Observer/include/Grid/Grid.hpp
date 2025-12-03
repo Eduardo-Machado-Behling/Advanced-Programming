@@ -4,15 +4,17 @@
 #include "Cells/Cell.hpp"
 #include "engine.hpp"
 
+#include "Observer/Publisher.hpp"
+
 namespace Grid {
-struct IGrid {
+struct IGrid : public Publisher {
   IGrid(Vec2u coord);
   virtual ~IGrid() = 0;
 
   void set(Cells::ICell *cell);
   bool tick(Engine::Engine &engine, double dt);
   void clear();
-  Cells::ICell* reset();
+  Cells::ICell *reset();
   bool empty() const;
   void fill(Color color);
 

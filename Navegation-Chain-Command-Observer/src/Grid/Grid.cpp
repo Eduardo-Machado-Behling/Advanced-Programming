@@ -4,13 +4,17 @@ namespace Grid {
 IGrid::IGrid(Vec2u coord) : m_coord(coord) {}
 IGrid::~IGrid() {}
 
-void IGrid::set(Cells::ICell *cell) { m_cell.reset(cell); }
+void IGrid::set(Cells::ICell *cell) {
+  notifySubscribers();
+  m_cell.reset(cell);
+}
 bool IGrid::tick(Engine::Engine &engine, double dt) {
   if (m_cell)
     return m_cell->tick(engine, dt);
   return true;
 }
 void IGrid::clear() {
+  notifySubscribers();
   if (m_cell) {
     Cells::ICell *cell = m_cell.release();
     cell->clear();
@@ -21,6 +25,7 @@ void IGrid::clear() {
 }
 
 Cells::ICell *IGrid::reset() {
+  notifySubscribers();
   Cells::ICell *cell = nullptr;
   if (m_cell) {
     cell = m_cell.release();

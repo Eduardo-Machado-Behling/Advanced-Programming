@@ -9,7 +9,7 @@ void Publisher::unsubscribe(Subscriber *obs) {
   m_observers.erase(std::remove(m_observers.begin(), m_observers.end(), obs));
 }
 
-void Publisher::notifySubscribers() {
+void Publisher::notifySubscribers() const {
   for (Subscriber *sub : m_observers) {
     sub->update();
   }

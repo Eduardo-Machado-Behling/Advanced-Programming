@@ -2,14 +2,19 @@
 
 std::unique_ptr<GridManager> GridManager::m_instance = nullptr;
 
+GridManager::GridManager() {
+  m_changed.setOnChange([this]() { notifySubscribers(); });
+}
+
 void GridManager::clear() {
   for (auto &grid : m_grid) {
     grid->clear();
   }
 }
 
-void GridManager::allocate(AllocationParam param){
-	allocate(param.gridConfig[0], param.gridConfig[1], param.start, param.end, param.gridFactory);
+void GridManager::allocate(AllocationParam param) {
+  allocate(param.gridConfig[0], param.gridConfig[1], param.start, param.end,
+           param.gridFactory);
 }
 
 void GridManager::allocate(size_t rows, size_t cols, Vec2 start, Vec2 end,
@@ -33,47 +38,53 @@ void GridManager::allocate(size_t rows, size_t cols, Vec2 start, Vec2 end,
   for (size_t i = 0; i < rows; i++) {
     for (size_t j = 0; j < cols; j++) {
       m_grid.emplace_back(m_factory->createGrid({i, j}));
+      m_grid.back()->subscribe(&m_changed);
     }
   }
 }
 
 void GridManager::deallocate() { m_grid.clear(); }
 
-Grid::IGrid *GridManager::get(size_t row, size_t col) {
+Grid::IGrid *GridManager::impl_get(size_t row, size_t col) const {
   if (row >= m_gridSize[0] || col >= m_gridSize[1])
     return nullptr;
   return m_grid[row * m_gridSize[1] + col].get();
 }
 
-Grid::IGrid *GridManager::get(Vec2u coord) { 
-	notifySubscribers();
-	return get(coord[1], coord[0]);
+Grid::IGrid *GridManager::get(size_t row, size_t col) const {
+  return impl_get(row, col);
 }
-Grid::IGrid *GridManager::get(Vec2 mouseCoord) {
+
+Grid::IGrid *GridManager::get(Vec2u coord) const {
+  return get(coord[1], coord[0]);
+}
+Grid::IGrid *GridManager::get(Vec2 mouseCoord) const {
   return get(getCoord(mouseCoord));
 }
 
-const Grid::IGrid *GridManager::cget(size_t row, size_t col) {
-  return get(row, col);
+const Grid::IGrid *GridManager::cget(size_t row, size_t col) const {
+  return impl_get(row, col);
 }
-const Grid::IGrid *GridManager::cget(Vec2u coord) { return get(coord); }
-const Grid::IGrid *GridManager::cget(Vec2 mouseCoord) {
-  return get(mouseCoord);
+const Grid::IGrid *GridManager::cget(Vec2u coord) const {
+  return cget(coord[1], coord[0]);
+}
+const Grid::IGrid *GridManager::cget(Vec2 mouseCoord) const {
+  return cget(getCoord(mouseCoord));
 }
 
-Vec2u GridManager::getCoord(Vec2 mouseCoord) {
+Vec2u GridManager::getCoord(Vec2 mouseCoord) const {
   return m_factory->getGridCoord(mouseCoord, m_area[0], m_delta, m_gridSize[0],
                                  m_gridSize[1]);
 }
 
-Vec2 GridManager::getCoord(Vec2u gridCoord) {
+Vec2 GridManager::getCoord(Vec2u gridCoord) const {
   Vec2 mousePos = m_area[0];
   mousePos += {m_delta[0] * gridCoord[0], m_delta[1] * gridCoord[1]};
 
   return mousePos;
 }
 
-Vec2 GridManager::getCenter(Vec2u gridCoord) {
+Vec2 GridManager::getCenter(Vec2u gridCoord) const {
   return cget(gridCoord)->center();
 }
 
@@ -93,12 +104,12 @@ bool GridManager::update(Engine::Engine &engine,
                          std::optional<double> dt) const {
   bool allDone = true;
   for (auto &grid : m_grid) {
-    grid->draw(engine);
     if (dt) {
       if (!grid->tick(engine, *dt)) {
         allDone = false;
       }
     }
+    grid->draw(engine);
   }
   return allDone;
 }

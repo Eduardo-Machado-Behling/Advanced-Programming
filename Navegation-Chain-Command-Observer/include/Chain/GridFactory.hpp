@@ -12,6 +12,6 @@ public:
 protected:
   bool process(GridManager::AllocationParam &param) override;
 };
-} // namespace Handlers
+} // namespace Chain
 
 #endif

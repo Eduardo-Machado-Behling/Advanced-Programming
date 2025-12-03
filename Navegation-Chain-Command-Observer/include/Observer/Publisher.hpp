@@ -7,14 +7,14 @@
 
 class Publisher {
 public:
-	virtual ~Publisher() {}
+  virtual ~Publisher() {}
 
-    void subscribe(Subscriber* obs);
-    void unsubscribe(Subscriber* obs);
-	void notifySubscribers();
+  void subscribe(Subscriber *obs);
+  void unsubscribe(Subscriber *obs);
+  void notifySubscribers() const;
 
 protected:
-    std::vector<Subscriber*> m_observers;
+  std::vector<Subscriber *> m_observers;
 };
 
 #endif

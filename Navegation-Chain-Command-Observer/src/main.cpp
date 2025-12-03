@@ -43,10 +43,11 @@ struct MyWindow : public Engine::Window {
         ->setNext(new Chain::GridManager());
 
     gridSubscriber.setOnChange([this]() {
-			refresh = true;
-	});
+      refresh = true;
+      m_tickTimeStamp = std::nullopt;
+    });
 
-	GridManager::get().subscribe(&gridSubscriber);
+    GridManager::get().subscribe(&gridSubscriber);
   }
 
   Subscribers::GridChanged gridSubscriber;
@@ -172,7 +173,7 @@ private:
         break;
 
       case GLFW_KEY_SPACE:
-        m_enableTick = true;
+        m_enableTick = !m_enableTick;
         m_tickTimeStamp = std::nullopt;
         refresh = true;
         break;
@@ -190,7 +191,6 @@ private:
           Invoker::get().addCommand(new Commands::AddCell(
               CellFactory::get().Create(CellFactory::CellType::ORIGIN, gridPos),
               gridPos));
-
         }
         break;
 

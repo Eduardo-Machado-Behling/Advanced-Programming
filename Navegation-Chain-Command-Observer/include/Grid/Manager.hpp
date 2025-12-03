@@ -8,6 +8,7 @@
 #include "Grid/Graph.hpp"
 #include "Grid/Grid.hpp"
 
+#include "Observer/GridChanged.hpp"
 #include "Observer/Publisher.hpp"
 
 // Singleton
@@ -26,18 +27,18 @@ public:
                 GridFactories::IFactory *gridFactory = nullptr);
   void deallocate();
 
-  Grid::IGrid *get(size_t row, size_t col);
-  Grid::IGrid *get(Vec2u coord);
-  Grid::IGrid *get(Vec2 mouseCoord);
+  Grid::IGrid *get(size_t row, size_t col) const;
+  Grid::IGrid *get(Vec2u coord) const;
+  Grid::IGrid *get(Vec2 mouseCoord) const;
 
-  const Grid::IGrid *cget(size_t row, size_t col);
-  const Grid::IGrid *cget(Vec2u coord);
-  const Grid::IGrid *cget(Vec2 mouseCoord);
+  const Grid::IGrid *cget(size_t row, size_t col) const;
+  const Grid::IGrid *cget(Vec2u coord) const;
+  const Grid::IGrid *cget(Vec2 mouseCoord) const;
 
-  Vec2u getCoord(Vec2 mouseCoord);
-  Vec2 getCoord(Vec2u gridCoord);
+  Vec2u getCoord(Vec2 mouseCoord) const;
+  Vec2 getCoord(Vec2u gridCoord) const;
 
-  Vec2 getCenter(Vec2u gridCoord);
+  Vec2 getCenter(Vec2u gridCoord) const;
   Vec2 getCellSize();
 
   Grid::IGraph *getGraph();
@@ -56,9 +57,12 @@ public:
   static GridManager &get();
 
 private:
-  GridManager() = default;
+  Grid::IGrid *impl_get(size_t row, size_t col) const;
+
+  GridManager();
   static std::unique_ptr<GridManager> m_instance;
   std::unique_ptr<GridFactories::IFactory> m_factory;
+  Subscribers::GridChanged m_changed;
 
   std::vector<std::unique_ptr<Grid::IGrid>> m_grid;
   std::unique_ptr<Grid::IGraph> m_graph;
