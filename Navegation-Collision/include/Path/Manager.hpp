@@ -27,46 +27,55 @@ private:
 
   using PathContainer = std::list<std::vector<Vec2>>;
 
-  struct BroadCollisionData {
-    struct {
-      double entry;
-      double exit;
-    } t;
-    PathID *id;
-
-    BroadCollisionData(double entry, double exit, PathID *id) {
-      t.entry = entry;
-      t.exit = exit;
-
-      id = id;
-    }
+  struct TimeFrame {
+    double start;
+    double end;
   };
 
-  // struct BroadCollision {
-  //   PathID *agents[2];
-  //
-  //   BroadCollision(PathID *a, PathID *b) : agents{a, b} {}
-  // };
+  struct BroadCollisionData {
+    TimeFrame t;
+    PathID *id;
+
+    BroadCollisionData(TimeFrame t, PathID *id) : t(t), id(id) {}
+  };
+
+  struct BroadCollisionEntry {
+    TimeFrame t;
+    PathID *agents[2];
+
+    BroadCollisionEntry(TimeFrame t, PathID *A, PathID *B) : t(t) {
+      agents[0] = A;
+      agents[1] = B;
+    }
+  };
 
 public:
   struct PathCollisionData {
     double t;
-    PathID *agents[2];
-	Vec2u gridPos;
+    struct {
+      PathID *agent;
+      Vec2 pos;
+    } agents[2];
 
-    PathCollisionData(double t, PathID *a, PathID *b, Vec2u grid) : t(t), agents{a, b}, gridPos(grid) {}
+    PathCollisionData(double t, PathID *a, PathID *b, Vec2 aPos, Vec2 bPos)
+        : t(t) {
+      agents[0] = {.agent = a, .pos = aPos};
+      agents[1] = {.agent = b, .pos = bPos};
+    }
   };
+
+  void removePath(PathID *id);
 
   struct DynamicInfo {
     double velocity = 1.0;
-    Vec2 size;
+    double radius;
   };
 
   struct EvalInfo {
     Vec2 position;
-	Vec2u grid;
-	size_t i;
-	bool ended;
+    Vec2u grid;
+    size_t i;
+    bool ended;
   };
 
   static PathManager &get();
@@ -75,25 +84,38 @@ public:
   PathManager &getPath(PathID *id, Vec2u start, Vec2u end, Grid::IGraph &graph);
   std::vector<PathCollisionData> getCollisions();
 
+  void clear();
+
   EvalInfo evalPosition(double t, PathID *id);
+
+  ~PathManager();
 
 private:
   PathManager();
 
   static std::unique_ptr<PathManager> m_instance;
 
-  double longestPath;
-  Vec2u mapConfig;
+  bool m_alive;
+  double m_longestPath;
+  Vec2u m_mapConfig;
   std::vector<std::unordered_map<double, PathID *>> m_pathMap;
   std::list<std::vector<Vec2u>> m_paths;
-  std::vector<PathCollisionData> m_broadColl;
+  std::vector<BroadCollisionEntry> m_broadColl;
   std::vector<std::vector<BroadCollisionData>> m_broadCandidatesColl;
 
   friend std::unordered_map<PathID, std::vector<PathID>, PathIDHasher>;
   std::unordered_map<PathID *, std::pair<size_t, std::vector<PathID *>>,
-						 PathIDHasher> m_collObjs;
+                     PathIDHasher>
+      m_collObjs;
 
   Subscribers::CallbackSubscriber m_onGridLayoutChange;
 };
+
+std::ostream &operator<<(std::ostream &os,
+                         const PathManager::PathCollisionData &data);
+
+std::ostream &
+operator<<(std::ostream &os,
+           const std::vector<PathManager::PathCollisionData> &collisions);
 
 #endif

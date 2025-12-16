@@ -6,7 +6,7 @@ GridManager::GridManager() {
   m_changed.setOnChange([this]() { m_cellPublisher.notifySubscribers(); });
 }
 
-GridManager& GridManager::clear() {
+GridManager &GridManager::clear() {
   for (auto &grid : m_grid) {
     grid->clear();
   }
@@ -14,13 +14,14 @@ GridManager& GridManager::clear() {
   return *this;
 }
 
-GridManager& GridManager::allocate(AllocationParam param) {
-  return allocate(param.gridConfig[0], param.gridConfig[1], param.start, param.end,
-           param.gridFactory);
+GridManager &GridManager::allocate(AllocationParam param) {
+  return allocate(param.gridConfig[0], param.gridConfig[1], param.start,
+                  param.end, param.gridFactory);
 }
 
-GridManager& GridManager::allocate(size_t rows, size_t cols, Vec2 start, Vec2 end,
-                           GridFactories::IFactory *gridFactory) {
+GridManager &GridManager::allocate(size_t rows, size_t cols, Vec2 start,
+                                   Vec2 end,
+                                   GridFactories::IFactory *gridFactory) {
   m_area[0] = start;
   m_area[1] = end;
 
@@ -49,7 +50,7 @@ GridManager& GridManager::allocate(size_t rows, size_t cols, Vec2 start, Vec2 en
   return *this;
 }
 
-GridManager& GridManager::deallocate() {
+GridManager &GridManager::deallocate() {
   m_grid.clear();
   m_gridPublisher.notifySubscribers();
   return *this;
@@ -110,6 +111,11 @@ Vec2 GridManager::end() const { return m_area[1]; }
 
 bool GridManager::allocated() const { return !m_grid.empty(); }
 
+void GridManager::setup() {
+  for (auto &grid : m_grid) {
+    grid->tickSetup();
+  }
+}
 bool GridManager::update(Engine::Engine &engine,
                          std::optional<double> dt) const {
   bool allDone = true;

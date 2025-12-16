@@ -21,11 +21,11 @@ public:
     GridFactories::IFactory *gridFactory;
   };
 
-  GridManager& clear();
-  GridManager& allocate(AllocationParam param);
-  GridManager& allocate(size_t rows, size_t cols, Vec2 start, Vec2 end,
-                GridFactories::IFactory *gridFactory = nullptr);
-  GridManager& deallocate();
+  GridManager &clear();
+  GridManager &allocate(AllocationParam param);
+  GridManager &allocate(size_t rows, size_t cols, Vec2 start, Vec2 end,
+                        GridFactories::IFactory *gridFactory = nullptr);
+  GridManager &deallocate();
 
   Grid::IGrid *get(size_t row, size_t col) const;
   Grid::IGrid *get(Vec2u coord) const;
@@ -51,11 +51,12 @@ public:
 
   bool allocated() const;
 
+  void setup();
   bool update(Engine::Engine &engine,
               std::optional<double> dt = std::nullopt) const;
 
-  GridManager& subscribeOnCellChange(Subscriber *obs);
-  GridManager& subscribeOnGridChange(Subscriber *obs);
+  GridManager &subscribeOnCellChange(Subscriber *obs);
+  GridManager &subscribeOnGridChange(Subscriber *obs);
 
   static GridManager &get();
 

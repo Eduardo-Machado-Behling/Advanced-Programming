@@ -10,13 +10,22 @@
 template <class Clock> class AnimationManager {
 public:
   using PlayFunc = std::function<bool(double)>;
+  using IdleFunc = std::function<void()>;
 
-  enum class PlayerState { INIT, PLAYING, PAUSED, ENDED };
+  enum class PlayerState {
+    INIT,
+    PLAYING,
+    PAUSED,
+    ENDED,
+  };
 
   void start() {
+    if (!play)
+      return;
     m_start = Clock::now();
-	m_firstTick = true;
+    m_firstTick = true;
     state = PlayerState::PLAYING;
+    play(0);
     onStateChanged.notifySubscribers();
   }
 
@@ -33,23 +42,21 @@ public:
   }
 
   void loop() {
-    std::chrono::time_point<Clock> now = Clock::now();
-    double dt = std::chrono::duration<double>(now - m_start).count();
-	if(m_firstTick){
-		dt = 0;
-	}
-	m_firstTick = false;
+    if (state == PlayerState::PLAYING) {
+      std::chrono::time_point<Clock> now = Clock::now();
+      double dt = std::chrono::duration<double>(now - m_start).count();
 
-    if (play && state == PlayerState::PLAYING) {
-      if (play(dt)) {
-		  state = PlayerState::ENDED;
-		  onStateChanged.notifySubscribers();
+      if (play && play(dt)) {
+        state = PlayerState::ENDED;
+        onStateChanged.notifySubscribers();
       }
+    } else if (idle) {
+      idle();
     }
-    m_start = now;
   }
 
   void setPlayFunction(PlayFunc func) { play = func; }
+  void setIdleFunction(IdleFunc func) { idle = func; }
 
   void registerOnStateChanged(Subscriber *sub) {
     onStateChanged.subscribe(sub);
@@ -59,6 +66,8 @@ public:
 
 private:
   PlayFunc play;
+  IdleFunc idle;
+
   Publisher onStateChanged;
   std::chrono::time_point<Clock> m_start;
   double m_backTrack;

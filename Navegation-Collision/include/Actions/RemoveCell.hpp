@@ -7,14 +7,17 @@
 namespace Commands {
 class RemoveCell : public Command {
 public:
-  RemoveCell(Vec2u position);
+  RemoveCell(Vec2u position, bool clear = true, bool save = false);
   ~RemoveCell() = default;
 
-  void execute() override;
+  bool execute() override;
+  void restore() override;
 
 private:
   std::unique_ptr<Cells::ICell> m_cell;
   Vec2u m_position;
+  bool m_clear;
+  bool m_save;
 };
 } // namespace Commands
 

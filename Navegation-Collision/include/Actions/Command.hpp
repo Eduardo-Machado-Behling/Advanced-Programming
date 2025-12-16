@@ -2,8 +2,9 @@
 #define COMMAND_HPP
 
 struct Command {
-	virtual ~Command() {}
-	virtual void execute() = 0;
+  virtual ~Command() {}
+  virtual bool execute() = 0;
+  virtual void restore() {}
 };
 
 #endif

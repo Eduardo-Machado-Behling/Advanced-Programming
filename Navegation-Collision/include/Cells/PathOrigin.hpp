@@ -11,8 +11,11 @@ public:
   PathOrigin(Vec2u origin, Vec2u destination);
 
   void draw(Engine::Engine &engine) override;
+
+  void tickSetup() override;
   bool tick(Engine::Engine &engine, double dt) override;
   void clear() override;
+  void reset() override;
 
 private:
   Vec2u m_origin;
@@ -20,6 +23,7 @@ private:
   Vec2u m_curr;
 
   Vec2 m_pos;
+  bool m_ended;
 
   PathManager::PathPtr m_path;
 };

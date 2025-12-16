@@ -1,35 +1,24 @@
-# Navegation (Singleton, Adapter, Decorator)
+# Navegation (Collision)
 
 This project is an interactive C++/GLFW application that implements a grid-based navigation algorithm. It uses **Dijkstra's algorithm** to find and visualize the shortest path between multiple start and end points on a 2D grid populated with obstacles.
 
-The application focuses on implementing advanced Design Patterns to structure the application logic, rendering, and graph topology.
-
-## Changes
-
-This iteration of the project introduces three specific Design Patterns as required by the assignment:
-
-- **Singleton**: Applied to the `GridManager` and `CellFactory`. This ensures that the grid state and the cell creation logic are centralized and accessible globally without passing pointers, guaranteeing only one instance of the grid management system exists during runtime.
-- **Adapter**: Implemented `HexagonalGridAdapter` and `SquareGridAdapter`. These classes adapt the specific geometry of square (4 neighbors) and hexagonal (6 neighbors) grids into a common `IGraph` interface. This allows the Dijkstra algorithm to calculate paths on *any* grid topology without knowing the underlying shape.
-- **Decorator**: Implemented `CellDecorator` and `PulsingDecorator`. This pattern is used to dynamically add behaviors to entities in real-time. For example, `Obstacle` cells are now wrapped in a `PulsingDecorator` that adds a visual "pulsing" animation on top of the base obstacle drawing logic without modifying the original `Obstacle` class.
+The application allows for interactive creation of the grid, placement of obstacles, and definition of multiple "agent" paths. It also includes a command-line benchmarking mode to generate performance data for analysis, fulfilling the "graphs" requirement of the assignment.
 
 ## Interactive Controls
 
-* **Define Grid Area:** `Left-Click` and drag to define the bounding box of the grid.
-    * **Console Prompt:** After releasing, look at the terminal to input:
-        1. Number of Rows
-        2. Number of Columns
-        3. Grid Type (`1` for Square, `2` for Hexagonal)
+* **Define Grid Area:** `Left-Click` and drag to define the bounding box of the grid. This will create a custom grid within that area (the rows and columns amount will be prompt in the terminal).
 
 * **Place Obstacle:**
     * `Left-Click (Hold)` and drag over grid cells.
-    * OR, press `F2` while hovering over a cell.
-    * *Note:* Obstacles now feature a real-time pulsing effect via the Decorator pattern.
 
 * **Define Start/End Pair:** `F1 (Hold)` over the start cell, drag to the end cell, and `F1 (Release)`.
 
+* **Generate Random Agents:** Press `F3` to run the collision checker, yellow dots will appear in collision points.
 * **Clear Cell:** `Right-Click (Hold)` and drag over an obstacle, start, or end cell to clear it.
 
 * **Run Pathfinding:** Press `SPACE` to run Dijkstra's algorithm for all defined start/end pairs. The paths will be animated.
+
+* **Exit:** Press `ESCAPE`.
 
 ## 📈 Algorithm & Complexity
 

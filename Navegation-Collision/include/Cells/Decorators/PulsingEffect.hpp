@@ -24,7 +24,7 @@ public:
     CellDecorator::tick(engine, dt);
     ticked = true;
 
-    return false;
+    return true;
   }
 
   void draw(Engine::Engine &engine) override {

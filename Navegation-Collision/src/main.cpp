@@ -1,4 +1,5 @@
-#include "GLFW/glfw3.h"
+#include <GLFW/glfw3.h>
+#include <chrono>
 
 #include "Math/Vector.hpp"
 #include "engine.hpp"
@@ -22,7 +23,7 @@
 
 #include "Animation/Manager.hpp"
 
-#include <chrono>
+#include "Path/Manager.hpp"
 
 struct MyWindow : public Engine::Window {
   MyWindow(int argc, const char **argv) {
@@ -66,8 +67,40 @@ struct MyWindow : public Engine::Window {
         .subscribeOnGridChange(&displayRefreshSubscriber);
 
     // anim.registerOnStateChanged(&animationState);
-    anim.setPlayFunction(
-        [this](double dt) { return GridManager::get().update(*m_engine, dt); });
+    anim.setPlayFunction([this](double dt) {
+      if (dt == 0) {
+        GridManager::get().setup();
+        return false;
+      }
+      return GridManager::get().update(*m_engine, dt);
+    });
+
+    anim.setIdleFunction(
+        [this]() { return GridManager::get().update(*m_engine); });
+
+    animationState.setOnChange([this]() {
+      switch (anim.getState()) {
+      case decltype(anim)::PlayerState::INIT:
+        break;
+
+      case decltype(anim)::PlayerState::PLAYING:
+        std::cout << PathManager::get().getCollisions();
+        break;
+
+      case decltype(anim)::PlayerState::PAUSED:
+        break;
+
+      case decltype(anim)::PlayerState::ENDED:
+        // restore = std::numeric_limits<size_t>::max();
+        GridManager::get().setup();
+        refresh = true;
+        break;
+
+      default:
+        break;
+      }
+    });
+    anim.registerOnStateChanged(&animationState);
   }
 
   Subscribers::CallbackSubscriber displayRefreshSubscriber;
@@ -76,19 +109,26 @@ struct MyWindow : public Engine::Window {
   AnimationManager<std::chrono::high_resolution_clock> anim;
   Chain::GridAllocatorChain initChain;
   FILE *out = stdout;
-  bool refresh = true;
+  bool refresh = false;
+  int restore = 0;
   std::optional<Clock::time_point> m_tickTimeStamp;
+  std::vector<Vec2> m_collisionPoints;
 
   void update(double dt) override {
     m_state.get("sumTime") = (double)0;
     Invoker::get().execute();
 
-    anim.loop();
+    if (restore) {
+      Invoker::get().restore(restore);
+      restore = 0;
+    }
+
     if (anim.getState() == decltype(anim)::PlayerState::PLAYING) {
       refresh = true;
     }
 
     if (refresh) {
+      refresh = false;
       clearEngine();
 
       if (GridManager::get().allocated()) {
@@ -97,14 +137,12 @@ struct MyWindow : public Engine::Window {
 
         m_engine->createPoint(end, {1, 1, 0}, 8);
         m_engine->createPoint(start, {0, 1, 1}, 8);
+        for (auto coll : m_collisionPoints)
+          m_engine->createPoint(coll, {1, 1, 0}, 8);
 
-        if (anim.getState() != decltype(anim)::PlayerState::PLAYING) {
-          GridManager::get().update(*m_engine);
-        }
+        anim.loop();
       }
     }
-
-    refresh = false;
   }
 
 private:
@@ -182,10 +220,10 @@ private:
 
       case GLFW_KEY_SPACE:
         m_enableTick = !m_enableTick;
-        if (m_enableTick)
-          anim.start();
-        else
+        if (anim.getState() == decltype(anim)::PlayerState::PLAYING)
           anim.pause();
+        else
+          anim.start();
         break;
 
       case GLFW_KEY_F1:
@@ -207,9 +245,18 @@ private:
         refresh = true;
         break;
 
-      case GLFW_KEY_F3:
-        std::cout << "Path amount to generate: ";
+      case GLFW_KEY_F3: {
+        GridManager::get().setup();
+        auto colls = PathManager::get().getCollisions();
+        std::cout << colls;
+
+        for (auto &coll : colls) {
+          m_collisionPoints.push_back(coll.agents[0].pos);
+        }
         refresh = true;
+      }
+
+      break;
 
       case GLFW_KEY_LEFT_SHIFT:
         break;

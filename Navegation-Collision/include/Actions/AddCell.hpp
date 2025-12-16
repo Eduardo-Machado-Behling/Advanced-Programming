@@ -11,10 +11,10 @@ public:
   AddCell(Cells::ICell *cell, Vec2u position);
   ~AddCell() = default;
 
-  void execute() override;
+  bool execute() override;
 
 private:
-  Cells::ICell* m_cell;
+  Cells::ICell *m_cell;
   Vec2u m_position;
 };
 } // namespace Commands

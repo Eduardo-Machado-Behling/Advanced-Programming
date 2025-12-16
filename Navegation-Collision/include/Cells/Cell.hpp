@@ -10,8 +10,10 @@ public:
   virtual ~ICell() {}
 
   virtual void draw(Engine::Engine &engine) = 0;
+  virtual void tickSetup() {}
   virtual bool tick(Engine::Engine &engine, double dt) = 0;
   virtual void clear() {}
+  virtual void reset() {}
 
   Vec2u getPos() { return m_pos; }
 

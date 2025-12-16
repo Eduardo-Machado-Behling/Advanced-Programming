@@ -9,6 +9,11 @@ void IGrid::set(Cells::ICell *cell) {
   m_cell.reset(cell);
 }
 
+void IGrid::tickSetup() {
+  if (m_cell)
+    m_cell->tickSetup();
+}
+
 bool IGrid::tick(Engine::Engine &engine, double dt) {
   if (m_cell)
     return m_cell->tick(engine, dt);
@@ -30,6 +35,7 @@ Cells::ICell *IGrid::reset() {
   Cells::ICell *cell = nullptr;
   if (m_cell) {
     cell = m_cell.release();
+    m_cell = nullptr;
   }
 
   m_fill = {0, 0, 0};
