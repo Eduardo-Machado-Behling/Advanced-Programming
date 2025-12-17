@@ -118,14 +118,14 @@ static SweptCircleResult sweptCircle(SweptCircleComponent A,
     double C;
 
     inline double discriminant() {
-      if (isnan(m_discriminant))
+      if (std::isnan(m_discriminant))
         m_calcDiscriminant();
 
       return m_discriminant;
     }
 
     inline double x() {
-      if (isnan(m_x))
+      if (std::isnan(m_x))
         m_calcSolve();
 
       return m_x;

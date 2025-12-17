@@ -114,6 +114,14 @@ bool GridManager::update(Engine::Engine &engine,
   return allDone;
 }
 
+  const Publisher& GridManager::getCellChanged(){
+	  return m_gridChanged;
+  }
+
+  const Publisher& GridManager::getGridChanged(){
+	
+  }
+
 GridManager &GridManager::get() {
   if (!m_instance)
     m_instance.reset(new GridManager());
