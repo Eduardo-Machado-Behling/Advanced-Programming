@@ -84,7 +84,7 @@ public:
   PathManager &getPath(PathID *id, Vec2u start, Vec2u end, Grid::IGraph &graph);
   std::vector<PathCollisionData> getCollisions();
 
-  void clear();
+  void destroy();
 
   EvalInfo evalPosition(double t, PathID *id);
 
@@ -99,7 +99,20 @@ private:
   double m_longestPath;
   Vec2u m_mapConfig;
   std::vector<std::unordered_map<double, PathID *>> m_pathMap;
-  std::list<std::vector<Vec2u>> m_paths;
+
+  struct Paths {
+    std::list<std::vector<Vec2u>> &operator*() { return m_data; }
+    std::list<std::vector<Vec2u>> *operator->() { return &m_data; }
+
+    bool alive() const { return m_alive; }
+    void die() { m_alive = false; }
+
+    ~Paths() { m_alive = false; }
+
+  private:
+    std::list<std::vector<Vec2u>> m_data;
+    bool m_alive = true;
+  } m_paths;
   std::vector<BroadCollisionEntry> m_broadColl;
   std::vector<std::vector<BroadCollisionData>> m_broadCandidatesColl;
 

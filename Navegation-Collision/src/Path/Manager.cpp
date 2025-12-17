@@ -42,8 +42,8 @@ void PathManager::PathDeleter::operator()(PathID *p) const {
 }
 
 PathManager::PathPtr PathManager::getId(DynamicInfo info) {
-  m_paths.emplace_front();
-  return PathPtr(new PathID(m_paths.begin(), info));
+  m_paths->emplace_front();
+  return PathPtr(new PathID(m_paths->begin(), info));
 }
 
 PathManager &PathManager::getPath(PathManager::PathID *id, Vec2u start,
@@ -205,6 +205,14 @@ std::vector<PathManager::PathCollisionData> PathManager::getCollisions() {
 
   return realCollisions;
 }
+
+void PathManager::destroy() {
+  m_broadColl.clear();
+  m_broadCandidatesColl.clear();
+  m_paths->clear();
+  m_alive = false;
+}
+
 PathManager::EvalInfo PathManager::evalPosition(double t, PathID *id) {
   if (!id) {
     throw std::invalid_argument("id is null");
@@ -234,7 +242,7 @@ PathManager::EvalInfo PathManager::evalPosition(double t, PathID *id) {
 }
 
 void PathManager::removePath(PathID *id) {
-  if (!m_alive || !id)
+  if (!id || m_paths.alive())
     return;
 
   const std::vector<Vec2u> &pathPoints = *id->list;
@@ -263,7 +271,7 @@ void PathManager::removePath(PathID *id) {
                                    }),
                     m_broadColl.end());
 
-  m_paths.erase(id->list);
+  m_paths->erase(id->list);
 }
 
 PathManager::PathManager() {
@@ -284,7 +292,10 @@ PathManager::PathManager() {
   GridManager::get().subscribeOnGridChange(&m_onGridLayoutChange);
 }
 
-PathManager::~PathManager() { m_alive = false; }
+PathManager::~PathManager() {
+  m_paths->clear();
+  m_paths.die();
+}
 
 std::unique_ptr<PathManager> PathManager::m_instance = nullptr;
 
