@@ -66,19 +66,21 @@ add_library(imgui_lib STATIC
     ${implot_SOURCE_DIR}/implot_items.cpp
     ${implot_SOURCE_DIR}/implot_demo.cpp
 )
-# 3. Include Directories (So you can do #include <imgui.h>)
+
 target_include_directories(imgui_lib PUBLIC 
     ${imgui_SOURCE_DIR} 
     ${imgui_SOURCE_DIR}/backends
 	${implot_SOURCE_DIR}
 )
 
-target_link_libraries(imgui_lib PUBLIC glfw glad)
-
 add_subdirectory(vendor/glad)
 
 # For shared object Engine
 set_target_properties(glad PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
+target_link_libraries(imgui_lib PUBLIC glfw glad)
+set_target_properties(imgui_lib PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
 
 
 # Set the output directory for the executable to './bin/'
