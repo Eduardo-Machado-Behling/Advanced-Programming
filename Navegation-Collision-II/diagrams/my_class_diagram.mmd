@@ -1,0 +1,1170 @@
+classDiagram
+    class C_0012846325683697150659["GLFWvidmode"]
+    class C_0012846325683697150659 {
+        +blueBits : int
+        +greenBits : int
+        +height : int
+        +redBits : int
+        +refreshRate : int
+        +width : int
+    }
+    class C_0004723036958785887512["GLFWgammaramp"]
+    class C_0004723036958785887512 {
+        +blue : unsigned short *
+        +green : unsigned short *
+        +red : unsigned short *
+        +size : unsigned int
+    }
+    class C_0011632469852842890284["GLFWimage"]
+    class C_0011632469852842890284 {
+        +height : int
+        +pixels : unsigned char *
+        +width : int
+    }
+    class C_0003272539664815394773["GLFWgamepadstate"]
+    class C_0003272539664815394773 {
+        +axes : float[6]
+        +buttons : unsigned char[15]
+    }
+    class C_0001863522309830244082["GLFWallocator"]
+    class C_0001863522309830244082 {
+        +allocate : GLFWallocatefun
+        +deallocate : GLFWdeallocatefun
+        +reallocate : GLFWreallocatefun
+        +user : void *
+    }
+    class C_0002360312306824742041["std::chrono::time_point&lt;Engine::Window::Clock&gt;"]
+    class C_0002360312306824742041 {
+    }
+    class C_0000908478690702565473["std::chrono::time_point&lt;Clock&gt;"]
+    class C_0000908478690702565473 {
+    }
+    class C_0017614144533568309161["std::chrono::duration&lt;int64_t,std::ratio&lt;1,1000000000&gt;&gt;"]
+    class C_0017614144533568309161 {
+    }
+    class C_0006135738021633781134["std::chrono::time_point&lt;std::chrono::system_clock,std::chrono::duration&lt;int64_t,std::ratio&lt;1,1000000000&gt;&gt;&gt;"]
+    class C_0006135738021633781134 {
+    }
+    class C_0010619012294112118834["std::initializer_list&lt;S&gt;"]
+    class C_0010619012294112118834 {
+    }
+    class C_0008015409205204797935["std::vector&lt;uint32_t&gt;"]
+    class C_0008015409205204797935 {
+    }
+    class C_0013247086971467822611["std::basic_string_view&lt;char&gt;"]
+    class C_0013247086971467822611 {
+    }
+    class C_0001275076681856179721["std::string"]
+    class C_0001275076681856179721 {
+    }
+    class C_0014328005042205008466["std::unordered_map&lt;std::string,Engine::Shader&gt;"]
+    class C_0014328005042205008466 {
+    }
+    class C_0018110337699185100992["std::stack&lt;uint32_t&gt;"]
+    class C_0018110337699185100992 {
+    }
+    class C_0010964578208775186054["std::variant&lt;PolyData const*,ObjectData const*&gt;"]
+    class C_0010964578208775186054 {
+    }
+    class C_0006087540299216406522["std::variant&lt;PolyData *,ObjectData *&gt;"]
+    class C_0006087540299216406522 {
+    }
+    class C_0000618757574769403656["std::unique_ptr&lt;Engine::Objects::ObjectManager::Solver&gt;"]
+    class C_0000618757574769403656 {
+    }
+    class C_0002539092574143936661["std::vector&lt;Engine::Objects::ObjectData&gt;"]
+    class C_0002539092574143936661 {
+    }
+    class C_0001950562844437850433["std::vector&lt;Engine::Objects::PolyData&gt;"]
+    class C_0001950562844437850433 {
+    }
+    class C_0009810031281855847319["std::pair&lt;uint32_t,uint32_t&gt;"]
+    class C_0009810031281855847319 {
+    }
+    class C_0007432155581095808926["std::unordered_map&lt;Engine::Objects::ObjectUUID::UUID,std::pair&lt;uint32_t,uint32_t&gt;&gt;"]
+    class C_0007432155581095808926 {
+    }
+    class C_0012803677092076106623["std::unordered_map&lt;std::pair&lt;uint32_t,uint32_t&gt;,Engine::Objects::ObjectUUID::UUID,Engine::Objects::ObjectManager::IIHash&gt;"]
+    class C_0012803677092076106623 {
+    }
+    class C_0010562499307471491601["std::pair&lt;Engine::Math::Vector&lt;2&gt;,Engine::Math::Vector&lt;2&gt;&gt;"]
+    class C_0010562499307471491601 {
+    }
+    class C_0011385432641056735404["std::vector&lt;Engine::Math::Vector&lt;2&gt;&gt;"]
+    class C_0011385432641056735404 {
+    }
+    class C_0013808655339847284184["std::variant&lt;Objects::PolyData *,Objects::ObjectData *&gt;"]
+    class C_0013808655339847284184 {
+    }
+    class C_0001620721779665700036["std::vector&lt;Engine::Point&gt;"]
+    class C_0001620721779665700036 {
+    }
+    class C_0002228295796337985589["std::vector&lt;Engine::Line&gt;"]
+    class C_0002228295796337985589 {
+    }
+    class C_0011541246556000069736["std::vector&lt;Engine::Poly&gt;"]
+    class C_0011541246556000069736 {
+    }
+    class C_0004276277466396066764["std::basic_ofstream&lt;char&gt;"]
+    class C_0004276277466396066764 {
+    }
+    class C_0016639757653164927497["std::mersenne_twister_engine&lt;uint_fast32_t,32,624,397,31,0x9908b0dfUL,11,0xffffffffUL,7,0x9d2c5680UL,15,0xefc60000UL,18,1812433253UL&gt;"]
+    class C_0016639757653164927497 {
+    }
+    class C_0001347152004389415025["std::vector&lt;std::string&gt;"]
+    class C_0001347152004389415025 {
+    }
+    class C_0011923903168730565843["std::variant&lt;std::string,int32_t,uint32_t,double&gt;"]
+    class C_0011923903168730565843 {
+    }
+    class C_0006768016179079868705["std::unordered_map&lt;std::string,std::variant&lt;std::string,int32_t,uint32_t,double&gt;&gt;"]
+    class C_0006768016179079868705 {
+    }
+    class C_0014556251967261241151["std::unique_ptr&lt;Command&gt;"]
+    class C_0014556251967261241151 {
+    }
+    class C_0012322381635794884228["std::queue&lt;std::unique_ptr&lt;Command&gt;&gt;"]
+    class C_0012322381635794884228 {
+    }
+    class C_0005923753518013068657["std::stack&lt;std::unique_ptr&lt;Command&gt;&gt;"]
+    class C_0005923753518013068657 {
+    }
+    class C_0009610230603899660979["std::vector&lt;Engine::Math::Vector&lt;2,size_t&gt;&gt;"]
+    class C_0009610230603899660979 {
+    }
+    class C_0013566849599595529376["std::vector&lt;Subscriber *&gt;"]
+    class C_0013566849599595529376 {
+    }
+    class C_0001488291031702088781["std::unique_ptr&lt;Cells::ICell&gt;"]
+    class C_0001488291031702088781 {
+    }
+    class C_0013286274850898176297["std::function&lt;void&lpar;&rpar;&gt;"]
+    class C_0013286274850898176297 {
+    }
+    class C_0004878870595026580347["std::optional&lt;double&gt;"]
+    class C_0004878870595026580347 {
+    }
+    class C_0011578180343120307699["std::unique_ptr&lt;GridFactories::IFactory&gt;"]
+    class C_0011578180343120307699 {
+    }
+    class C_0001016014061568123944["std::unique_ptr&lt;Grid::IGrid&gt;"]
+    class C_0001016014061568123944 {
+    }
+    class C_0016181972057543612761["std::vector&lt;std::unique_ptr&lt;Grid::IGrid&gt;&gt;"]
+    class C_0016181972057543612761 {
+    }
+    class C_0015578192558011062777["std::unique_ptr&lt;Grid::IGraph&gt;"]
+    class C_0015578192558011062777 {
+    }
+    class C_0008666991674172501298["std::unique_ptr&lt;Handler&lt;T&gt;&gt;"]
+    class C_0008666991674172501298 {
+    }
+    class C_0005038039747272111559["std::function&lt;bool&lpar;double&rpar;&gt;"]
+    class C_0005038039747272111559 {
+    }
+    class C_0001256189216294270405["std::unique_ptr&lt;PathManager::PathID,PathManager::PathDeleter&gt;"]
+    class C_0001256189216294270405 {
+    }
+    class C_0018356320493974674985["std::vector&lt;PathManager::PathCollisionData&gt;"]
+    class C_0018356320493974674985 {
+    }
+    class C_0016787326867068622282["std::unordered_map&lt;double,PathID *&gt;"]
+    class C_0016787326867068622282 {
+    }
+    class C_0006782111454905405990["std::vector&lt;std::unordered_map&lt;double,PathID *&gt;&gt;"]
+    class C_0006782111454905405990 {
+    }
+    class C_0001337515824738359697["std::vector&lt;PathManager::BroadCollisionEntry&gt;"]
+    class C_0001337515824738359697 {
+    }
+    class C_0005429246149479903122["std::vector&lt;PathManager::BroadCollisionData&gt;"]
+    class C_0005429246149479903122 {
+    }
+    class C_0004781497470570484817["std::vector&lt;std::vector&lt;PathManager::BroadCollisionData&gt;&gt;"]
+    class C_0004781497470570484817 {
+    }
+    class C_0017823646303938881488["std::vector&lt;PathID *&gt;"]
+    class C_0017823646303938881488 {
+    }
+    class C_0015550369917897492906["std::pair&lt;size_t,std::vector&lt;PathID *&gt;&gt;"]
+    class C_0015550369917897492906 {
+    }
+    class C_0008485559370877929832["std::unordered_map&lt;PathID *,std::pair&lt;size_t,std::vector&lt;PathID *&gt;&gt;,PathManager::PathIDHasher&gt;"]
+    class C_0008485559370877929832 {
+    }
+    class C_0016619464092053922477["std::list&lt;std::vector&lt;Engine::Math::Vector&lt;2,size_t&gt;&gt;&gt;"]
+    class C_0016619464092053922477 {
+    }
+    class C_0012415743977570969849["std::ratio&lt;1,1000000000&gt;"]
+    class C_0012415743977570969849 {
+    }
+    class C_0015004038434732040862["std::optional&lt;std::chrono::time_point&lt;std::chrono::system_clock,std::chrono::duration&lt;int64_t,std::ratio&lt;1,1000000000&gt;&gt;&gt;&gt;"]
+    class C_0015004038434732040862 {
+    }
+    class C_0016657878585287031157["std::vector&lt;Engine::Math::Vector&lt;2,float&gt;&gt;"]
+    class C_0016657878585287031157 {
+    }
+    class C_0014992418250357455111["Engine::Math::Vector&lt;D,S&gt;"]
+    class C_0014992418250357455111 {
+    }
+    class C_0012040601268495348826["Engine::Math::Vector&lt;D&gt;"]
+    class C_0012040601268495348826 {
+    }
+    class C_0003348486584261383332["Engine::Math::Vector&lt;size_t D,S=float&gt;"]
+    class C_0003348486584261383332 {
+        +Vector(std::initializer_list&lt;S&gt; data) void
+        +Vector(S scalar) void
+        +Vector() void
+        +operator*(Vector&lt;D,S&gt; vec) [const] Vector&lt;D,S&gt;
+        +operator*(S scalar) Vector&lt;D,S&gt;
+        +operator*=(S scalar) void
+        +operator*=(Vector&lt;D,S&gt; vec) void
+        +operator+(Vector&lt;D,S&gt; vec) [const] Vector&lt;D,S&gt;
+        +operator+=(S scalar) void
+        +operator+=(Vector&lt;D,S&gt; vec) void
+        +operator-(Vector&lt;D,S&gt; o) [const] Vector&lt;D,S&gt;
+        +operator-=(S scalar) void
+        +operator-=(Vector&lt;D,S&gt; vec) void
+        +operator==(const Vector&lt;D,S&gt; & vec) [const] bool
+        +operator[](size_t i) S &
+        +operator[](size_t i) [const] const S &
+        +angle() S
+        +angle(Vector&lt;D&gt; vec) S
+        +cross(Vector&lt;D,S&gt; vec) Vector&lt;D,S&gt;
+        +dot(Vector&lt;D,S&gt; vec) S
+        +mag() S
+        +min() [const] S
+        +norm() void
+        +print() void
+        +size() size_t
+        +sum() S
+        -m_data : S[]
+    }
+    class C_0004621064861470387694["Engine::Math::Vector&lt;2,S&gt;"]
+    class C_0004621064861470387694 {
+    }
+    class C_0006833969788498267893["Engine::Math::Matrix&lt;4,4,S&gt;"]
+    class C_0006833969788498267893 {
+    }
+    class C_0001405566653863255530["Engine::Math::Matrix&lt;size_t COLS,size_t ROWS,S=float&gt;"]
+    class C_0001405566653863255530 {
+        +Matrix() void
+        +operator[](size_t i) S &
+        +Ortho(S x0, S x1, S y0, S y1, S z0, S z1) Matrix&lt;4,4,S&gt;$
+        +at(size_t i, size_t j) S &
+        +identity() void
+        +model(Vector&lt;2,S&gt; pos, Vector&lt;2,S&gt; scale, float rot = 0) void
+        +mult(Matrix&lt;COLS,ROWS,S&gt; & matrix) Matrix&lt;COLS,ROWS,S&gt;
+        +print() void
+        +size() size_t
+        -m_data : S[]
+    }
+    class C_0006863323950975451041["Engine::Math::Vector&lt;3&gt;"]
+    class C_0006863323950975451041 {
+    }
+    class C_0014655922757185255660["Engine::Math::Vector&lt;2&gt;"]
+    class C_0014655922757185255660 {
+    }
+    class C_0004421601367316582408["Engine::Math::Matrix&lt;4,4&gt;"]
+    class C_0004421601367316582408 {
+    }
+    class C_0002739534453154856813["Engine::Math::Vector&lt;2,uint32_t&gt;"]
+    class C_0002739534453154856813 {
+    }
+    class C_0016830943016957620265["Engine::Math::Vector&lt;2,float&gt;"]
+    class C_0016830943016957620265 {
+    }
+    class C_0013784868073774302216["Engine::Math::Vector&lt;2,size_t&gt;"]
+    class C_0013784868073774302216 {
+    }
+    class C_0001951113896505040197["Engine::Math::Vector&lt;3,float&gt;"]
+    class C_0001951113896505040197 {
+    }
+    class C_0006332989992941243028["Engine::Shader"]
+    class C_0006332989992941243028 {
+        +Shader() void
+        +~Shader() void
+        +add(GLenum type, const char * source) bool
+        +bind() void
+        +link() bool
+        +set<T>(const char * name, T val) void
+        +unbind() void
+        -m_id : uint32_t
+        -m_shaders : std::vector&lt;uint32_t&gt;
+    }
+    class C_0000614546160742051811["Engine::ShaderManager"]
+    class C_0000614546160742051811 {
+        +at(std::string_view name) Shader &
+        +init(std::filesystem::path root) void
+        -load(std::string_view name) void
+        -m_root : std::filesystem::path
+        -m_shaders : std::unordered_map&lt;std::string,Shader&gt;
+    }
+    class C_0003046615137435745376["Engine::Objects::ObjectData"]
+    class C_0003046615137435745376 {
+        +color : float[3]
+        +model : float[16]
+        +shader : Shader *
+        +uuid : uint32_t
+    }
+    class C_0008422761201490794599["Engine::Objects::PolyData"]
+    class C_0008422761201490794599 {
+        +VAO : uint32_t
+        +borderColor : Math::Vector&lt;3&gt;
+        +borderSize : float
+        +color : Math::Vector&lt;3&gt;
+        +count : uint32_t
+        +shader : Shader *
+        +uuid : uint32_t
+    }
+    class C_0002088975552499886084["Engine::Objects::ObjectUUID"]
+    class C_0002088975552499886084 {
+        +ObjectUUID() void
+        +get() UUID
+        +remove(UUID uuid) void
+        +reset() void
+        -available : std::stack&lt;uint32_t&gt;
+    }
+    class C_0003267318088240048309["Engine::Objects::ObjectManager"]
+    class C_0003267318088240048309 {
+        +add(Types type, ObjectData && data) ObjectUUID::UUID
+        +add(PolyData && data) ObjectUUID::UUID
+        +cget(ObjectUUID::UUID & id) std::variant&lt;const PolyData *,const ObjectData *&gt;
+        +clear() void
+        +count() ObjectCount
+        +deleteBuffers(int n, uint32_t * buffs) void
+        +deleteVAO(int n, uint32_t * buffs) void
+        +draw() void
+        +drawCalls() uint32_t
+        +entities() uint32_t
+        +get(ObjectUUID::UUID & id) std::variant&lt;PolyData *,ObjectData *&gt;
+        +remove(ObjectUUID::UUID id) void
+        +setSolver(Solver * solver) void
+        +type(ObjectUUID::UUID id) int
+        -data : struct __Data
+        -m_count : ObjectCount
+        -m_drawCalls : uint32_t
+        -solver : std::unique_ptr&lt;Solver&gt;
+        -uuid : ObjectUUID
+    }
+    class C_0015372026597303525006["Engine::Objects::ObjectManager::Solver"]
+    class C_0015372026597303525006 {
+        <<abstract>>
+        +operator()(size_t i, std::vector&lt;ObjectData&gt; & data, bool update) void*
+        +operator()(std::vector&lt;PolyData&gt; & data, bool update) void*
+        +getDrawCalls() uint32_t*
+    }
+    class C_0001901164363097582429["Engine::Objects::ObjectManager::ObjectCount"]
+    class C_0001901164363097582429 {
+        +lines : uint32_t
+        +points : uint32_t
+        +polys : uint32_t
+    }
+    class C_0000576645092526226755["Engine::Objects::ObjectManager::Types"]
+    class C_0000576645092526226755 {
+        <<enumeration>>
+        POINT
+        LINE
+        POLY
+    }
+    class C_0000136662589974312360["Engine::Objects::ObjectManager::IIHash"]
+    class C_0000136662589974312360 {
+        +operator()(const std::pair&lt;uint32_t,uint32_t&gt; & id) [const] std::size_t
+    }
+    class C_0002591437917088692538["Engine::Objects::ObjectManager::__Data"]
+    class C_0002591437917088692538 {
+        +ii2uuid : std::unordered_map&lt;std::pair&lt;uint32_t,uint32_t&gt;,ObjectUUID::UUID,IIHash&gt;
+        +lines : std::vector&lt;ObjectData&gt;
+        +points : std::vector&lt;ObjectData&gt;
+        +polys : std::vector&lt;PolyData&gt;
+        +update : bool[3]
+        +uuid2ii : std::unordered_map&lt;ObjectUUID::UUID,std::pair&lt;uint32_t,uint32_t&gt;&gt;
+    }
+    class C_0016726297106288310335["Engine::Line"]
+    class C_0016726297106288310335 {
+        +Line(Line && line) [default] void
+        +Line(Engine::Math::Vector&lt;2&gt; pos0, Engine::Math::Vector&lt;2&gt; pos1, Engine::Math::Vector&lt;3&gt; color, float stroke, Shader * shader, Objects::ObjectManager & manager) void
+        +getVerts() const std::pair&lt;Math::Vector&lt;2&gt;,Math::Vector&lt;2&gt;&gt; &
+        +setVerts(Engine::Math::Vector&lt;3&gt; color) void
+        +setVerts(Engine::Math::Vector&lt;2&gt; pos0, Engine::Math::Vector&lt;2&gt; pos1) void
+        -updateColor(Objects::ObjectData & data) void
+        -updateModel(Objects::ObjectData & data) void
+        -m_color : Math::Vector&lt;3&gt;
+        -m_id : Objects::ObjectUUID::UUID
+        -m_manager : Objects::ObjectManager &
+        -m_stroke : float
+        -m_verts : std::pair&lt;Math::Vector&lt;2&gt;,Math::Vector&lt;2&gt;&gt;
+    }
+    class C_0003115881373451800007["Engine::Point"]
+    class C_0003115881373451800007 {
+        +Point(Engine::Math::Vector&lt;2&gt; pos, Engine::Math::Vector&lt;3&gt; color, float radius, Objects::ObjectUUID::UUID id, Objects::ObjectManager & manager) void
+        +Point(Point && p) void
+        +Point(Point & p) void
+        +getColor() Engine::Math::Vector&lt;3&gt;
+        +getID() Objects::ObjectUUID::UUID
+        +getPos() Engine::Math::Vector&lt;2&gt;
+        +getRadius() float
+        +setColor(Engine::Math::Vector&lt;3&gt; newColor) void
+        +setPos(Engine::Math::Vector&lt;2&gt; newPos) void
+        +setRadius(float rad) void
+        -updateColor() void
+        -updateMatrix() void
+        -m_color : Math::Vector&lt;3&gt;
+        -m_id : Objects::ObjectUUID::UUID
+        -m_manager : Objects::ObjectManager &
+        -m_model : Math::Matrix&lt;4,4&gt;
+        -m_pos : Math::Vector&lt;2&gt;
+        -m_radius : float
+    }
+    class C_0017990578196595389321["Engine::Poly"]
+    class C_0017990578196595389321 {
+        +Poly(std::vector&lt;Math::Vector&lt;2&gt;&gt; verts, bool anchor, Engine::Math::Vector&lt;3&gt; color, Engine::Math::Vector&lt;3&gt; borderColor, float borderSize, Shader * shader, Objects::ObjectManager & manager) void
+        +Poly(Poly && other) void
+        +Poly(const Poly &) void
+        +~Poly() void
+        +operator=(Poly && other) Poly &
+        +operator=(const Poly &) Poly &
+        +addVert(Engine::Math::Vector&lt;2&gt; vert) void
+        +getIndices() const std::vector&lt;uint32_t&gt; &
+        +getVerts() const std::vector&lt;Math::Vector&lt;2&gt;&gt; &
+        -mesh(bool anchor) void
+        +removeVert(size_t i) void
+        -setup(Objects::PolyData & data) void
+        -EBO : uint32_t
+        -VAO : uint32_t
+        -VBO : uint32_t
+        -m_anchor : bool
+        -m_borderColor : Math::Vector&lt;3&gt;
+        -m_borderSize : float
+        -m_color : Math::Vector&lt;3&gt;
+        -m_id : Objects::ObjectUUID::UUID
+        -m_indices : std::vector&lt;uint32_t&gt;
+        -m_manager : Objects::ObjectManager *
+        -m_verts : std::vector&lt;Math::Vector&lt;2&gt;&gt;
+    }
+    class C_0013249249226652506748["Engine::Engine"]
+    class C_0013249249226652506748 {
+        +Engine(const Engine &) void
+        -Engine() [default] void
+        +operator=(const Engine &) Engine &
+        +clear() void
+        +count() Objects::ObjectManager::ObjectCount
+        +createLine(Engine::Math::Vector&lt;2&gt; pos0, Engine::Math::Vector&lt;2&gt; pos1, Engine::Math::Vector&lt;3&gt; color, float stroke, Shader * shader = nullptr) Line &
+        +createPoint(Engine::Math::Vector&lt;2&gt; pos, Engine::Math::Vector&lt;3&gt; color, float radius, Shader * shader = nullptr) Point &
+        +createPoly(std::vector&lt;Math::Vector&lt;2&gt;&gt; & verts, Engine::Math::Vector&lt;3&gt; color, Engine::Math::Vector&lt;3&gt; borderColor, float borderSize, bool anchor = true, Shader * shader = nullptr) Poly &
+        +draw() void
+        +drawCalls() uint32_t
+        +entities() uint32_t
+        +get(Objects::ObjectUUID::UUID & id) std::variant&lt;Objects::PolyData *,Objects::ObjectData *&gt;
+        +get() Engine *$
+        +getType(Objects::ObjectUUID::UUID id) int
+        +init(GLADloadproc proc, Engine::Math::Vector&lt;2,uint32_t&gt; & windowSize) Engine *$
+        +lookupObjectUUID(int x, int y) Objects::ObjectUUID::UUID
+        +remove(Objects::ObjectUUID::UUID id) void
+        +resize(double w, double h) bool
+        +setWinSize(Engine::Math::Vector&lt;2,float&gt; m_windowSize) void
+        +update(double dt) void
+        +winSize() Engine::Math::Vector&lt;2,uint32_t&gt;
+        -currentShader : Shader *
+        -m_colorTextureID : uint32_t
+        -m_fboID : uint32_t
+        -m_idTextureID : uint32_t
+        -m_instance : std::unique_ptr&lt;Engine&gt;
+        -m_lines : std::vector&lt;Line&gt;
+        -m_objManager : Objects::ObjectManager
+        -m_points : std::vector&lt;Point&gt;
+        -m_polys : std::vector&lt;Poly&gt;
+        -m_rboDepthStencil : uint32_t
+        -m_shaderManager : ShaderManager
+        -m_windowSize : Math::Vector&lt;2,uint32_t&gt;
+        -uboMatrices : uint32_t
+    }
+    class C_0008411340913254138607["Engine::Window"]
+    class C_0008411340913254138607 {
+        <<abstract>>
+        +Window(Engine::Math::Vector&lt;2,uint32_t&gt; windowSize) void
+        +Window() void
+        +~Window() void
+        #clearEngine() void
+        +cursorPosCallback(double xpos, double ypos) void
+        +framebufferSizeCallback(int width, int height) void
+        +gameloop() void
+        -init(Engine::Math::Vector&lt;2,uint32_t&gt; windowSize) void
+        -initOpenGL(int major, int minor) void
+        +isActivate() bool
+        +keyCallback(int key, int scancode, int action, int mode) void
+        #log() void
+        +mouseButtonCallback(int button, int action, int mods) void
+        +scrollCallback(double xoffset, double yoffset) void
+        +staticCursorPosCallback(GLFWwindow * win, double xpos, double ypos) void$
+        +staticFramebufferSizeCallback(GLFWwindow * win, int width, int height) void$
+        +staticKeyCallback(GLFWwindow * win, int key, int scancode, int action, int mode) void$
+        +staticMouseButtonCallback(GLFWwindow * win, int button, int action, int mods) void$
+        +staticScrollCallback(GLFWwindow * win, double xoffset, double yoffset) void$
+        #terminate() void
+        +update(double dt) void*
+        #gen : std::mt19937
+        #m_engine : Engine *
+        #m_lastTime : std::chrono::time_point&lt;Clock&gt;
+        #m_log : std::ofstream
+        #m_mouse : Math::Vector&lt;2,float&gt;
+        #m_startTime : std::chrono::time_point&lt;Clock&gt;
+        #m_state : LogState
+        #m_window : GLFWwindow *
+        #m_windowSize : Math::Vector&lt;2,float&gt;
+        #rd : std::random_device
+    }
+    class C_0007565751239023035126["Engine::Window::LogState"]
+    class C_0007565751239023035126 {
+        +LogState() void
+        +addHeader(const char * header) void
+        +get(const char * header) Var &
+        +headers() const std::vector&lt;std::string&gt; &
+        +reset() void
+        -m_headers : std::vector&lt;std::string&gt;
+        -m_vars : std::unordered_map&lt;std::string,Var&gt;
+    }
+    class C_0014114407443099026821["gladGLversionStruct"]
+    class C_0014114407443099026821 {
+        +major : int
+        +minor : int
+    }
+    class C_0014616433944762754393["khronos_boolean_enum_t"]
+    class C_0014616433944762754393 {
+        <<enumeration>>
+        KHRONOS_FALSE
+        KHRONOS_TRUE
+        KHRONOS_BOOLEAN_ENUM_FORCE_SIZE
+    }
+    class C_0015525581018586802988["Command"]
+    class C_0015525581018586802988 {
+        <<abstract>>
+        +~Command() void
+        +execute() bool*
+        +restore() void
+    }
+    class C_0009460517425703679938["Invoker"]
+    class C_0009460517425703679938 {
+        +addCommand(Command * command) void
+        +execute() void
+        +get() Invoker &$
+        +restore(size_t amount = std::numeric_limits&lt;size_t&gt;::max&lpar;&rpar;) void
+        -m_instance : std::unique_ptr&lt;Invoker&gt;
+        -m_queue : std::queue&lt;std::unique_ptr&lt;Command&gt;&gt;
+        -m_restoreStack : std::stack&lt;std::unique_ptr&lt;Command&gt;&gt;
+    }
+    class C_0007524051125027650422["Cells::ICell"]
+    class C_0007524051125027650422 {
+        <<abstract>>
+        +~ICell() void
+        +clear() void
+        +draw(Engine::Engine & engine) void*
+        +getPos() Vec2u
+        +reset() void
+        +tick(Engine::Engine & engine, double dt) bool*
+        +tickSetup() void
+        #m_pos : Vec2u
+    }
+    class C_0005434895093103671544["CellFactory"]
+    class C_0005434895093103671544 {
+        -CellFactory() [default] void
+        +Create(CellType type, Vec2u pos, Vec2u arg = = &lbrace;0, 0&rbrace;) [const] Cells::ICell *
+        +get() const CellFactory &$
+        -m_instance : std::unique_ptr&lt;CellFactory&gt;
+    }
+    class C_0008917128763581520149["CellFactory::CellType"]
+    class C_0008917128763581520149 {
+        <<enumeration>>
+        EMPTY
+        OBS
+        ORIGIN
+        DESTINATION
+    }
+    class C_0000056909946344020665["Grid::IGraph"]
+    class C_0000056909946344020665 {
+        <<abstract>>
+        +~IGraph() [default,constexpr] void
+        +getNeighbors(Vec2u coord) std::vector&lt;Vec2u&gt;*
+        +isValid(Vec2u coord) bool*
+    }
+    class C_0011614116359736977436["Grid::IGrid"]
+    class C_0011614116359736977436 {
+        <<abstract>>
+        +IGrid(Vec2u coord) void
+        +~IGrid() void*
+        +center() [const] Vec2*
+        +clear() void
+        +draw(Engine::Engine & engine) void*
+        +empty() [const] bool
+        +fill(Color color) void
+        +offsetRow(size_t row) [const] float*
+        +reset() Cells::ICell *
+        +set(Cells::ICell * cell) void
+        +subscribeOnChanged(Subscriber * sub) void
+        +tick(Engine::Engine & engine, double dt) bool
+        +tickSetup() void
+        #m_cell : std::unique_ptr&lt;Cells::ICell&gt;
+        #m_cellChanged : Publisher
+        #m_coord : Vec2u
+        #m_fill : Color
+    }
+    class C_0000994511990246631929["Subscriber"]
+    class C_0000994511990246631929 {
+        <<abstract>>
+        +~Subscriber() void
+        +update() void*
+    }
+    class C_0010203260831736923132["Publisher"]
+    class C_0010203260831736923132 {
+        +~Publisher() void
+        +notifySubscribers() [const] void
+        +subscribe(Subscriber * obs) void
+        +unsubscribe(Subscriber * obs) void
+        #m_observers : std::vector&lt;Subscriber *&gt;
+    }
+    class C_0001642024242126274810["GridFactories::IFactory"]
+    class C_0001642024242126274810 {
+        <<abstract>>
+        +~IFactory() [default,constexpr] void
+        +calculateDelta(Vec2 areaSize, size_t rows, size_t cols) [const] Vec2*
+        +createGraph() [const] Grid::IGraph **
+        +createGrid(Vec2u pos) [const] Grid::IGrid **
+        +getGridCoord(Vec2 mousePos, Vec2 start, Vec2 delta, size_t rows, size_t cols) [const] Vec2u*
+    }
+    class C_0010588216749841672638["Subscribers::CallbackSubscriber"]
+    class C_0010588216749841672638 {
+        +~CallbackSubscriber() [default] void
+        +setOnChange(Callback callback) void
+        +update() void
+        -m_onChanged : Callback
+    }
+    class C_0000187593043476956552["GridManager"]
+    class C_0000187593043476956552 {
+        -GridManager() void
+        +allocate(AllocationParam param) GridManager &
+        +allocate(size_t rows, size_t cols, Vec2 start, Vec2 end, GridFactories::IFactory * gridFactory = nullptr) GridManager &
+        +allocated() [const] bool
+        +cget(size_t row, size_t col) [const] const Grid::IGrid *
+        +cget(Vec2u coord) [const] const Grid::IGrid *
+        +cget(Vec2 mouseCoord) [const] const Grid::IGrid *
+        +clear() GridManager &
+        +cols() [const] size_t
+        +deallocate() GridManager &
+        +end() [const] Vec2
+        +get(size_t row, size_t col) [const] Grid::IGrid *
+        +get(Vec2u coord) [const] Grid::IGrid *
+        +get(Vec2 mouseCoord) [const] Grid::IGrid *
+        +get() GridManager &$
+        +getCellSize() Vec2
+        +getCenter(Vec2u gridCoord) [const] Vec2
+        +getCoord(Vec2u gridCoord) [const] Vec2
+        +getCoord(Vec2 mouseCoord) [const] Vec2u
+        +getGraph() Grid::IGraph *
+        -impl_get(size_t row, size_t col) [const] Grid::IGrid *
+        +rows() [const] size_t
+        +setup() void
+        +start() [const] Vec2
+        +subscribeOnCellChange(Subscriber * obs) GridManager &
+        +subscribeOnGridChange(Subscriber * obs) GridManager &
+        +update(Engine::Engine & engine, std::optional&lt;double&gt; dt = std::nullopt) [const] bool
+        -m_area : Vec2[2]
+        -m_cellPublisher : Publisher
+        -m_changed : Subscribers::CallbackSubscriber
+        -m_delta : Vec2
+        -m_factory : std::unique_ptr&lt;GridFactories::IFactory&gt;
+        -m_graph : std::unique_ptr&lt;Grid::IGraph&gt;
+        -m_grid : std::vector&lt;std::unique_ptr&lt;Grid::IGrid&gt;&gt;
+        -m_gridPublisher : Publisher
+        -m_gridSize : Vec2u
+        -m_instance : std::unique_ptr&lt;GridManager&gt;
+    }
+    class C_0010469210913964836578["GridManager::AllocationParam"]
+    class C_0010469210913964836578 {
+        +end : Vec2
+        +gridConfig : Vec2u
+        +gridFactory : GridFactories::IFactory *
+        +start : Vec2
+    }
+    class C_0008547169733880865913["Commands::AddCell"]
+    class C_0008547169733880865913 {
+        +AddCell(Cells::ICell * cell, Vec2u position) void
+        +~AddCell() [default] void
+        +execute() bool
+        -m_cell : Cells::ICell *
+        -m_position : Vec2u
+    }
+    class C_0010665470809809381566["Commands::RemoveCell"]
+    class C_0010665470809809381566 {
+        +RemoveCell(Vec2u position, bool clear = true, bool save = false) void
+        +~RemoveCell() [default] void
+        +execute() bool
+        +restore() void
+        -m_cell : std::unique_ptr&lt;Cells::ICell&gt;
+        -m_clear : bool
+        -m_position : Vec2u
+        -m_save : bool
+    }
+    class C_0011031694641276016248["Handler&lt;T&gt;"]
+    class C_0011031694641276016248 {
+    }
+    class C_0010198723229293439659["Chain::GridAllocatorChain"]
+    class C_0010198723229293439659 {
+        +GridAllocatorChain() [default] void
+        +~GridAllocatorChain() [default] void
+        #process(GridManager::AllocationParam & param) bool
+    }
+    class C_0005855383950052472276["Chain::GridConfig"]
+    class C_0005855383950052472276 {
+        +GridConfig(bool skip = false) void
+        +~GridConfig() [default] void
+        #process(GridManager::AllocationParam & param) bool
+        -m_ask : bool
+    }
+    class C_0010067145397289361700["Chain::GridFactory"]
+    class C_0010067145397289361700 {
+        +GridFactory(bool ask = true) void
+        +~GridFactory() [default] void
+        #process(GridManager::AllocationParam & param) bool
+        -m_ask : bool
+    }
+    class C_0002355428982340356818["Chain::GridManager"]
+    class C_0002355428982340356818 {
+        +GridManager() [default] void
+        +~GridManager() [default] void
+        #process(GridManager::AllocationParam & param) bool
+    }
+    class C_0000708210251265098836["Handler&lt;GridManager::AllocationParam&gt;"]
+    class C_0000708210251265098836 {
+    }
+    class C_0002380464098281245062["AnimationManager&lt;Clock&gt;"]
+    class C_0002380464098281245062 {
+        +getState() PlayerState
+        +loop() void
+        +pause() void
+        +registerOnStateChanged(Subscriber * sub) void
+        +reset() void
+        +setIdleFunction(IdleFunc func) void
+        +setPlayFunction(PlayFunc func) void
+        +start() void
+        -idle : IdleFunc
+        -m_backTrack : double
+        -m_firstTick : bool
+        -m_start : std::chrono::time_point&lt;Clock&gt;
+        -onStateChanged : Publisher
+        -play : PlayFunc
+        -state : PlayerState
+    }
+    class C_0000961498124090157081["AnimationManager::PlayerState"]
+    class C_0000961498124090157081 {
+        <<enumeration>>
+        INIT
+        PLAYING
+        PAUSED
+        ENDED
+    }
+    class C_0010039632802079899908["PathManager"]
+    class C_0010039632802079899908 {
+        -PathManager() void
+        +~PathManager() void
+        +destroy() void
+        +evalPosition(double t, PathID * id) EvalInfo
+        +get() PathManager &$
+        +getCollisions() std::vector&lt;PathCollisionData&gt;
+        +getId(DynamicInfo info) PathPtr
+        +getPath(PathID * id, Vec2u start, Vec2u end, Grid::IGraph & graph) PathManager &
+        +removePath(PathID * id) void
+        -m_alive : bool
+        -m_broadCandidatesColl : std::vector&lt;std::vector&lt;BroadCollisionData&gt;&gt;
+        -m_broadColl : std::vector&lt;BroadCollisionEntry&gt;
+        -m_collObjs : std::unordered_map&lt;PathID *,std::pair&lt;size_t,std::vector&lt;PathID *&gt;&gt;,PathIDHasher&gt;
+        -m_instance : std::unique_ptr&lt;PathManager&gt;
+        -m_longestPath : double
+        -m_mapConfig : Vec2u
+        -m_onGridLayoutChange : Subscribers::CallbackSubscriber
+        -m_pathMap : std::vector&lt;std::unordered_map&lt;double,PathID *&gt;&gt;
+        -m_paths : struct Paths
+    }
+    class C_0001861949267240608698["PathManager::PathDeleter"]
+    class C_0001861949267240608698 {
+        +operator()(PathID * p) [const] void
+    }
+    class C_0009220861648941955348["PathManager::PathIDHasher"]
+    class C_0009220861648941955348 {
+        +operator()(const PathID * k) [const] std::size_t
+    }
+    class C_0016276941775860672856["PathManager::TimeFrame"]
+    class C_0016276941775860672856 {
+        +end : double
+        +start : double
+    }
+    class C_0001635249799938806795["PathManager::BroadCollisionData"]
+    class C_0001635249799938806795 {
+        +BroadCollisionData(TimeFrame t, PathID * id) void
+        +id : PathID *
+        +t : TimeFrame
+    }
+    class C_0012711813919901682658["PathManager::BroadCollisionEntry"]
+    class C_0012711813919901682658 {
+        +BroadCollisionEntry(TimeFrame t, PathID * A, PathID * B) void
+        +agents : PathID *[2]
+        +t : TimeFrame
+    }
+    class C_0001271833360686250041["PathManager::PathCollisionData"]
+    class C_0001271833360686250041 {
+        +PathCollisionData(double t, PathID * a, PathID * b, Vec2 aPos, Vec2 bPos) void
+        +agents : PathManager::PathCollisionData::&lpar;agents&rpar;[2]
+        +t : double
+    }
+    class C_0003597513604221720537["PathManager::PathCollisionData::&lpar;agents&rpar;"]
+    class C_0003597513604221720537 {
+        +agent : PathID *
+        +pos : Vec2
+    }
+    class C_0007994493599829033402["PathManager::DynamicInfo"]
+    class C_0007994493599829033402 {
+        +radius : double
+        +velocity : double
+    }
+    class C_0008246885713019974382["PathManager::EvalInfo"]
+    class C_0008246885713019974382 {
+        +ended : bool
+        +grid : Vec2u
+        +i : size_t
+        +position : Vec2
+    }
+    class C_0017109012179279410331["PathManager::Paths"]
+    class C_0017109012179279410331 {
+        +operator*() std::list&lt;std::vector&lt;Vec2u&gt;&gt; &
+        +operator->() std::list&lt;std::vector&lt;Vec2u&gt;&gt; *
+        +alive() [const] bool
+        +die() void
+        +~Paths() void
+        -m_alive : bool
+        -m_data : std::list&lt;std::vector&lt;Vec2u&gt;&gt;
+    }
+    class C_0016364042332862071011["AnimationManager&lt;std::chrono::high_resolution_clock&gt;"]
+    class C_0016364042332862071011 {
+    }
+    class C_0008275891181392909974["MyWindow"]
+    class C_0008275891181392909974 {
+        +MyWindow(int argc, const char ** argv) void
+        -clear() void
+        -cursorPosCallback(double xpos, double ypos) void
+        -keyCallback(int key, int scancode, int action, int mode) void
+        -mouseButtonCallback(int button, int action, int mods) void
+        +update(double dt) void
+        +anim : AnimationManager&lt;std::chrono::high_resolution_clock&gt;
+        +animationState : Subscribers::CallbackSubscriber
+        +displayRefreshSubscriber : Subscribers::CallbackSubscriber
+        -end : Vec2
+        +initChain : Chain::GridAllocatorChain
+        +m_collisionPoints : std::vector&lt;Vec2&gt;
+        -m_enableTick : bool
+        +m_tickTimeStamp : std::optional&lt;Clock::time_point&gt;
+        -mouseHolding : int
+        +out : FILE *
+        +refresh : bool
+        +restore : int
+        -start : Vec2
+    }
+    class C_0005505353034777529899["_cl_context"]
+    class C_0005505353034777529899 {
+    }
+    class C_0005656535728663299924["__GLsync"]
+    class C_0005656535728663299924 {
+    }
+    class C_0008434725962297335764["GLFWwindow"]
+    class C_0008434725962297335764 {
+    }
+    class C_0010724029348525148739["GLFWcursor"]
+    class C_0010724029348525148739 {
+    }
+    class C_0013121967087840993840["GLFWmonitor"]
+    class C_0013121967087840993840 {
+    }
+    class C_0015983514335218059689["PathManager::PathID"]
+    class C_0015983514335218059689 {
+    }
+    class C_0016742860404031477541["_cl_event"]
+    class C_0016742860404031477541 {
+    }
+    C_0017614144533568309161 ..> C_0012415743977570969849 : 
+    C_0006135738021633781134 ..> C_0017614144533568309161 : 
+    C_0014328005042205008466 ..> C_0001275076681856179721 : 
+    C_0014328005042205008466 ..> C_0006332989992941243028 : 
+    C_0002539092574143936661 ..> C_0003046615137435745376 : 
+    C_0001950562844437850433 ..> C_0008422761201490794599 : 
+    C_0007432155581095808926 ..> C_0009810031281855847319 : 
+    C_0012803677092076106623 ..> C_0009810031281855847319 : 
+    C_0010562499307471491601 ..> C_0014655922757185255660 : 
+    C_0011385432641056735404 ..> C_0014655922757185255660 : 
+    C_0001620721779665700036 ..> C_0003115881373451800007 : 
+    C_0002228295796337985589 ..> C_0016726297106288310335 : 
+    C_0011541246556000069736 ..> C_0017990578196595389321 : 
+    C_0001347152004389415025 ..> C_0001275076681856179721 : 
+    C_0011923903168730565843 ..> C_0001275076681856179721 : 
+    C_0006768016179079868705 ..> C_0001275076681856179721 : 
+    C_0006768016179079868705 ..> C_0011923903168730565843 : 
+    C_0014556251967261241151 ..> C_0015525581018586802988 : 
+    C_0012322381635794884228 ..> C_0014556251967261241151 : 
+    C_0005923753518013068657 ..> C_0014556251967261241151 : 
+    C_0009610230603899660979 ..> C_0013784868073774302216 : 
+    C_0013566849599595529376 ..> C_0000994511990246631929 : 
+    C_0001488291031702088781 ..> C_0007524051125027650422 : 
+    C_0011578180343120307699 ..> C_0001642024242126274810 : 
+    C_0001016014061568123944 ..> C_0011614116359736977436 : 
+    C_0016181972057543612761 ..> C_0001016014061568123944 : 
+    C_0015578192558011062777 ..> C_0000056909946344020665 : 
+    C_0008666991674172501298 ..> C_0011031694641276016248 : 
+    C_0006782111454905405990 ..> C_0016787326867068622282 : 
+    C_0004781497470570484817 ..> C_0005429246149479903122 : 
+    C_0015550369917897492906 ..> C_0017823646303938881488 : 
+    C_0008485559370877929832 ..> C_0015550369917897492906 : 
+    C_0016619464092053922477 ..> C_0009610230603899660979 : 
+    C_0015004038434732040862 ..> C_0006135738021633781134 : 
+    C_0016657878585287031157 ..> C_0016830943016957620265 : 
+    C_0014992418250357455111 ..|> C_0003348486584261383332 : 
+    C_0012040601268495348826 ..|> C_0003348486584261383332 : 
+    C_0003348486584261383332 ..> C_0010619012294112118834 : 
+    C_0003348486584261383332 ..> C_0014992418250357455111 : 
+    C_0003348486584261383332 ..> C_0012040601268495348826 : 
+    C_0004621064861470387694 ..|> C_0003348486584261383332 : 
+    C_0006833969788498267893 ..|> C_0001405566653863255530 : 
+    C_0001405566653863255530 ..> C_0004621064861470387694 : 
+    C_0001405566653863255530 ..> C_0003348486584261383332 : 
+    C_0001405566653863255530 ..> C_0006833969788498267893 : 
+    C_0006863323950975451041 ..|> C_0003348486584261383332 : 
+    C_0014655922757185255660 ..|> C_0003348486584261383332 : 
+    C_0004421601367316582408 ..|> C_0001405566653863255530 : 
+    C_0002739534453154856813 ..|> C_0004621064861470387694 : 
+    C_0016830943016957620265 ..|> C_0004621064861470387694 : 
+    C_0013784868073774302216 ..|> C_0004621064861470387694 : 
+    C_0001951113896505040197 ..|> C_0003348486584261383332 : 
+    C_0006332989992941243028 o-- C_0008015409205204797935 : -m_shaders
+    C_0000614546160742051811 ..> C_0013247086971467822611 : 
+    C_0000614546160742051811 ..> C_0006332989992941243028 : 
+    C_0000614546160742051811 o-- C_0014328005042205008466 : -m_shaders
+    C_0003046615137435745376 --> C_0006332989992941243028 : +shader
+    C_0008422761201490794599 o-- C_0006863323950975451041 : +color
+    C_0008422761201490794599 o-- C_0006863323950975451041 : +borderColor
+    C_0008422761201490794599 --> C_0006332989992941243028 : +shader
+    C_0002088975552499886084 o-- C_0018110337699185100992 : -available
+    C_0003267318088240048309 ..> C_0000576645092526226755 : 
+    C_0003267318088240048309 ..> C_0003046615137435745376 : 
+    C_0003267318088240048309 ..> C_0008422761201490794599 : 
+    C_0003267318088240048309 ..> C_0010964578208775186054 : 
+    C_0003267318088240048309 ..> C_0006087540299216406522 : 
+    C_0003267318088240048309 ..> C_0015372026597303525006 : 
+    C_0003267318088240048309 o-- C_0000618757574769403656 : -solver
+    C_0003267318088240048309 o-- C_0002088975552499886084 : -uuid
+    C_0003267318088240048309 o-- C_0002591437917088692538 : -data
+    C_0003267318088240048309 o-- C_0001901164363097582429 : -m_count
+    C_0003267318088240048309 ()-- C_0015372026597303525006 : 
+    C_0015372026597303525006 ..> C_0002539092574143936661 : 
+    C_0015372026597303525006 ..> C_0003046615137435745376 : 
+    C_0015372026597303525006 ..> C_0001950562844437850433 : 
+    C_0015372026597303525006 ..> C_0008422761201490794599 : 
+    C_0003267318088240048309 ()-- C_0001901164363097582429 : 
+    C_0003267318088240048309 ()-- C_0000576645092526226755 : 
+    C_0003267318088240048309 ()-- C_0000136662589974312360 : 
+    C_0000136662589974312360 ..> C_0009810031281855847319 : 
+    C_0003267318088240048309 ()-- C_0002591437917088692538 : 
+    C_0002591437917088692538 o-- C_0002539092574143936661 : +points
+    C_0002591437917088692538 o-- C_0002539092574143936661 : +lines
+    C_0002591437917088692538 o-- C_0001950562844437850433 : +polys
+    C_0002591437917088692538 o-- C_0007432155581095808926 : +uuid2ii
+    C_0002591437917088692538 o-- C_0012803677092076106623 : +ii2uuid
+    C_0016726297106288310335 ..> C_0014655922757185255660 : 
+    C_0016726297106288310335 ..> C_0003348486584261383332 : 
+    C_0016726297106288310335 ..> C_0006332989992941243028 : 
+    C_0016726297106288310335 ..> C_0003046615137435745376 : 
+    C_0016726297106288310335 o-- C_0010562499307471491601 : -m_verts
+    C_0016726297106288310335 o-- C_0006863323950975451041 : -m_color
+    C_0016726297106288310335 --> C_0003267318088240048309 : -m_manager
+    C_0003115881373451800007 ..> C_0003348486584261383332 : 
+    C_0003115881373451800007 o-- C_0004421601367316582408 : -m_model
+    C_0003115881373451800007 o-- C_0014655922757185255660 : -m_pos
+    C_0003115881373451800007 o-- C_0006863323950975451041 : -m_color
+    C_0003115881373451800007 --> C_0003267318088240048309 : -m_manager
+    C_0017990578196595389321 ..> C_0003348486584261383332 : 
+    C_0017990578196595389321 ..> C_0006332989992941243028 : 
+    C_0017990578196595389321 ..> C_0014655922757185255660 : 
+    C_0017990578196595389321 ..> C_0008422761201490794599 : 
+    C_0017990578196595389321 o-- C_0011385432641056735404 : -m_verts
+    C_0017990578196595389321 o-- C_0008015409205204797935 : -m_indices
+    C_0017990578196595389321 o-- C_0006863323950975451041 : -m_color
+    C_0017990578196595389321 o-- C_0006863323950975451041 : -m_borderColor
+    C_0017990578196595389321 --> C_0003267318088240048309 : -m_manager
+    C_0013249249226652506748 ..> C_0003348486584261383332 : 
+    C_0013249249226652506748 ..> C_0013808655339847284184 : 
+    C_0013249249226652506748 ..> C_0008422761201490794599 : 
+    C_0013249249226652506748 ..> C_0003046615137435745376 : 
+    C_0013249249226652506748 ..> C_0014655922757185255660 : 
+    C_0013249249226652506748 ..> C_0006863323950975451041 : 
+    C_0013249249226652506748 ..> C_0003115881373451800007 : 
+    C_0013249249226652506748 ..> C_0016726297106288310335 : 
+    C_0013249249226652506748 ..> C_0011385432641056735404 : 
+    C_0013249249226652506748 ..> C_0017990578196595389321 : 
+    C_0013249249226652506748 ..> C_0016830943016957620265 : 
+    C_0013249249226652506748 ..> C_0001901164363097582429 : 
+    C_0013249249226652506748 o-- C_0001620721779665700036 : -m_points
+    C_0013249249226652506748 o-- C_0002228295796337985589 : -m_lines
+    C_0013249249226652506748 o-- C_0011541246556000069736 : -m_polys
+    C_0013249249226652506748 o-- C_0002739534453154856813 : -m_windowSize
+    C_0013249249226652506748 o-- C_0003267318088240048309 : -m_objManager
+    C_0013249249226652506748 o-- C_0000614546160742051811 : -m_shaderManager
+    C_0013249249226652506748 --> C_0006332989992941243028 : -currentShader
+    C_0013249249226652506748 --> C_0013249249226652506748 : -m_instance
+    C_0008411340913254138607 ..> C_0002739534453154856813 : 
+    C_0008411340913254138607 ..> C_0003348486584261383332 : 
+    C_0008411340913254138607 o-- C_0016830943016957620265 : #m_mouse
+    C_0008411340913254138607 o-- C_0016830943016957620265 : #m_windowSize
+    C_0008411340913254138607 o-- C_0007565751239023035126 : #m_state
+    C_0008411340913254138607 o-- C_0004276277466396066764 : #m_log
+    C_0008411340913254138607 --> C_0008434725962297335764 : #m_window
+    C_0008411340913254138607 --> C_0013249249226652506748 : #m_engine
+    C_0008411340913254138607 o-- C_0002360312306824742041 : #m_lastTime
+    C_0008411340913254138607 o-- C_0002360312306824742041 : #m_startTime
+    C_0008411340913254138607 o-- C_0016639757653164927497 : #gen
+    C_0008411340913254138607 ()-- C_0007565751239023035126 : 
+    C_0007565751239023035126 ..> C_0011923903168730565843 : 
+    C_0007565751239023035126 o-- C_0001347152004389415025 : -m_headers
+    C_0007565751239023035126 o-- C_0006768016179079868705 : -m_vars
+    C_0009460517425703679938 ..> C_0015525581018586802988 : 
+    C_0009460517425703679938 o-- C_0012322381635794884228 : -m_queue
+    C_0009460517425703679938 o-- C_0005923753518013068657 : -m_restoreStack
+    C_0009460517425703679938 --> C_0009460517425703679938 : -m_instance
+    C_0007524051125027650422 ..> C_0013249249226652506748 : 
+    C_0007524051125027650422 ..> C_0003348486584261383332 : 
+    C_0007524051125027650422 o-- C_0013784868073774302216 : #m_pos
+    C_0005434895093103671544 ..> C_0008917128763581520149 : 
+    C_0005434895093103671544 ..> C_0013784868073774302216 : 
+    C_0005434895093103671544 ..> C_0003348486584261383332 : 
+    C_0005434895093103671544 ..> C_0007524051125027650422 : 
+    C_0005434895093103671544 --> C_0005434895093103671544 : -m_instance
+    C_0005434895093103671544 ()-- C_0008917128763581520149 : 
+    C_0000056909946344020665 ..> C_0013784868073774302216 : 
+    C_0000056909946344020665 ..> C_0003348486584261383332 : 
+    C_0000056909946344020665 ..> C_0009610230603899660979 : 
+    C_0011614116359736977436 ..> C_0003348486584261383332 : 
+    C_0011614116359736977436 ..> C_0007524051125027650422 : 
+    C_0011614116359736977436 ..> C_0013249249226652506748 : 
+    C_0011614116359736977436 ..> C_0000994511990246631929 : 
+    C_0011614116359736977436 ..> C_0016830943016957620265 : 
+    C_0011614116359736977436 o-- C_0001488291031702088781 : #m_cell
+    C_0011614116359736977436 o-- C_0010203260831736923132 : #m_cellChanged
+    C_0011614116359736977436 o-- C_0001951113896505040197 : #m_fill
+    C_0011614116359736977436 o-- C_0013784868073774302216 : #m_coord
+    C_0010203260831736923132 ..> C_0000994511990246631929 : 
+    C_0010203260831736923132 o-- C_0013566849599595529376 : #m_observers
+    C_0001642024242126274810 ..> C_0013784868073774302216 : 
+    C_0001642024242126274810 ..> C_0003348486584261383332 : 
+    C_0001642024242126274810 ..> C_0011614116359736977436 : 
+    C_0001642024242126274810 ..> C_0000056909946344020665 : 
+    C_0001642024242126274810 ..> C_0016830943016957620265 : 
+    C_0010588216749841672638 o-- C_0013286274850898176297 : -m_onChanged
+    C_0000994511990246631929 <|-- C_0010588216749841672638 : 
+    C_0000187593043476956552 ..> C_0010469210913964836578 : 
+    C_0000187593043476956552 ..> C_0003348486584261383332 : 
+    C_0000187593043476956552 ..> C_0001642024242126274810 : 
+    C_0000187593043476956552 ..> C_0011614116359736977436 : 
+    C_0000187593043476956552 ..> C_0000056909946344020665 : 
+    C_0000187593043476956552 ..> C_0013249249226652506748 : 
+    C_0000187593043476956552 ..> C_0004878870595026580347 : 
+    C_0000187593043476956552 ..> C_0000994511990246631929 : 
+    C_0000187593043476956552 o-- C_0011578180343120307699 : -m_factory
+    C_0000187593043476956552 o-- C_0010588216749841672638 : -m_changed
+    C_0000187593043476956552 o-- C_0010203260831736923132 : -m_cellPublisher
+    C_0000187593043476956552 o-- C_0010203260831736923132 : -m_gridPublisher
+    C_0000187593043476956552 o-- C_0016181972057543612761 : -m_grid
+    C_0000187593043476956552 o-- C_0015578192558011062777 : -m_graph
+    C_0000187593043476956552 o-- C_0013784868073774302216 : -m_gridSize
+    C_0000187593043476956552 o-- "2" C_0016830943016957620265 : -m_area
+    C_0000187593043476956552 o-- C_0016830943016957620265 : -m_delta
+    C_0000187593043476956552 --> C_0000187593043476956552 : -m_instance
+    C_0000187593043476956552 ()-- C_0010469210913964836578 : 
+    C_0010469210913964836578 o-- C_0013784868073774302216 : +gridConfig
+    C_0010469210913964836578 o-- C_0016830943016957620265 : +start
+    C_0010469210913964836578 o-- C_0016830943016957620265 : +end
+    C_0010469210913964836578 --> C_0001642024242126274810 : +gridFactory
+    C_0008547169733880865913 ..> C_0003348486584261383332 : 
+    C_0008547169733880865913 --> C_0007524051125027650422 : -m_cell
+    C_0008547169733880865913 o-- C_0013784868073774302216 : -m_position
+    C_0015525581018586802988 <|-- C_0008547169733880865913 : 
+    C_0010665470809809381566 ..> C_0003348486584261383332 : 
+    C_0010665470809809381566 o-- C_0001488291031702088781 : -m_cell
+    C_0010665470809809381566 o-- C_0013784868073774302216 : -m_position
+    C_0015525581018586802988 <|-- C_0010665470809809381566 : 
+    C_0011031694641276016248 ..|> C_0011031694641276016248 : 
+    C_0010198723229293439659 ..> C_0010469210913964836578 : 
+    C_0000708210251265098836 <|-- C_0010198723229293439659 : 
+    C_0005855383950052472276 ..> C_0010469210913964836578 : 
+    C_0010198723229293439659 <|-- C_0005855383950052472276 : 
+    C_0010067145397289361700 ..> C_0010469210913964836578 : 
+    C_0010198723229293439659 <|-- C_0010067145397289361700 : 
+    C_0002355428982340356818 ..> C_0010469210913964836578 : 
+    C_0010198723229293439659 <|-- C_0002355428982340356818 : 
+    C_0000708210251265098836 ..|> C_0011031694641276016248 : 
+    C_0002380464098281245062 ..> C_0000994511990246631929 : 
+    C_0002380464098281245062 o-- C_0005038039747272111559 : -play
+    C_0002380464098281245062 o-- C_0013286274850898176297 : -idle
+    C_0002380464098281245062 o-- C_0010203260831736923132 : -onStateChanged
+    C_0002380464098281245062 o-- C_0000908478690702565473 : -m_start
+    C_0002380464098281245062 o-- C_0000961498124090157081 : -state
+    C_0002380464098281245062 ()-- C_0000961498124090157081 : 
+    C_0010039632802079899908 ..> C_0015983514335218059689 : 
+    C_0010039632802079899908 ..> C_0007994493599829033402 : 
+    C_0010039632802079899908 ..> C_0001256189216294270405 : 
+    C_0010039632802079899908 ..> C_0001861949267240608698 : 
+    C_0010039632802079899908 ..> C_0003348486584261383332 : 
+    C_0010039632802079899908 ..> C_0000056909946344020665 : 
+    C_0010039632802079899908 ..> C_0018356320493974674985 : 
+    C_0010039632802079899908 ..> C_0001271833360686250041 : 
+    C_0010039632802079899908 ..> C_0008246885713019974382 : 
+    C_0010039632802079899908 o-- C_0013784868073774302216 : -m_mapConfig
+    C_0010039632802079899908 o-- C_0006782111454905405990 : -m_pathMap
+    C_0010039632802079899908 o-- C_0017109012179279410331 : -m_paths
+    C_0010039632802079899908 o-- C_0001337515824738359697 : -m_broadColl
+    C_0010039632802079899908 o-- C_0004781497470570484817 : -m_broadCandidatesColl
+    C_0010039632802079899908 o-- C_0008485559370877929832 : -m_collObjs
+    C_0010039632802079899908 o-- C_0010588216749841672638 : -m_onGridLayoutChange
+    C_0010039632802079899908 --> C_0010039632802079899908 : -m_instance
+    C_0010039632802079899908 ()-- C_0001861949267240608698 : 
+    C_0001861949267240608698 ..> C_0015983514335218059689 : 
+    C_0010039632802079899908 ()-- C_0009220861648941955348 : 
+    C_0009220861648941955348 ..> C_0015983514335218059689 : 
+    C_0010039632802079899908 ()-- C_0016276941775860672856 : 
+    C_0010039632802079899908 ()-- C_0001635249799938806795 : 
+    C_0001635249799938806795 o-- C_0016276941775860672856 : +t
+    C_0001635249799938806795 --> C_0015983514335218059689 : +id
+    C_0010039632802079899908 ()-- C_0012711813919901682658 : 
+    C_0012711813919901682658 o-- C_0016276941775860672856 : +t
+    C_0012711813919901682658 --> "2" C_0015983514335218059689 : +agents
+    C_0010039632802079899908 ()-- C_0001271833360686250041 : 
+    C_0001271833360686250041 ..> C_0015983514335218059689 : 
+    C_0001271833360686250041 ..> C_0016830943016957620265 : 
+    C_0001271833360686250041 ..> C_0003348486584261383332 : 
+    C_0001271833360686250041 o-- "2" C_0003597513604221720537 : +agents
+    C_0003597513604221720537 --> C_0015983514335218059689 : +agent
+    C_0003597513604221720537 o-- C_0016830943016957620265 : +pos
+    C_0010039632802079899908 ()-- C_0007994493599829033402 : 
+    C_0010039632802079899908 ()-- C_0008246885713019974382 : 
+    C_0008246885713019974382 o-- C_0016830943016957620265 : +position
+    C_0008246885713019974382 o-- C_0013784868073774302216 : +grid
+    C_0010039632802079899908 ()-- C_0017109012179279410331 : 
+    C_0017109012179279410331 ..> C_0003348486584261383332 : 
+    C_0017109012179279410331 o-- C_0016619464092053922477 : -m_data
+    C_0016364042332862071011 ..|> C_0002380464098281245062 : 
+    C_0008275891181392909974 o-- C_0010588216749841672638 : +displayRefreshSubscriber
+    C_0008275891181392909974 o-- C_0010588216749841672638 : +animationState
+    C_0008275891181392909974 o-- C_0016364042332862071011 : +anim
+    C_0008275891181392909974 o-- C_0010198723229293439659 : +initChain
+    C_0008275891181392909974 o-- C_0015004038434732040862 : +m_tickTimeStamp
+    C_0008275891181392909974 o-- C_0016657878585287031157 : +m_collisionPoints
+    C_0008275891181392909974 o-- C_0016830943016957620265 : -start
+    C_0008275891181392909974 o-- C_0016830943016957620265 : -end
+    C_0008411340913254138607 <|-- C_0008275891181392909974 : 
+    C_0010039632802079899908 ()-- C_0015983514335218059689 : 
+
+%% Generated with clang-uml, version 0.6.2-27-g4e76f03
+%% LLVM version clang version 21.1.8

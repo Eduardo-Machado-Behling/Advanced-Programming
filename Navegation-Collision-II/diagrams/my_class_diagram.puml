@@ -1,0 +1,4091 @@
+@startuml
+class "GLFWvidmode" as C_0012846325683697150659
+class C_0012846325683697150659 {
+__
++blueBits : int
++greenBits : int
++height : int
++redBits : int
++refreshRate : int
++width : int
+}
+class "GLFWgammaramp" as C_0004723036958785887512
+class C_0004723036958785887512 {
+__
++blue : unsigned short *
++green : unsigned short *
++red : unsigned short *
++size : unsigned int
+}
+class "GLFWimage" as C_0011632469852842890284
+class C_0011632469852842890284 {
+__
++height : int
++pixels : unsigned char *
++width : int
+}
+class "GLFWgamepadstate" as C_0003272539664815394773
+class C_0003272539664815394773 {
+__
++axes : float[6]
++buttons : unsigned char[15]
+}
+class "GLFWallocator" as C_0001863522309830244082
+class C_0001863522309830244082 {
+__
++allocate : GLFWallocatefun
++deallocate : GLFWdeallocatefun
++reallocate : GLFWreallocatefun
++user : void *
+}
+class "std::chrono::time_point<Engine::Window::Clock>" as C_0002360312306824742041
+class C_0002360312306824742041 {
+__
+}
+class "std::chrono::time_point<Clock>" as C_0000908478690702565473
+class C_0000908478690702565473 {
+__
+}
+class "std::chrono::duration<int64_t,std::ratio<1,1000000000>>" as C_0017614144533568309161
+class C_0017614144533568309161 {
+__
+}
+class "std::chrono::time_point<std::chrono::system_clock,std::chrono::duration<int64_t,std::ratio<1,1000000000>>>" as C_0006135738021633781134
+class C_0006135738021633781134 {
+__
+}
+class "std::initializer_list<S>" as C_0010619012294112118834
+class C_0010619012294112118834 {
+__
+}
+class "std::vector<uint32_t>" as C_0008015409205204797935
+class C_0008015409205204797935 {
+__
+}
+class "std::basic_string_view<char>" as C_0013247086971467822611
+class C_0013247086971467822611 {
+__
+}
+class "std::string" as C_0001275076681856179721
+class C_0001275076681856179721 {
+__
+}
+class "std::unordered_map<std::string,Engine::Shader>" as C_0014328005042205008466
+class C_0014328005042205008466 {
+__
+}
+class "std::stack<uint32_t>" as C_0018110337699185100992
+class C_0018110337699185100992 {
+__
+}
+class "std::variant<PolyData const*,ObjectData const*>" as C_0010964578208775186054
+class C_0010964578208775186054 {
+__
+}
+class "std::variant<PolyData *,ObjectData *>" as C_0006087540299216406522
+class C_0006087540299216406522 {
+__
+}
+class "std::unique_ptr<Engine::Objects::ObjectManager::Solver>" as C_0000618757574769403656
+class C_0000618757574769403656 {
+__
+}
+class "std::vector<Engine::Objects::ObjectData>" as C_0002539092574143936661
+class C_0002539092574143936661 {
+__
+}
+class "std::vector<Engine::Objects::PolyData>" as C_0001950562844437850433
+class C_0001950562844437850433 {
+__
+}
+class "std::pair<uint32_t,uint32_t>" as C_0009810031281855847319
+class C_0009810031281855847319 {
+__
+}
+class "std::unordered_map<Engine::Objects::ObjectUUID::UUID,std::pair<uint32_t,uint32_t>>" as C_0007432155581095808926
+class C_0007432155581095808926 {
+__
+}
+class "std::unordered_map<std::pair<uint32_t,uint32_t>,Engine::Objects::ObjectUUID::UUID,Engine::Objects::ObjectManager::IIHash>" as C_0012803677092076106623
+class C_0012803677092076106623 {
+__
+}
+class "std::pair<Engine::Math::Vector<2>,Engine::Math::Vector<2>>" as C_0010562499307471491601
+class C_0010562499307471491601 {
+__
+}
+class "std::vector<Engine::Math::Vector<2>>" as C_0011385432641056735404
+class C_0011385432641056735404 {
+__
+}
+class "std::variant<Objects::PolyData *,Objects::ObjectData *>" as C_0013808655339847284184
+class C_0013808655339847284184 {
+__
+}
+class "std::vector<Engine::Point>" as C_0001620721779665700036
+class C_0001620721779665700036 {
+__
+}
+class "std::vector<Engine::Line>" as C_0002228295796337985589
+class C_0002228295796337985589 {
+__
+}
+class "std::vector<Engine::Poly>" as C_0011541246556000069736
+class C_0011541246556000069736 {
+__
+}
+class "std::basic_ofstream<char>" as C_0004276277466396066764
+class C_0004276277466396066764 {
+__
+}
+class "std::mersenne_twister_engine<uint_fast32_t,32,624,397,31,0x9908b0dfUL,11,0xffffffffUL,7,0x9d2c5680UL,15,0xefc60000UL,18,1812433253UL>" as C_0016639757653164927497
+class C_0016639757653164927497 {
+__
+}
+class "std::vector<std::string>" as C_0001347152004389415025
+class C_0001347152004389415025 {
+__
+}
+class "std::variant<std::string,int32_t,uint32_t,double>" as C_0011923903168730565843
+class C_0011923903168730565843 {
+__
+}
+class "std::unordered_map<std::string,std::variant<std::string,int32_t,uint32_t,double>>" as C_0006768016179079868705
+class C_0006768016179079868705 {
+__
+}
+class "std::unique_ptr<Command>" as C_0014556251967261241151
+class C_0014556251967261241151 {
+__
+}
+class "std::queue<std::unique_ptr<Command>>" as C_0012322381635794884228
+class C_0012322381635794884228 {
+__
+}
+class "std::stack<std::unique_ptr<Command>>" as C_0005923753518013068657
+class C_0005923753518013068657 {
+__
+}
+class "std::vector<Engine::Math::Vector<2,size_t>>" as C_0009610230603899660979
+class C_0009610230603899660979 {
+__
+}
+class "std::vector<Subscriber *>" as C_0013566849599595529376
+class C_0013566849599595529376 {
+__
+}
+class "std::unique_ptr<Cells::ICell>" as C_0001488291031702088781
+class C_0001488291031702088781 {
+__
+}
+class "std::function<void()>" as C_0013286274850898176297
+class C_0013286274850898176297 {
+__
+}
+class "std::optional<double>" as C_0004878870595026580347
+class C_0004878870595026580347 {
+__
+}
+class "std::unique_ptr<GridFactories::IFactory>" as C_0011578180343120307699
+class C_0011578180343120307699 {
+__
+}
+class "std::unique_ptr<Grid::IGrid>" as C_0001016014061568123944
+class C_0001016014061568123944 {
+__
+}
+class "std::vector<std::unique_ptr<Grid::IGrid>>" as C_0016181972057543612761
+class C_0016181972057543612761 {
+__
+}
+class "std::unordered_map<Engine::Objects::ObjectUUID::UUID,Grid::IGrid *>" as C_0009982156784235106586
+class C_0009982156784235106586 {
+__
+}
+class "std::unique_ptr<Grid::IGraph>" as C_0015578192558011062777
+class C_0015578192558011062777 {
+__
+}
+class "std::unique_ptr<Handler<T>>" as C_0008666991674172501298
+class C_0008666991674172501298 {
+__
+}
+class "std::function<bool(double)>" as C_0005038039747272111559
+class C_0005038039747272111559 {
+__
+}
+class "std::unique_ptr<PathManager::PathID,PathManager::PathDeleter>" as C_0001256189216294270405
+class C_0001256189216294270405 {
+__
+}
+class "std::optional<Engine::Math::Vector<2,float>>" as C_0018104166817325631871
+class C_0018104166817325631871 {
+__
+}
+class "std::list<std::vector<Engine::Math::Vector<2,size_t>>>" as C_0016619464092053922477
+class C_0016619464092053922477 {
+__
+}
+class "std::unordered_set<PathID *>" as C_0001861447740016456248
+class C_0001861447740016456248 {
+__
+}
+class "std::vector<Agent *>" as C_0009975635823236801458
+class C_0009975635823236801458 {
+__
+}
+class "std::unique_ptr<Simulation::Collision::IStrategy>" as C_0011712112788078757981
+class C_0011712112788078757981 {
+__
+}
+class "std::unique_ptr<Simulation::Collision::ISystem>" as C_0004144496444048943581
+class C_0004144496444048943581 {
+__
+}
+class "std::unique_ptr<Simulation::Collision::IFactory>" as C_0012108311327286886128
+class C_0012108311327286886128 {
+__
+}
+class "std::unique_ptr<Simulation::Agent>" as C_0007994895661285551473
+class C_0007994895661285551473 {
+__
+}
+class "std::default_delete<Simulation::Agent>" as C_0007579341737334202035
+class C_0007579341737334202035 {
+__
+}
+class "std::unique_ptr<Simulation::Agent,std::default_delete<Simulation::Agent>>" as C_0010134079326376607663
+class C_0010134079326376607663 {
+__
+}
+class "std::_List_iterator<std::unique_ptr<Simulation::Agent,std::default_delete<Simulation::Agent>>>" as C_0013903104245794535002
+class C_0013903104245794535002 {
+__
+}
+class "std::list<std::unique_ptr<Simulation::Agent>>" as C_0012652156542792376693
+class C_0012652156542792376693 {
+__
+}
+class "std::ratio<1,1000000000>" as C_0012415743977570969849
+class C_0012415743977570969849 {
+__
+}
+class "std::optional<std::chrono::time_point<std::chrono::system_clock,std::chrono::duration<int64_t,std::ratio<1,1000000000>>>>" as C_0015004038434732040862
+class C_0015004038434732040862 {
+__
+}
+class "std::vector<Engine::Math::Vector<2,float>>" as C_0016657878585287031157
+class C_0016657878585287031157 {
+__
+}
+class "Engine::Math::Vector<D,S>" as C_0014992418250357455111
+class C_0014992418250357455111 {
+__
+}
+class "Engine::Math::Vector<D>" as C_0012040601268495348826
+class C_0012040601268495348826 {
+__
+}
+class "Engine::Math::Vector<size_t D,S=float>" as C_0003348486584261383332
+class C_0003348486584261383332 {
++Vector(std::initializer_list<S> data) : void
++Vector(S scalar) : void
++Vector() : void
+..
++operator*(Vector<D,S> vec) const : Vector<D,S>
++operator*(S scalar) : Vector<D,S>
++operator*=(S scalar) : void
++operator*=(Vector<D,S> vec) : void
++operator+(Vector<D,S> vec) const : Vector<D,S>
++operator+=(S scalar) : void
++operator+=(Vector<D,S> vec) : void
++operator-(Vector<D,S> o) const : Vector<D,S>
++operator-=(S scalar) : void
++operator-=(Vector<D,S> vec) : void
++operator==(const Vector<D,S> & vec) const : bool
++operator[](size_t i) : S &
++operator[](size_t i) const : const S &
+..
++angle() : S
++angle(Vector<D> vec) : S
++cross(Vector<D,S> vec) : Vector<D,S>
++dot(Vector<D,S> vec) : S
++mag() : S
++magSq() : S
++min() const : S
++norm() : void
++print() : void
++size() : size_t
++sum() : S
+__
+-m_data : S[]
+}
+class "Engine::Math::Vector<2,S>" as C_0004621064861470387694
+class C_0004621064861470387694 {
+__
+}
+class "Engine::Math::Matrix<4,4,S>" as C_0006833969788498267893
+class C_0006833969788498267893 {
+__
+}
+class "Engine::Math::Matrix<size_t COLS,size_t ROWS,S=float>" as C_0001405566653863255530
+class C_0001405566653863255530 {
++Matrix() : void
+..
++operator[](size_t i) : S &
+..
+{static} +Ortho(S x0, S x1, S y0, S y1, S z0, S z1) : Matrix<4,4,S>
++at(size_t i, size_t j) : S &
++identity() : void
++model(Vector<2,S> pos, Vector<2,S> scale, float rot = 0) : void
++mult(Matrix<COLS,ROWS,S> & matrix) : Matrix<COLS,ROWS,S>
++print() : void
++size() : size_t
+__
+-m_data : S[]
+}
+class "Engine::Math::Vector<3>" as C_0006863323950975451041
+class C_0006863323950975451041 {
+__
+}
+class "Engine::Math::Vector<2>" as C_0014655922757185255660
+class C_0014655922757185255660 {
+__
+}
+class "Engine::Math::Matrix<4,4>" as C_0004421601367316582408
+class C_0004421601367316582408 {
+__
+}
+class "Engine::Math::Vector<2,uint32_t>" as C_0002739534453154856813
+class C_0002739534453154856813 {
+__
+}
+class "Engine::Math::Vector<2,float>" as C_0016830943016957620265
+class C_0016830943016957620265 {
+__
+}
+class "Engine::Math::Vector<2,size_t>" as C_0013784868073774302216
+class C_0013784868073774302216 {
+__
+}
+class "Engine::Math::Vector<3,float>" as C_0001951113896505040197
+class C_0001951113896505040197 {
+__
+}
+class "Engine::Shader" as C_0006332989992941243028
+class C_0006332989992941243028 {
++Shader() : void
++~Shader() : void
+..
++add(GLenum type, const char * source) : bool
++bind() : void
++link() : bool
++set<T>(const char * name, T val) : void
++unbind() : void
+__
+-m_id : uint32_t
+-m_shaders : std::vector<uint32_t>
+}
+class "Engine::ShaderManager" as C_0000614546160742051811
+class C_0000614546160742051811 {
++at(std::string_view name) : Shader &
++init(std::filesystem::path root) : void
+-load(std::string_view name) : void
+__
+-m_root : std::filesystem::path
+-m_shaders : std::unordered_map<std::string,Shader>
+}
+class "Engine::Objects::ObjectData" as C_0003046615137435745376
+class C_0003046615137435745376 {
+__
++color : float[3]
++model : float[16]
++shader : Shader *
++uuid : uint32_t
+}
+class "Engine::Objects::PolyData" as C_0008422761201490794599
+class C_0008422761201490794599 {
+__
++VAO : uint32_t
++borderColor : Math::Vector<3>
++borderSize : float
++color : Math::Vector<3>
++count : uint32_t
++shader : Shader *
++uuid : uint32_t
+}
+class "Engine::Objects::ObjectUUID" as C_0002088975552499886084
+class C_0002088975552499886084 {
++ObjectUUID() : void
+..
++get() : UUID
++remove(UUID uuid) : void
++reset() : void
+__
+-available : std::stack<uint32_t>
+}
+class "Engine::Objects::ObjectManager" as C_0003267318088240048309
+class C_0003267318088240048309 {
++add(Types type, ObjectData && data) : ObjectUUID::UUID
++add(PolyData && data) : ObjectUUID::UUID
++cget(ObjectUUID::UUID & id) : std::variant<const PolyData *,const ObjectData *>
++clear() : void
++count() : ObjectCount
++deleteBuffers(int n, uint32_t * buffs) : void
++deleteVAO(int n, uint32_t * buffs) : void
++draw() : void
++drawCalls() : uint32_t
++entities() : uint32_t
++get(ObjectUUID::UUID & id) : std::variant<PolyData *,ObjectData *>
++remove(ObjectUUID::UUID id) : void
++setSolver(Solver * solver) : void
++type(ObjectUUID::UUID id) : int
+__
+-data : struct __Data
+-m_count : ObjectCount
+-m_drawCalls : uint32_t
+-solver : std::unique_ptr<Solver>
+-uuid : ObjectUUID
+}
+abstract "Engine::Objects::ObjectManager::Solver" as C_0015372026597303525006
+abstract C_0015372026597303525006 {
+{abstract} +operator()(size_t i, std::vector<ObjectData> & data, bool update) = 0 : void
+{abstract} +operator()(std::vector<PolyData> & data, bool update) = 0 : void
+..
+{abstract} +getDrawCalls() = 0 : uint32_t
++~Solver() constexpr = default : void
+__
+}
+class "Engine::Objects::ObjectManager::ObjectCount" as C_0001901164363097582429
+class C_0001901164363097582429 {
+__
++lines : uint32_t
++points : uint32_t
++polys : uint32_t
+}
+enum "Engine::Objects::ObjectManager::Types" as C_0000576645092526226755
+enum C_0000576645092526226755 {
+POINT
+LINE
+POLY
+}
+class "Engine::Objects::ObjectManager::IIHash" as C_0000136662589974312360
+class C_0000136662589974312360 {
++operator()(const std::pair<uint32_t,uint32_t> & id) const : std::size_t
+__
+}
+class "Engine::Objects::ObjectManager::__Data" as C_0002591437917088692538
+class C_0002591437917088692538 {
+__
++ii2uuid : std::unordered_map<std::pair<uint32_t,uint32_t>,ObjectUUID::UUID,IIHash>
++lines : std::vector<ObjectData>
++points : std::vector<ObjectData>
++polys : std::vector<PolyData>
++update : bool[3]
++uuid2ii : std::unordered_map<ObjectUUID::UUID,std::pair<uint32_t,uint32_t>>
+}
+class "Engine::Line" as C_0016726297106288310335
+class C_0016726297106288310335 {
++Line(Line && line) = default : void
++Line(Engine::Math::Vector<2> pos0, Engine::Math::Vector<2> pos1, Engine::Math::Vector<3> color, float stroke, Shader * shader, Objects::ObjectManager & manager) : void
+..
++getVerts() : const std::pair<Math::Vector<2>,Math::Vector<2>> &
++setVerts(Engine::Math::Vector<3> color) : void
++setVerts(Engine::Math::Vector<2> pos0, Engine::Math::Vector<2> pos1) : void
+-updateColor(Objects::ObjectData & data) : void
+-updateModel(Objects::ObjectData & data) : void
+__
+-m_color : Math::Vector<3>
+-m_id : Objects::ObjectUUID::UUID
+-m_manager : Objects::ObjectManager &
+-m_stroke : float
+-m_verts : std::pair<Math::Vector<2>,Math::Vector<2>>
+}
+class "Engine::Point" as C_0003115881373451800007
+class C_0003115881373451800007 {
++Point(Engine::Math::Vector<2> pos, Engine::Math::Vector<3> color, float radius, Objects::ObjectUUID::UUID id, Objects::ObjectManager & manager) : void
++Point(Point && p) : void
++Point(Point & p) : void
+..
++getColor() : Engine::Math::Vector<3>
++getID() : Objects::ObjectUUID::UUID
++getPos() : Engine::Math::Vector<2>
++getRadius() : float
++setColor(Engine::Math::Vector<3> newColor) : void
++setPos(Engine::Math::Vector<2> newPos) : void
++setRadius(float rad) : void
+-updateColor() : void
+-updateMatrix() : void
+__
+-m_color : Math::Vector<3>
+-m_id : Objects::ObjectUUID::UUID
+-m_manager : Objects::ObjectManager &
+-m_model : Math::Matrix<4,4>
+-m_pos : Math::Vector<2>
+-m_radius : float
+}
+class "Engine::Poly" as C_0017990578196595389321
+class C_0017990578196595389321 {
++Poly(std::vector<Math::Vector<2>> verts, bool anchor, Engine::Math::Vector<3> color, Engine::Math::Vector<3> borderColor, float borderSize, Shader * shader, Objects::ObjectManager & manager) : void
++Poly(Poly && other) noexcept : void
++Poly(const Poly &) = deleted : void
++~Poly() : void
+..
++operator=(Poly && other) noexcept : Poly &
++operator=(const Poly &) = deleted : Poly &
+..
++addVert(Engine::Math::Vector<2> vert) : void
++getIndices() : const std::vector<uint32_t> &
++getVerts() : const std::vector<Math::Vector<2>> &
+-mesh(bool anchor) : void
++removeVert(size_t i) : void
+-setup(Objects::PolyData & data) : void
+__
+-EBO : uint32_t
+-VAO : uint32_t
+-VBO : uint32_t
+-m_anchor : bool
+-m_borderColor : Math::Vector<3>
+-m_borderSize : float
+-m_color : Math::Vector<3>
+-m_id : Objects::ObjectUUID::UUID
+-m_indices : std::vector<uint32_t>
+-m_manager : Objects::ObjectManager *
+-m_verts : std::vector<Math::Vector<2>>
+}
+class "Engine::Engine" as C_0013249249226652506748
+class C_0013249249226652506748 {
++Engine(const Engine &) = deleted : void
+-Engine() = default : void
+..
++operator=(const Engine &) = deleted : Engine &
+..
++clear() : void
++count() : Objects::ObjectManager::ObjectCount
++createLine(Engine::Math::Vector<2> pos0, Engine::Math::Vector<2> pos1, Engine::Math::Vector<3> color, float stroke, Shader * shader = nullptr) : Line &
++createPoint(Engine::Math::Vector<2> pos, Engine::Math::Vector<3> color, float radius, Shader * shader = nullptr) : Point &
++createPoly(std::vector<Math::Vector<2>> & verts, Engine::Math::Vector<3> color, Engine::Math::Vector<3> borderColor, float borderSize, bool anchor = true, Shader * shader = nullptr) : Poly &
++draw() : void
++drawCalls() : uint32_t
++entities() : uint32_t
++get(Objects::ObjectUUID::UUID & id) : std::variant<Objects::PolyData *,Objects::ObjectData *>
+{static} +get() : Engine *
++getType(Objects::ObjectUUID::UUID id) : int
+{static} +init(GLADloadproc proc, Engine::Math::Vector<2,uint32_t> & windowSize) : Engine *
++lookupObjectUUID(int x, int y) : Objects::ObjectUUID::UUID
++remove(Objects::ObjectUUID::UUID id) : void
++resize(double w, double h) : bool
++setWinSize(Engine::Math::Vector<2,float> m_windowSize) : void
++update(double dt) : void
++winSize() : Engine::Math::Vector<2,uint32_t>
+__
+-currentShader : Shader *
+-m_colorTextureID : uint32_t
+-m_fboID : uint32_t
+-m_idTextureID : uint32_t
+{static} -m_instance : std::unique_ptr<Engine>
+-m_lines : std::vector<Line>
+-m_objManager : Objects::ObjectManager
+-m_points : std::vector<Point>
+-m_polys : std::vector<Poly>
+-m_rboDepthStencil : uint32_t
+-m_shaderManager : ShaderManager
+-m_windowSize : Math::Vector<2,uint32_t>
+-uboMatrices : uint32_t
+}
+abstract "Engine::Window" as C_0008411340913254138607
+abstract C_0008411340913254138607 {
++Window(Engine::Math::Vector<2,uint32_t> windowSize) : void
++Window() : void
++~Window() : void
+..
+#clearEngine() : void
++cursorPosCallback(double xpos, double ypos) : void
++framebufferSizeCallback(int width, int height) : void
++gameloop() : void
++getImGuiContext() const : ImGuiContext *
++getImPlotContext() const : ImPlotContext *
+-init(Engine::Math::Vector<2,uint32_t> windowSize) : void
+-initOpenGL(int major, int minor) : void
++isActivate() : bool
++keyCallback(int key, int scancode, int action, int mode) : void
+#log() : void
++mouseButtonCallback(int button, int action, int mods) : void
++scrollCallback(double xoffset, double yoffset) : void
+{static} +staticCursorPosCallback(GLFWwindow * win, double xpos, double ypos) : void
+{static} +staticFramebufferSizeCallback(GLFWwindow * win, int width, int height) : void
+{static} +staticKeyCallback(GLFWwindow * win, int key, int scancode, int action, int mode) : void
+{static} +staticMouseButtonCallback(GLFWwindow * win, int button, int action, int mods) : void
+{static} +staticScrollCallback(GLFWwindow * win, double xoffset, double yoffset) : void
+#terminate() : void
+{abstract} +uiUpdate() = 0 : void
+{abstract} +update(double dt) = 0 : void
+__
+#gen : std::mt19937
+#m_engine : Engine *
+#m_lastTime : std::chrono::time_point<Clock>
+#m_log : std::ofstream
+#m_mouse : Math::Vector<2,float>
+#m_openglVersion : char[32]
+#m_startTime : std::chrono::time_point<Clock>
+#m_state : LogState
+#m_window : GLFWwindow *
+#m_windowSize : Math::Vector<2,float>
+#rd : std::random_device
+}
+class "Engine::Window::LogState" as C_0007565751239023035126
+class C_0007565751239023035126 {
++LogState() : void
++addHeader(const char * header) : void
++get(const char * header) : Var &
++headers() : const std::vector<std::string> &
++reset() : void
+__
+-m_headers : std::vector<std::string>
+-m_vars : std::unordered_map<std::string,Var>
+}
+class "gladGLversionStruct" as C_0014114407443099026821
+class C_0014114407443099026821 {
+__
++major : int
++minor : int
+}
+enum "khronos_boolean_enum_t" as C_0014616433944762754393
+enum C_0014616433944762754393 {
+KHRONOS_FALSE
+KHRONOS_TRUE
+KHRONOS_BOOLEAN_ENUM_FORCE_SIZE
+}
+abstract "Command" as C_0015525581018586802988
+abstract C_0015525581018586802988 {
++~Command() : void
+..
+{abstract} +execute() = 0 : bool
++restore() : void
+__
+}
+class "Invoker" as C_0009460517425703679938
+class C_0009460517425703679938 {
++addCommand(Command * command) : void
++execute() : void
+{static} +get() : Invoker &
++restore(size_t amount = std::numeric_limits<size_t>::max()) : void
+__
+-m_queue : std::queue<std::unique_ptr<Command>>
+-m_restoreStack : std::stack<std::unique_ptr<Command>>
+}
+abstract "Cells::ICell" as C_0007524051125027650422
+abstract C_0007524051125027650422 {
++~ICell() : void
+..
++clear() : void
+{abstract} +draw(Engine::Engine & engine) = 0 : void
++getPos() : Vec2u
++isBlocking() : bool
++reset() : void
+{abstract} +tick(Engine::Engine & engine, double dt) = 0 : bool
++tickSetup() : void
+__
+#m_pos : Vec2u
+}
+class "CellFactory" as C_0005434895093103671544
+class C_0005434895093103671544 {
+-CellFactory() = default : void
+..
++Create(CellType type, Vec2u pos, Vec2u arg = = {0, 0}) const : Cells::ICell *
+{static} +get() : const CellFactory &
+__
+{static} -m_instance : std::unique_ptr<CellFactory>
+}
+enum "CellFactory::CellType" as C_0008917128763581520149
+enum C_0008917128763581520149 {
+EMPTY
+OBS
+ORIGIN
+DESTINATION
+}
+abstract "Grid::IGraph" as C_0000056909946344020665
+abstract C_0000056909946344020665 {
++~IGraph() constexpr = default : void
+..
+{abstract} +getNeighbors(Vec2u coord) = 0 : std::vector<Vec2u>
+{abstract} +isValid(Vec2u coord) = 0 : bool
+__
+}
+abstract "Grid::IGrid" as C_0011614116359736977436
+abstract C_0011614116359736977436 {
++IGrid(Vec2u coord) : void
+{abstract} +~IGrid() = 0 : void
+..
+{abstract} +center() const = 0 : Vec2
++clear() : void
+{abstract} +draw(Engine::Engine & engine) = 0 : void
++empty() const : bool
++fill(Color color) : void
++isBlocking() const : bool
+{abstract} +offsetRow(size_t row) const = 0 : float
++reset() : Cells::ICell *
++set(Cells::ICell * cell) : void
++subscribeOnChanged(Subscriber * sub) : void
++tick(Engine::Engine & engine, double dt) : bool
++tickSetup() : void
+__
+#m_cell : std::unique_ptr<Cells::ICell>
+#m_cellChanged : Publisher
+#m_coord : Vec2u
+#m_fill : Color
+}
+abstract "Subscriber" as C_0000994511990246631929
+abstract C_0000994511990246631929 {
++~Subscriber() : void
+..
+{abstract} +update() = 0 : void
+__
+}
+class "Publisher" as C_0010203260831736923132
+class C_0010203260831736923132 {
++~Publisher() : void
+..
++notifySubscribers() const : void
++subscribe(Subscriber * obs) : void
++unsubscribe(Subscriber * obs) : void
+__
+#m_observers : std::vector<Subscriber *>
+}
+abstract "GridFactories::IFactory" as C_0001642024242126274810
+abstract C_0001642024242126274810 {
++~IFactory() constexpr = default : void
+..
+{abstract} +calculateDelta(Vec2 areaSize, size_t rows, size_t cols) const = 0 : Vec2
+{abstract} +createGraph() const = 0 : Grid::IGraph *
+{abstract} +createGrid(Vec2u pos) const = 0 : Grid::IGrid *
+{abstract} +getGridCoord(Vec2 mousePos, Vec2 start, Vec2 delta, size_t rows, size_t cols) const = 0 : Vec2u
+__
+}
+class "Subscribers::CallbackSubscriber" as C_0010588216749841672638
+class C_0010588216749841672638 {
++~CallbackSubscriber() = default : void
+..
++setOnChange(Callback callback) : void
++update() : void
+__
+-m_onChanged : Callback
+}
+class "GridManager" as C_0000187593043476956552
+class C_0000187593043476956552 {
+-GridManager() : void
+..
++allocate(AllocationParam param) : GridManager &
++allocate(size_t rows, size_t cols, Vec2 start, Vec2 end, GridFactories::IFactory * gridFactory = nullptr) : GridManager &
++allocated() const : bool
++cget(size_t row, size_t col) const : const Grid::IGrid *
++cget(Vec2u coord) const : const Grid::IGrid *
++cget(Vec2 mouseCoord) const : const Grid::IGrid *
++clear() : GridManager &
++cols() const : size_t
++deallocate() : GridManager &
++end() const : Vec2
++get(size_t row, size_t col) const : Grid::IGrid *
++get(Vec2u coord) const : Grid::IGrid *
++get(Vec2 mouseCoord) const : Grid::IGrid *
+{static} +get() : GridManager &
++getCellSize() : Vec2
++getCenter(Vec2u gridCoord) const : Vec2
++getCoord(Vec2u gridCoord) const : Vec2
++getCoord(Vec2 mouseCoord) const : Vec2u
++getGraph() : Grid::IGraph *
+-impl_get(size_t row, size_t col) const : Grid::IGrid *
++rows() const : size_t
++setup() : void
++start() const : Vec2
++subscribeOnCellChange(Subscriber * obs) : GridManager &
++subscribeOnGridChange(Subscriber * obs) : GridManager &
++update(Engine::Engine & engine, std::optional<double> dt = std::nullopt) const : bool
+__
+-m_area : Vec2[2]
+-m_cellPublisher : Publisher
+-m_changed : Subscribers::CallbackSubscriber
+-m_delta : Vec2
+-m_factory : std::unique_ptr<GridFactories::IFactory>
+-m_graph : std::unique_ptr<Grid::IGraph>
+-m_grid : std::vector<std::unique_ptr<Grid::IGrid>>
+-m_gridPublisher : Publisher
+-m_gridSize : Vec2u
+{static} -m_instance : std::unique_ptr<GridManager>
+-m_uuidLookUp : std::unordered_map<Engine::Objects::ObjectUUID::UUID,Grid::IGrid *>
+}
+class "GridManager::AllocationParam" as C_0010469210913964836578
+class C_0010469210913964836578 {
+__
++end : Vec2
++gridConfig : Vec2u
++gridFactory : GridFactories::IFactory *
++start : Vec2
+}
+class "Commands::AddCell" as C_0008547169733880865913
+class C_0008547169733880865913 {
++AddCell(Cells::ICell * cell, Vec2u position) : void
++~AddCell() = default : void
+..
++execute() : bool
+__
+-m_cell : Cells::ICell *
+-m_position : Vec2u
+}
+class "Commands::RemoveCell" as C_0010665470809809381566
+class C_0010665470809809381566 {
++RemoveCell(Vec2u position, bool clear = true, bool save = false) : void
++~RemoveCell() = default : void
+..
++execute() : bool
++restore() : void
+__
+-m_cell : std::unique_ptr<Cells::ICell>
+-m_clear : bool
+-m_position : Vec2u
+-m_save : bool
+}
+class "Handler<T>" as C_0011031694641276016248
+class C_0011031694641276016248 {
+__
+}
+class "Chain::GridAllocatorChain" as C_0010198723229293439659
+class C_0010198723229293439659 {
++GridAllocatorChain() = default : void
++~GridAllocatorChain() = default : void
+..
+#process(GridManager::AllocationParam & param) : bool
+__
+}
+class "Chain::GridConfig" as C_0005855383950052472276
+class C_0005855383950052472276 {
++GridConfig(bool skip = false) : void
++~GridConfig() = default : void
+..
+#process(GridManager::AllocationParam & param) : bool
+__
+-m_ask : bool
+}
+class "Chain::GridFactory" as C_0010067145397289361700
+class C_0010067145397289361700 {
++GridFactory(bool ask = true) : void
++~GridFactory() = default : void
+..
+#process(GridManager::AllocationParam & param) : bool
+__
+-m_ask : bool
+}
+class "Chain::GridManager" as C_0002355428982340356818
+class C_0002355428982340356818 {
++GridManager() = default : void
++~GridManager() = default : void
+..
+#process(GridManager::AllocationParam & param) : bool
+__
+}
+class "Handler<GridManager::AllocationParam>" as C_0000708210251265098836
+class C_0000708210251265098836 {
+__
+}
+class "AnimationManager<Clock>" as C_0002380464098281245062
+class C_0002380464098281245062 {
++getState() : PlayerState
++loop() : void
++pause() : void
++registerOnStateChanged(Subscriber * sub) : void
++reset() : void
++setIdleFunction(IdleFunc func) : void
++setPlayFunction(PlayFunc func) : void
++start() : void
+__
+-idle : IdleFunc
+-m_backTrack : double
+-m_firstTick : bool
+-m_start : std::chrono::time_point<Clock>
+-onStateChanged : Publisher
+-play : PlayFunc
+-state : PlayerState
+}
+enum "AnimationManager::PlayerState" as C_0000961498124090157081
+enum C_0000961498124090157081 {
+INIT
+PLAYING
+PAUSED
+ENDED
+}
+class "PathManager" as C_0010039632802079899908
+class C_0010039632802079899908 {
+-PathManager() : void
+-~PathManager() : void
+..
+{static} +get() : PathManager &
++getSegment(PathID * id, size_t i) : std::optional<Vec2>
++invalidateAll() : void
++requestPath(DynamicInfo info, Vec2u start, Vec2u end, Grid::IGraph * graph) : PathPtr
+-unregisterPath(PathID * id) : void
++update() : void
+__
+-m_onGridChange : Subscribers::CallbackSubscriber
+-m_pathStore : std::list<std::vector<Vec2u>>
+-m_registry : std::unordered_set<PathID *>
+}
+class "PathManager::PathDeleter" as C_0001861949267240608698
+class C_0001861949267240608698 {
++operator()(PathID * p) const : void
+__
+}
+class "PathManager::DynamicInfo" as C_0007994493599829033402
+class C_0007994493599829033402 {
+__
++radius : double
++velocity : double
+}
+abstract "Simulation::Collision::IStrategy" as C_0001893470601361278794
+abstract C_0001893470601361278794 {
++~IStrategy() constexpr = default : void
+..
+{abstract} +computeVelocity(Agent * me, const std::vector<Agent *> & neighbors) = 0 : Vec2
+__
+}
+class "Simulation::Collision::ISystem" as C_0011109651401294498108
+class C_0011109651401294498108 {
++~ISystem() constexpr = default : void
+..
++postStep() : void
++preStep(double dt) : void
+__
+}
+abstract "Simulation::Collision::IFactory" as C_0003082058397422627119
+abstract C_0003082058397422627119 {
++~IFactory() constexpr = default : void
+..
+{abstract} +createStrategy() = 0 : std::unique_ptr<IStrategy>
+{abstract} +createSystem() = 0 : std::unique_ptr<ISystem>
+__
+}
+class "Simulation::Collision::DirectFactory" as C_0005842271853596682475
+class C_0005842271853596682475 {
++createStrategy() : std::unique_ptr<IStrategy>
++createSystem() : std::unique_ptr<ISystem>
+__
+-currentSystem : DirectSystem *
+}
+class "Simulation::Collision::GridFactory" as C_0009822241482809889321
+class C_0009822241482809889321 {
++createStrategy() : std::unique_ptr<IStrategy>
++createSystem() : std::unique_ptr<ISystem>
+__
+-currentSystem : GridSystem *
+}
+class "Simulation::Collision::RvoFactory" as C_0014516658824998915067
+class C_0014516658824998915067 {
++createStrategy() : std::unique_ptr<IStrategy>
++createSystem() : std::unique_ptr<ISystem>
+__
+-currentSystem : RvoSystem *
+}
+class "Simulation::Collision::RvoSystem" as C_0001353520021860913053
+class C_0001353520021860913053 {
+__
+}
+class "Simulation::Collision::GridSystem" as C_0005505475280958631509
+class C_0005505475280958631509 {
+__
+}
+class "Simulation::Collision::DirectSystem" as C_0015899031353631526703
+class C_0015899031353631526703 {
+__
+}
+class "Simulation::Agent" as C_0018413845961660969714
+class C_0018413845961660969714 {
++Agent(Vec2 startPos, float r, float speed, PathManager::PathPtr pathID) : void
+..
++draw(Engine::Engine & engine) : void
++reset() : void
++setStrategy(std::unique_ptr<Collision::IStrategy> newStrategy) : void
++update(double dt, const std::vector<Agent *> & neighbors) : void
+__
++i : int
++maxSpeed : float
++pathID : PathManager::PathPtr
++position : Vec2
++preferredVelocity : Vec2
++radius : float
++startPos : Vec2
++strategy : std::unique_ptr<Collision::IStrategy>
++velocity : Vec2
+}
+class "Simulation::Manager" as C_0017667979732313679097
+class C_0017667979732313679097 {
++Manager(const Manager &) = deleted : void
++Manager() = default : void
+..
++operator=(const Manager &) = deleted : Manager &
+..
++addAgent(std::unique_ptr<Agent> agent) : AgentID
+{static} +get() : Manager &
++getAgent(AgentID it) : Agent &
++init(std::unique_ptr<Collision::IFactory> factory) : void
++reset() : void
++rmvAgent(AgentID it) : void
++syncVisuals(Engine::Engine & engine) : void
++update(double dt) : void
+__
+-agents : std::list<std::unique_ptr<Agent>>
+-factory : std::unique_ptr<Collision::IFactory>
+-system : std::unique_ptr<Collision::ISystem>
+}
+class "ImVec2" as C_0004154694326974958552
+class C_0004154694326974958552 {
++ImVec2() : void
++ImVec2(float _x, float _y) : void
+..
++operator[](size_t idx) : float &
++operator[](size_t idx) const : float
+__
++x : float
++y : float
+}
+class "ImVec4" as C_0011915251363486582223
+class C_0011915251363486582223 {
++ImVec4() : void
++ImVec4(float _x, float _y, float _z, float _w) : void
+__
++w : float
++x : float
++y : float
++z : float
+}
+class "ImTextureRef" as C_0003978164807005583507
+class C_0003978164807005583507 {
++ImTextureRef() : void
++ImTextureRef(ImTextureID tex_id) : void
++ImTextureRef(void * tex_id) : void
+..
++GetTexID() const : ImTextureID
+__
++_TexData : ImTextureData *
++_TexID : ImTextureID
+}
+enum "ImGuiWindowFlags_" as C_0013603013693477163398
+enum C_0013603013693477163398 {
+ImGuiWindowFlags_None
+ImGuiWindowFlags_NoTitleBar
+ImGuiWindowFlags_NoResize
+ImGuiWindowFlags_NoMove
+ImGuiWindowFlags_NoScrollbar
+ImGuiWindowFlags_NoScrollWithMouse
+ImGuiWindowFlags_NoCollapse
+ImGuiWindowFlags_AlwaysAutoResize
+ImGuiWindowFlags_NoBackground
+ImGuiWindowFlags_NoSavedSettings
+ImGuiWindowFlags_NoMouseInputs
+ImGuiWindowFlags_MenuBar
+ImGuiWindowFlags_HorizontalScrollbar
+ImGuiWindowFlags_NoFocusOnAppearing
+ImGuiWindowFlags_NoBringToFrontOnFocus
+ImGuiWindowFlags_AlwaysVerticalScrollbar
+ImGuiWindowFlags_AlwaysHorizontalScrollbar
+ImGuiWindowFlags_NoNavInputs
+ImGuiWindowFlags_NoNavFocus
+ImGuiWindowFlags_UnsavedDocument
+ImGuiWindowFlags_NoDocking
+ImGuiWindowFlags_NoNav
+ImGuiWindowFlags_NoDecoration
+ImGuiWindowFlags_NoInputs
+ImGuiWindowFlags_DockNodeHost
+ImGuiWindowFlags_ChildWindow
+ImGuiWindowFlags_Tooltip
+ImGuiWindowFlags_Popup
+ImGuiWindowFlags_Modal
+ImGuiWindowFlags_ChildMenu
+}
+enum "ImGuiChildFlags_" as C_0006474913492447451056
+enum C_0006474913492447451056 {
+ImGuiChildFlags_None
+ImGuiChildFlags_Borders
+ImGuiChildFlags_AlwaysUseWindowPadding
+ImGuiChildFlags_ResizeX
+ImGuiChildFlags_ResizeY
+ImGuiChildFlags_AutoResizeX
+ImGuiChildFlags_AutoResizeY
+ImGuiChildFlags_AlwaysAutoResize
+ImGuiChildFlags_FrameStyle
+ImGuiChildFlags_NavFlattened
+}
+enum "ImGuiItemFlags_" as C_0017657842095153164789
+enum C_0017657842095153164789 {
+ImGuiItemFlags_None
+ImGuiItemFlags_NoTabStop
+ImGuiItemFlags_NoNav
+ImGuiItemFlags_NoNavDefaultFocus
+ImGuiItemFlags_ButtonRepeat
+ImGuiItemFlags_AutoClosePopups
+ImGuiItemFlags_AllowDuplicateId
+ImGuiItemFlags_Disabled
+}
+enum "ImGuiInputTextFlags_" as C_0006951952222396206911
+enum C_0006951952222396206911 {
+ImGuiInputTextFlags_None
+ImGuiInputTextFlags_CharsDecimal
+ImGuiInputTextFlags_CharsHexadecimal
+ImGuiInputTextFlags_CharsScientific
+ImGuiInputTextFlags_CharsUppercase
+ImGuiInputTextFlags_CharsNoBlank
+ImGuiInputTextFlags_AllowTabInput
+ImGuiInputTextFlags_EnterReturnsTrue
+ImGuiInputTextFlags_EscapeClearsAll
+ImGuiInputTextFlags_CtrlEnterForNewLine
+ImGuiInputTextFlags_ReadOnly
+ImGuiInputTextFlags_Password
+ImGuiInputTextFlags_AlwaysOverwrite
+ImGuiInputTextFlags_AutoSelectAll
+ImGuiInputTextFlags_ParseEmptyRefVal
+ImGuiInputTextFlags_DisplayEmptyRefVal
+ImGuiInputTextFlags_NoHorizontalScroll
+ImGuiInputTextFlags_NoUndoRedo
+ImGuiInputTextFlags_ElideLeft
+ImGuiInputTextFlags_CallbackCompletion
+ImGuiInputTextFlags_CallbackHistory
+ImGuiInputTextFlags_CallbackAlways
+ImGuiInputTextFlags_CallbackCharFilter
+ImGuiInputTextFlags_CallbackResize
+ImGuiInputTextFlags_CallbackEdit
+ImGuiInputTextFlags_WordWrap
+}
+enum "ImGuiTreeNodeFlags_" as C_0001728082752694243858
+enum C_0001728082752694243858 {
+ImGuiTreeNodeFlags_None
+ImGuiTreeNodeFlags_Selected
+ImGuiTreeNodeFlags_Framed
+ImGuiTreeNodeFlags_AllowOverlap
+ImGuiTreeNodeFlags_NoTreePushOnOpen
+ImGuiTreeNodeFlags_NoAutoOpenOnLog
+ImGuiTreeNodeFlags_DefaultOpen
+ImGuiTreeNodeFlags_OpenOnDoubleClick
+ImGuiTreeNodeFlags_OpenOnArrow
+ImGuiTreeNodeFlags_Leaf
+ImGuiTreeNodeFlags_Bullet
+ImGuiTreeNodeFlags_FramePadding
+ImGuiTreeNodeFlags_SpanAvailWidth
+ImGuiTreeNodeFlags_SpanFullWidth
+ImGuiTreeNodeFlags_SpanLabelWidth
+ImGuiTreeNodeFlags_SpanAllColumns
+ImGuiTreeNodeFlags_LabelSpanAllColumns
+ImGuiTreeNodeFlags_NavLeftJumpsToParent
+ImGuiTreeNodeFlags_CollapsingHeader
+ImGuiTreeNodeFlags_DrawLinesNone
+ImGuiTreeNodeFlags_DrawLinesFull
+ImGuiTreeNodeFlags_DrawLinesToNodes
+ImGuiTreeNodeFlags_NavLeftJumpsBackHere
+ImGuiTreeNodeFlags_SpanTextWidth
+}
+enum "ImGuiPopupFlags_" as C_0015233257545892296770
+enum C_0015233257545892296770 {
+ImGuiPopupFlags_None
+ImGuiPopupFlags_MouseButtonLeft
+ImGuiPopupFlags_MouseButtonRight
+ImGuiPopupFlags_MouseButtonMiddle
+ImGuiPopupFlags_NoReopen
+ImGuiPopupFlags_NoOpenOverExistingPopup
+ImGuiPopupFlags_NoOpenOverItems
+ImGuiPopupFlags_AnyPopupId
+ImGuiPopupFlags_AnyPopupLevel
+ImGuiPopupFlags_AnyPopup
+ImGuiPopupFlags_MouseButtonShift_
+ImGuiPopupFlags_MouseButtonMask_
+ImGuiPopupFlags_InvalidMask_
+}
+enum "ImGuiSelectableFlags_" as C_0013331548636151508185
+enum C_0013331548636151508185 {
+ImGuiSelectableFlags_None
+ImGuiSelectableFlags_NoAutoClosePopups
+ImGuiSelectableFlags_SpanAllColumns
+ImGuiSelectableFlags_AllowDoubleClick
+ImGuiSelectableFlags_Disabled
+ImGuiSelectableFlags_AllowOverlap
+ImGuiSelectableFlags_Highlight
+ImGuiSelectableFlags_SelectOnNav
+ImGuiSelectableFlags_DontClosePopups
+}
+enum "ImGuiComboFlags_" as C_0009244298407977703482
+enum C_0009244298407977703482 {
+ImGuiComboFlags_None
+ImGuiComboFlags_PopupAlignLeft
+ImGuiComboFlags_HeightSmall
+ImGuiComboFlags_HeightRegular
+ImGuiComboFlags_HeightLarge
+ImGuiComboFlags_HeightLargest
+ImGuiComboFlags_NoArrowButton
+ImGuiComboFlags_NoPreview
+ImGuiComboFlags_WidthFitPreview
+ImGuiComboFlags_HeightMask_
+}
+enum "ImGuiTabBarFlags_" as C_0008251796199457040779
+enum C_0008251796199457040779 {
+ImGuiTabBarFlags_None
+ImGuiTabBarFlags_Reorderable
+ImGuiTabBarFlags_AutoSelectNewTabs
+ImGuiTabBarFlags_TabListPopupButton
+ImGuiTabBarFlags_NoCloseWithMiddleMouseButton
+ImGuiTabBarFlags_NoTabListScrollingButtons
+ImGuiTabBarFlags_NoTooltip
+ImGuiTabBarFlags_DrawSelectedOverline
+ImGuiTabBarFlags_FittingPolicyMixed
+ImGuiTabBarFlags_FittingPolicyShrink
+ImGuiTabBarFlags_FittingPolicyScroll
+ImGuiTabBarFlags_FittingPolicyMask_
+ImGuiTabBarFlags_FittingPolicyDefault_
+ImGuiTabBarFlags_FittingPolicyResizeDown
+}
+enum "ImGuiTabItemFlags_" as C_0001137724934604344126
+enum C_0001137724934604344126 {
+ImGuiTabItemFlags_None
+ImGuiTabItemFlags_UnsavedDocument
+ImGuiTabItemFlags_SetSelected
+ImGuiTabItemFlags_NoCloseWithMiddleMouseButton
+ImGuiTabItemFlags_NoPushId
+ImGuiTabItemFlags_NoTooltip
+ImGuiTabItemFlags_NoReorder
+ImGuiTabItemFlags_Leading
+ImGuiTabItemFlags_Trailing
+ImGuiTabItemFlags_NoAssumedClosure
+}
+enum "ImGuiFocusedFlags_" as C_0012675912128555288073
+enum C_0012675912128555288073 {
+ImGuiFocusedFlags_None
+ImGuiFocusedFlags_ChildWindows
+ImGuiFocusedFlags_RootWindow
+ImGuiFocusedFlags_AnyWindow
+ImGuiFocusedFlags_NoPopupHierarchy
+ImGuiFocusedFlags_DockHierarchy
+ImGuiFocusedFlags_RootAndChildWindows
+}
+enum "ImGuiHoveredFlags_" as C_0002246129611307162143
+enum C_0002246129611307162143 {
+ImGuiHoveredFlags_None
+ImGuiHoveredFlags_ChildWindows
+ImGuiHoveredFlags_RootWindow
+ImGuiHoveredFlags_AnyWindow
+ImGuiHoveredFlags_NoPopupHierarchy
+ImGuiHoveredFlags_DockHierarchy
+ImGuiHoveredFlags_AllowWhenBlockedByPopup
+ImGuiHoveredFlags_AllowWhenBlockedByActiveItem
+ImGuiHoveredFlags_AllowWhenOverlappedByItem
+ImGuiHoveredFlags_AllowWhenOverlappedByWindow
+ImGuiHoveredFlags_AllowWhenDisabled
+ImGuiHoveredFlags_NoNavOverride
+ImGuiHoveredFlags_AllowWhenOverlapped
+ImGuiHoveredFlags_RectOnly
+ImGuiHoveredFlags_RootAndChildWindows
+ImGuiHoveredFlags_ForTooltip
+ImGuiHoveredFlags_Stationary
+ImGuiHoveredFlags_DelayNone
+ImGuiHoveredFlags_DelayShort
+ImGuiHoveredFlags_DelayNormal
+ImGuiHoveredFlags_NoSharedDelay
+}
+enum "ImGuiDockNodeFlags_" as C_0011080864016762729897
+enum C_0011080864016762729897 {
+ImGuiDockNodeFlags_None
+ImGuiDockNodeFlags_KeepAliveOnly
+ImGuiDockNodeFlags_NoDockingOverCentralNode
+ImGuiDockNodeFlags_PassthruCentralNode
+ImGuiDockNodeFlags_NoDockingSplit
+ImGuiDockNodeFlags_NoResize
+ImGuiDockNodeFlags_AutoHideTabBar
+ImGuiDockNodeFlags_NoUndocking
+ImGuiDockNodeFlags_NoSplit
+ImGuiDockNodeFlags_NoDockingInCentralNode
+}
+enum "ImGuiDragDropFlags_" as C_0000763250653056191272
+enum C_0000763250653056191272 {
+ImGuiDragDropFlags_None
+ImGuiDragDropFlags_SourceNoPreviewTooltip
+ImGuiDragDropFlags_SourceNoDisableHover
+ImGuiDragDropFlags_SourceNoHoldToOpenOthers
+ImGuiDragDropFlags_SourceAllowNullID
+ImGuiDragDropFlags_SourceExtern
+ImGuiDragDropFlags_PayloadAutoExpire
+ImGuiDragDropFlags_PayloadNoCrossContext
+ImGuiDragDropFlags_PayloadNoCrossProcess
+ImGuiDragDropFlags_AcceptBeforeDelivery
+ImGuiDragDropFlags_AcceptNoDrawDefaultRect
+ImGuiDragDropFlags_AcceptNoPreviewTooltip
+ImGuiDragDropFlags_AcceptDrawAsHovered
+ImGuiDragDropFlags_AcceptPeekOnly
+ImGuiDragDropFlags_SourceAutoExpirePayload
+}
+enum "ImGuiDataType_" as C_0007538500046177173669
+enum C_0007538500046177173669 {
+ImGuiDataType_S8
+ImGuiDataType_U8
+ImGuiDataType_S16
+ImGuiDataType_U16
+ImGuiDataType_S32
+ImGuiDataType_U32
+ImGuiDataType_S64
+ImGuiDataType_U64
+ImGuiDataType_Float
+ImGuiDataType_Double
+ImGuiDataType_Bool
+ImGuiDataType_String
+ImGuiDataType_COUNT
+}
+enum "ImGuiDir" as C_0011084735886282898336
+enum C_0011084735886282898336 {
+ImGuiDir_None
+ImGuiDir_Left
+ImGuiDir_Right
+ImGuiDir_Up
+ImGuiDir_Down
+ImGuiDir_COUNT
+}
+enum "ImGuiSortDirection" as C_0011148453948041068262
+enum C_0011148453948041068262 {
+ImGuiSortDirection_None
+ImGuiSortDirection_Ascending
+ImGuiSortDirection_Descending
+}
+enum "ImGuiKey" as C_0003912077364433944654
+enum C_0003912077364433944654 {
+ImGuiKey_None
+ImGuiKey_NamedKey_BEGIN
+ImGuiKey_Tab
+ImGuiKey_LeftArrow
+ImGuiKey_RightArrow
+ImGuiKey_UpArrow
+ImGuiKey_DownArrow
+ImGuiKey_PageUp
+ImGuiKey_PageDown
+ImGuiKey_Home
+ImGuiKey_End
+ImGuiKey_Insert
+ImGuiKey_Delete
+ImGuiKey_Backspace
+ImGuiKey_Space
+ImGuiKey_Enter
+ImGuiKey_Escape
+ImGuiKey_LeftCtrl
+ImGuiKey_LeftShift
+ImGuiKey_LeftAlt
+ImGuiKey_LeftSuper
+ImGuiKey_RightCtrl
+ImGuiKey_RightShift
+ImGuiKey_RightAlt
+ImGuiKey_RightSuper
+ImGuiKey_Menu
+ImGuiKey_0
+ImGuiKey_1
+ImGuiKey_2
+ImGuiKey_3
+ImGuiKey_4
+ImGuiKey_5
+ImGuiKey_6
+ImGuiKey_7
+ImGuiKey_8
+ImGuiKey_9
+ImGuiKey_A
+ImGuiKey_B
+ImGuiKey_C
+ImGuiKey_D
+ImGuiKey_E
+ImGuiKey_F
+ImGuiKey_G
+ImGuiKey_H
+ImGuiKey_I
+ImGuiKey_J
+ImGuiKey_K
+ImGuiKey_L
+ImGuiKey_M
+ImGuiKey_N
+ImGuiKey_O
+ImGuiKey_P
+ImGuiKey_Q
+ImGuiKey_R
+ImGuiKey_S
+ImGuiKey_T
+ImGuiKey_U
+ImGuiKey_V
+ImGuiKey_W
+ImGuiKey_X
+ImGuiKey_Y
+ImGuiKey_Z
+ImGuiKey_F1
+ImGuiKey_F2
+ImGuiKey_F3
+ImGuiKey_F4
+ImGuiKey_F5
+ImGuiKey_F6
+ImGuiKey_F7
+ImGuiKey_F8
+ImGuiKey_F9
+ImGuiKey_F10
+ImGuiKey_F11
+ImGuiKey_F12
+ImGuiKey_F13
+ImGuiKey_F14
+ImGuiKey_F15
+ImGuiKey_F16
+ImGuiKey_F17
+ImGuiKey_F18
+ImGuiKey_F19
+ImGuiKey_F20
+ImGuiKey_F21
+ImGuiKey_F22
+ImGuiKey_F23
+ImGuiKey_F24
+ImGuiKey_Apostrophe
+ImGuiKey_Comma
+ImGuiKey_Minus
+ImGuiKey_Period
+ImGuiKey_Slash
+ImGuiKey_Semicolon
+ImGuiKey_Equal
+ImGuiKey_LeftBracket
+ImGuiKey_Backslash
+ImGuiKey_RightBracket
+ImGuiKey_GraveAccent
+ImGuiKey_CapsLock
+ImGuiKey_ScrollLock
+ImGuiKey_NumLock
+ImGuiKey_PrintScreen
+ImGuiKey_Pause
+ImGuiKey_Keypad0
+ImGuiKey_Keypad1
+ImGuiKey_Keypad2
+ImGuiKey_Keypad3
+ImGuiKey_Keypad4
+ImGuiKey_Keypad5
+ImGuiKey_Keypad6
+ImGuiKey_Keypad7
+ImGuiKey_Keypad8
+ImGuiKey_Keypad9
+ImGuiKey_KeypadDecimal
+ImGuiKey_KeypadDivide
+ImGuiKey_KeypadMultiply
+ImGuiKey_KeypadSubtract
+ImGuiKey_KeypadAdd
+ImGuiKey_KeypadEnter
+ImGuiKey_KeypadEqual
+ImGuiKey_AppBack
+ImGuiKey_AppForward
+ImGuiKey_Oem102
+ImGuiKey_GamepadStart
+ImGuiKey_GamepadBack
+ImGuiKey_GamepadFaceLeft
+ImGuiKey_GamepadFaceRight
+ImGuiKey_GamepadFaceUp
+ImGuiKey_GamepadFaceDown
+ImGuiKey_GamepadDpadLeft
+ImGuiKey_GamepadDpadRight
+ImGuiKey_GamepadDpadUp
+ImGuiKey_GamepadDpadDown
+ImGuiKey_GamepadL1
+ImGuiKey_GamepadR1
+ImGuiKey_GamepadL2
+ImGuiKey_GamepadR2
+ImGuiKey_GamepadL3
+ImGuiKey_GamepadR3
+ImGuiKey_GamepadLStickLeft
+ImGuiKey_GamepadLStickRight
+ImGuiKey_GamepadLStickUp
+ImGuiKey_GamepadLStickDown
+ImGuiKey_GamepadRStickLeft
+ImGuiKey_GamepadRStickRight
+ImGuiKey_GamepadRStickUp
+ImGuiKey_GamepadRStickDown
+ImGuiKey_MouseLeft
+ImGuiKey_MouseRight
+ImGuiKey_MouseMiddle
+ImGuiKey_MouseX1
+ImGuiKey_MouseX2
+ImGuiKey_MouseWheelX
+ImGuiKey_MouseWheelY
+ImGuiKey_ReservedForModCtrl
+ImGuiKey_ReservedForModShift
+ImGuiKey_ReservedForModAlt
+ImGuiKey_ReservedForModSuper
+ImGuiKey_NamedKey_END
+ImGuiKey_NamedKey_COUNT
+ImGuiMod_None
+ImGuiMod_Ctrl
+ImGuiMod_Shift
+ImGuiMod_Alt
+ImGuiMod_Super
+ImGuiMod_Mask_
+ImGuiKey_COUNT
+ImGuiMod_Shortcut
+}
+enum "ImGuiInputFlags_" as C_0007132698977073470932
+enum C_0007132698977073470932 {
+ImGuiInputFlags_None
+ImGuiInputFlags_Repeat
+ImGuiInputFlags_RouteActive
+ImGuiInputFlags_RouteFocused
+ImGuiInputFlags_RouteGlobal
+ImGuiInputFlags_RouteAlways
+ImGuiInputFlags_RouteOverFocused
+ImGuiInputFlags_RouteOverActive
+ImGuiInputFlags_RouteUnlessBgFocused
+ImGuiInputFlags_RouteFromRootWindow
+ImGuiInputFlags_Tooltip
+}
+enum "ImGuiConfigFlags_" as C_0017270146566592029979
+enum C_0017270146566592029979 {
+ImGuiConfigFlags_None
+ImGuiConfigFlags_NavEnableKeyboard
+ImGuiConfigFlags_NavEnableGamepad
+ImGuiConfigFlags_NoMouse
+ImGuiConfigFlags_NoMouseCursorChange
+ImGuiConfigFlags_NoKeyboard
+ImGuiConfigFlags_DockingEnable
+ImGuiConfigFlags_ViewportsEnable
+ImGuiConfigFlags_IsSRGB
+ImGuiConfigFlags_IsTouchScreen
+ImGuiConfigFlags_NavEnableSetMousePos
+ImGuiConfigFlags_NavNoCaptureKeyboard
+ImGuiConfigFlags_DpiEnableScaleFonts
+ImGuiConfigFlags_DpiEnableScaleViewports
+}
+enum "ImGuiBackendFlags_" as C_0008065261721090812694
+enum C_0008065261721090812694 {
+ImGuiBackendFlags_None
+ImGuiBackendFlags_HasGamepad
+ImGuiBackendFlags_HasMouseCursors
+ImGuiBackendFlags_HasSetMousePos
+ImGuiBackendFlags_RendererHasVtxOffset
+ImGuiBackendFlags_RendererHasTextures
+ImGuiBackendFlags_RendererHasViewports
+ImGuiBackendFlags_PlatformHasViewports
+ImGuiBackendFlags_HasMouseHoveredViewport
+ImGuiBackendFlags_HasParentViewport
+}
+enum "ImGuiCol_" as C_0018106259704858005980
+enum C_0018106259704858005980 {
+ImGuiCol_Text
+ImGuiCol_TextDisabled
+ImGuiCol_WindowBg
+ImGuiCol_ChildBg
+ImGuiCol_PopupBg
+ImGuiCol_Border
+ImGuiCol_BorderShadow
+ImGuiCol_FrameBg
+ImGuiCol_FrameBgHovered
+ImGuiCol_FrameBgActive
+ImGuiCol_TitleBg
+ImGuiCol_TitleBgActive
+ImGuiCol_TitleBgCollapsed
+ImGuiCol_MenuBarBg
+ImGuiCol_ScrollbarBg
+ImGuiCol_ScrollbarGrab
+ImGuiCol_ScrollbarGrabHovered
+ImGuiCol_ScrollbarGrabActive
+ImGuiCol_CheckMark
+ImGuiCol_SliderGrab
+ImGuiCol_SliderGrabActive
+ImGuiCol_Button
+ImGuiCol_ButtonHovered
+ImGuiCol_ButtonActive
+ImGuiCol_Header
+ImGuiCol_HeaderHovered
+ImGuiCol_HeaderActive
+ImGuiCol_Separator
+ImGuiCol_SeparatorHovered
+ImGuiCol_SeparatorActive
+ImGuiCol_ResizeGrip
+ImGuiCol_ResizeGripHovered
+ImGuiCol_ResizeGripActive
+ImGuiCol_InputTextCursor
+ImGuiCol_TabHovered
+ImGuiCol_Tab
+ImGuiCol_TabSelected
+ImGuiCol_TabSelectedOverline
+ImGuiCol_TabDimmed
+ImGuiCol_TabDimmedSelected
+ImGuiCol_TabDimmedSelectedOverline
+ImGuiCol_DockingPreview
+ImGuiCol_DockingEmptyBg
+ImGuiCol_PlotLines
+ImGuiCol_PlotLinesHovered
+ImGuiCol_PlotHistogram
+ImGuiCol_PlotHistogramHovered
+ImGuiCol_TableHeaderBg
+ImGuiCol_TableBorderStrong
+ImGuiCol_TableBorderLight
+ImGuiCol_TableRowBg
+ImGuiCol_TableRowBgAlt
+ImGuiCol_TextLink
+ImGuiCol_TextSelectedBg
+ImGuiCol_TreeLines
+ImGuiCol_DragDropTarget
+ImGuiCol_DragDropTargetBg
+ImGuiCol_UnsavedMarker
+ImGuiCol_NavCursor
+ImGuiCol_NavWindowingHighlight
+ImGuiCol_NavWindowingDimBg
+ImGuiCol_ModalWindowDimBg
+ImGuiCol_COUNT
+ImGuiCol_TabActive
+ImGuiCol_TabUnfocused
+ImGuiCol_TabUnfocusedActive
+ImGuiCol_NavHighlight
+}
+enum "ImGuiStyleVar_" as C_0000302486095890472899
+enum C_0000302486095890472899 {
+ImGuiStyleVar_Alpha
+ImGuiStyleVar_DisabledAlpha
+ImGuiStyleVar_WindowPadding
+ImGuiStyleVar_WindowRounding
+ImGuiStyleVar_WindowBorderSize
+ImGuiStyleVar_WindowMinSize
+ImGuiStyleVar_WindowTitleAlign
+ImGuiStyleVar_ChildRounding
+ImGuiStyleVar_ChildBorderSize
+ImGuiStyleVar_PopupRounding
+ImGuiStyleVar_PopupBorderSize
+ImGuiStyleVar_FramePadding
+ImGuiStyleVar_FrameRounding
+ImGuiStyleVar_FrameBorderSize
+ImGuiStyleVar_ItemSpacing
+ImGuiStyleVar_ItemInnerSpacing
+ImGuiStyleVar_IndentSpacing
+ImGuiStyleVar_CellPadding
+ImGuiStyleVar_ScrollbarSize
+ImGuiStyleVar_ScrollbarRounding
+ImGuiStyleVar_ScrollbarPadding
+ImGuiStyleVar_GrabMinSize
+ImGuiStyleVar_GrabRounding
+ImGuiStyleVar_ImageRounding
+ImGuiStyleVar_ImageBorderSize
+ImGuiStyleVar_TabRounding
+ImGuiStyleVar_TabBorderSize
+ImGuiStyleVar_TabMinWidthBase
+ImGuiStyleVar_TabMinWidthShrink
+ImGuiStyleVar_TabBarBorderSize
+ImGuiStyleVar_TabBarOverlineSize
+ImGuiStyleVar_TableAngledHeadersAngle
+ImGuiStyleVar_TableAngledHeadersTextAlign
+ImGuiStyleVar_TreeLinesSize
+ImGuiStyleVar_TreeLinesRounding
+ImGuiStyleVar_ButtonTextAlign
+ImGuiStyleVar_SelectableTextAlign
+ImGuiStyleVar_SeparatorTextBorderSize
+ImGuiStyleVar_SeparatorTextAlign
+ImGuiStyleVar_SeparatorTextPadding
+ImGuiStyleVar_DockingSeparatorSize
+ImGuiStyleVar_COUNT
+}
+enum "ImGuiButtonFlags_" as C_0003058710635417418560
+enum C_0003058710635417418560 {
+ImGuiButtonFlags_None
+ImGuiButtonFlags_MouseButtonLeft
+ImGuiButtonFlags_MouseButtonRight
+ImGuiButtonFlags_MouseButtonMiddle
+ImGuiButtonFlags_MouseButtonMask_
+ImGuiButtonFlags_EnableNav
+}
+enum "ImGuiColorEditFlags_" as C_0017597670727055082131
+enum C_0017597670727055082131 {
+ImGuiColorEditFlags_None
+ImGuiColorEditFlags_NoAlpha
+ImGuiColorEditFlags_NoPicker
+ImGuiColorEditFlags_NoOptions
+ImGuiColorEditFlags_NoSmallPreview
+ImGuiColorEditFlags_NoInputs
+ImGuiColorEditFlags_NoTooltip
+ImGuiColorEditFlags_NoLabel
+ImGuiColorEditFlags_NoSidePreview
+ImGuiColorEditFlags_NoDragDrop
+ImGuiColorEditFlags_NoBorder
+ImGuiColorEditFlags_NoColorMarkers
+ImGuiColorEditFlags_AlphaOpaque
+ImGuiColorEditFlags_AlphaNoBg
+ImGuiColorEditFlags_AlphaPreviewHalf
+ImGuiColorEditFlags_AlphaBar
+ImGuiColorEditFlags_HDR
+ImGuiColorEditFlags_DisplayRGB
+ImGuiColorEditFlags_DisplayHSV
+ImGuiColorEditFlags_DisplayHex
+ImGuiColorEditFlags_Uint8
+ImGuiColorEditFlags_Float
+ImGuiColorEditFlags_PickerHueBar
+ImGuiColorEditFlags_PickerHueWheel
+ImGuiColorEditFlags_InputRGB
+ImGuiColorEditFlags_InputHSV
+ImGuiColorEditFlags_DefaultOptions_
+ImGuiColorEditFlags_AlphaMask_
+ImGuiColorEditFlags_DisplayMask_
+ImGuiColorEditFlags_DataTypeMask_
+ImGuiColorEditFlags_PickerMask_
+ImGuiColorEditFlags_InputMask_
+ImGuiColorEditFlags_AlphaPreview
+}
+enum "ImGuiSliderFlags_" as C_0016734058670217877656
+enum C_0016734058670217877656 {
+ImGuiSliderFlags_None
+ImGuiSliderFlags_Logarithmic
+ImGuiSliderFlags_NoRoundToFormat
+ImGuiSliderFlags_NoInput
+ImGuiSliderFlags_WrapAround
+ImGuiSliderFlags_ClampOnInput
+ImGuiSliderFlags_ClampZeroRange
+ImGuiSliderFlags_NoSpeedTweaks
+ImGuiSliderFlags_ColorMarkers
+ImGuiSliderFlags_AlwaysClamp
+ImGuiSliderFlags_InvalidMask_
+}
+enum "ImGuiMouseButton_" as C_0016307215618614636747
+enum C_0016307215618614636747 {
+ImGuiMouseButton_Left
+ImGuiMouseButton_Right
+ImGuiMouseButton_Middle
+ImGuiMouseButton_COUNT
+}
+enum "ImGuiMouseCursor_" as C_0016501656710863263622
+enum C_0016501656710863263622 {
+ImGuiMouseCursor_None
+ImGuiMouseCursor_Arrow
+ImGuiMouseCursor_TextInput
+ImGuiMouseCursor_ResizeAll
+ImGuiMouseCursor_ResizeNS
+ImGuiMouseCursor_ResizeEW
+ImGuiMouseCursor_ResizeNESW
+ImGuiMouseCursor_ResizeNWSE
+ImGuiMouseCursor_Hand
+ImGuiMouseCursor_Wait
+ImGuiMouseCursor_Progress
+ImGuiMouseCursor_NotAllowed
+ImGuiMouseCursor_COUNT
+}
+enum "ImGuiMouseSource" as C_0014282128709844040922
+enum C_0014282128709844040922 {
+ImGuiMouseSource_Mouse
+ImGuiMouseSource_TouchScreen
+ImGuiMouseSource_Pen
+ImGuiMouseSource_COUNT
+}
+enum "ImGuiCond_" as C_0003986996176147908992
+enum C_0003986996176147908992 {
+ImGuiCond_None
+ImGuiCond_Always
+ImGuiCond_Once
+ImGuiCond_FirstUseEver
+ImGuiCond_Appearing
+}
+enum "ImGuiTableFlags_" as C_0005113486987443796816
+enum C_0005113486987443796816 {
+ImGuiTableFlags_None
+ImGuiTableFlags_Resizable
+ImGuiTableFlags_Reorderable
+ImGuiTableFlags_Hideable
+ImGuiTableFlags_Sortable
+ImGuiTableFlags_NoSavedSettings
+ImGuiTableFlags_ContextMenuInBody
+ImGuiTableFlags_RowBg
+ImGuiTableFlags_BordersInnerH
+ImGuiTableFlags_BordersOuterH
+ImGuiTableFlags_BordersInnerV
+ImGuiTableFlags_BordersOuterV
+ImGuiTableFlags_BordersH
+ImGuiTableFlags_BordersV
+ImGuiTableFlags_BordersInner
+ImGuiTableFlags_BordersOuter
+ImGuiTableFlags_Borders
+ImGuiTableFlags_NoBordersInBody
+ImGuiTableFlags_NoBordersInBodyUntilResize
+ImGuiTableFlags_SizingFixedFit
+ImGuiTableFlags_SizingFixedSame
+ImGuiTableFlags_SizingStretchProp
+ImGuiTableFlags_SizingStretchSame
+ImGuiTableFlags_NoHostExtendX
+ImGuiTableFlags_NoHostExtendY
+ImGuiTableFlags_NoKeepColumnsVisible
+ImGuiTableFlags_PreciseWidths
+ImGuiTableFlags_NoClip
+ImGuiTableFlags_PadOuterX
+ImGuiTableFlags_NoPadOuterX
+ImGuiTableFlags_NoPadInnerX
+ImGuiTableFlags_ScrollX
+ImGuiTableFlags_ScrollY
+ImGuiTableFlags_SortMulti
+ImGuiTableFlags_SortTristate
+ImGuiTableFlags_HighlightHoveredColumn
+ImGuiTableFlags_SizingMask_
+}
+enum "ImGuiTableColumnFlags_" as C_0013249042820753000331
+enum C_0013249042820753000331 {
+ImGuiTableColumnFlags_None
+ImGuiTableColumnFlags_Disabled
+ImGuiTableColumnFlags_DefaultHide
+ImGuiTableColumnFlags_DefaultSort
+ImGuiTableColumnFlags_WidthStretch
+ImGuiTableColumnFlags_WidthFixed
+ImGuiTableColumnFlags_NoResize
+ImGuiTableColumnFlags_NoReorder
+ImGuiTableColumnFlags_NoHide
+ImGuiTableColumnFlags_NoClip
+ImGuiTableColumnFlags_NoSort
+ImGuiTableColumnFlags_NoSortAscending
+ImGuiTableColumnFlags_NoSortDescending
+ImGuiTableColumnFlags_NoHeaderLabel
+ImGuiTableColumnFlags_NoHeaderWidth
+ImGuiTableColumnFlags_PreferSortAscending
+ImGuiTableColumnFlags_PreferSortDescending
+ImGuiTableColumnFlags_IndentEnable
+ImGuiTableColumnFlags_IndentDisable
+ImGuiTableColumnFlags_AngledHeader
+ImGuiTableColumnFlags_IsEnabled
+ImGuiTableColumnFlags_IsVisible
+ImGuiTableColumnFlags_IsSorted
+ImGuiTableColumnFlags_IsHovered
+ImGuiTableColumnFlags_WidthMask_
+ImGuiTableColumnFlags_IndentMask_
+ImGuiTableColumnFlags_StatusMask_
+ImGuiTableColumnFlags_NoDirectResize_
+}
+enum "ImGuiTableRowFlags_" as C_0006859164035238211450
+enum C_0006859164035238211450 {
+ImGuiTableRowFlags_None
+ImGuiTableRowFlags_Headers
+}
+enum "ImGuiTableBgTarget_" as C_0007046564130158852547
+enum C_0007046564130158852547 {
+ImGuiTableBgTarget_None
+ImGuiTableBgTarget_RowBg0
+ImGuiTableBgTarget_RowBg1
+ImGuiTableBgTarget_CellBg
+}
+class "ImGuiTableSortSpecs" as C_0012654776286871146784
+class C_0012654776286871146784 {
++ImGuiTableSortSpecs() : void
+__
++Specs : const ImGuiTableColumnSortSpecs *
++SpecsCount : int
++SpecsDirty : bool
+}
+class "ImGuiTableColumnSortSpecs" as C_0003654583433469720863
+class C_0003654583433469720863 {
++ImGuiTableColumnSortSpecs() : void
+__
++ColumnIndex : ImS16
++ColumnUserID : ImGuiID
++SortDirection : ImGuiSortDirection
++SortOrder : ImS16
+}
+class "ImNewWrapper" as C_0005383001885817826977
+class C_0005383001885817826977 {
+__
+}
+class "ImVector<T>" as C_0017222341547090171578
+class C_0017222341547090171578 {
+__
+}
+class "ImGuiStyle" as C_0003927669054485617009
+class C_0003927669054485617009 {
++ImGuiStyle() : void
+..
++ScaleAllSizes(float scale_factor) : void
+__
++Alpha : float
++AntiAliasedFill : bool
++AntiAliasedLines : bool
++AntiAliasedLinesUseTex : bool
++ButtonTextAlign : ImVec2
++CellPadding : ImVec2
++ChildBorderSize : float
++ChildRounding : float
++CircleTessellationMaxError : float
++ColorButtonPosition : ImGuiDir
++ColorMarkerSize : float
++Colors : ImVec4[62]
++ColumnsMinSpacing : float
++CurveTessellationTol : float
++DisabledAlpha : float
++DisplaySafeAreaPadding : ImVec2
++DisplayWindowPadding : ImVec2
++DockingNodeHasCloseButton : bool
++DockingSeparatorSize : float
++DragDropTargetBorderSize : float
++DragDropTargetPadding : float
++DragDropTargetRounding : float
++FontScaleDpi : float
++FontScaleMain : float
++FontSizeBase : float
++FrameBorderSize : float
++FramePadding : ImVec2
++FrameRounding : float
++GrabMinSize : float
++GrabRounding : float
++HoverDelayNormal : float
++HoverDelayShort : float
++HoverFlagsForTooltipMouse : ImGuiHoveredFlags
++HoverFlagsForTooltipNav : ImGuiHoveredFlags
++HoverStationaryDelay : float
++ImageBorderSize : float
++ImageRounding : float
++IndentSpacing : float
++ItemInnerSpacing : ImVec2
++ItemSpacing : ImVec2
++LogSliderDeadzone : float
++MouseCursorScale : float
++PopupBorderSize : float
++PopupRounding : float
++ScrollbarPadding : float
++ScrollbarRounding : float
++ScrollbarSize : float
++SelectableTextAlign : ImVec2
++SeparatorTextAlign : ImVec2
++SeparatorTextBorderSize : float
++SeparatorTextPadding : ImVec2
++TabBarBorderSize : float
++TabBarOverlineSize : float
++TabBorderSize : float
++TabCloseButtonMinWidthSelected : float
++TabCloseButtonMinWidthUnselected : float
++TabMinWidthBase : float
++TabMinWidthShrink : float
++TabRounding : float
++TableAngledHeadersAngle : float
++TableAngledHeadersTextAlign : ImVec2
++TouchExtraPadding : ImVec2
++TreeLinesFlags : ImGuiTreeNodeFlags
++TreeLinesRounding : float
++TreeLinesSize : float
++WindowBorderHoverPadding : float
++WindowBorderSize : float
++WindowMenuButtonPosition : ImGuiDir
++WindowMinSize : ImVec2
++WindowPadding : ImVec2
++WindowRounding : float
++WindowTitleAlign : ImVec2
++_MainScale : float
++_NextFrameFontSizeBase : float
+}
+class "ImGuiKeyData" as C_0009686165277601049830
+class C_0009686165277601049830 {
+__
++AnalogValue : float
++Down : bool
++DownDuration : float
++DownDurationPrev : float
+}
+class "ImVector<ImWchar>" as C_0002529884925411634324
+class C_0002529884925411634324 {
+__
+}
+class "ImGuiIO" as C_0017917329880291855174
+class C_0017917329880291855174 {
++ImGuiIO() : void
+..
++AddFocusEvent(bool focused) : void
++AddInputCharacter(unsigned int c) : void
++AddInputCharacterUTF16(ImWchar16 c) : void
++AddInputCharactersUTF8(const char * str) : void
++AddKeyAnalogEvent(ImGuiKey key, bool down, float v) : void
++AddKeyEvent(ImGuiKey key, bool down) : void
++AddMouseButtonEvent(int button, bool down) : void
++AddMousePosEvent(float x, float y) : void
++AddMouseSourceEvent(ImGuiMouseSource source) : void
++AddMouseViewportEvent(ImGuiID id) : void
++AddMouseWheelEvent(float wheel_x, float wheel_y) : void
++ClearEventsQueue() : void
++ClearInputKeys() : void
++ClearInputMouse() : void
++SetAppAcceptingEvents(bool accepting_events) : void
++SetKeyEventNativeData(ImGuiKey key, int native_keycode, int native_scancode, int native_legacy_index = -1) : void
+__
++AppAcceptingEvents : bool
++AppFocusLost : bool
++BackendFlags : ImGuiBackendFlags
++BackendLanguageUserData : void *
++BackendPlatformName : const char *
++BackendPlatformUserData : void *
++BackendRendererName : const char *
++BackendRendererUserData : void *
++ClipboardUserData : void *
++ConfigDebugBeginReturnValueLoop : bool
++ConfigDebugBeginReturnValueOnce : bool
++ConfigDebugHighlightIdConflicts : bool
++ConfigDebugHighlightIdConflictsShowItemPicker : bool
++ConfigDebugIgnoreFocusLoss : bool
++ConfigDebugIniSettings : bool
++ConfigDebugIsDebuggerPresent : bool
++ConfigDockingAlwaysTabBar : bool
++ConfigDockingNoDockingOver : bool
++ConfigDockingNoSplit : bool
++ConfigDockingTransparentPayload : bool
++ConfigDockingWithShift : bool
++ConfigDpiScaleFonts : bool
++ConfigDpiScaleViewports : bool
++ConfigDragClickToInputText : bool
++ConfigErrorRecovery : bool
++ConfigErrorRecoveryEnableAssert : bool
++ConfigErrorRecoveryEnableDebugLog : bool
++ConfigErrorRecoveryEnableTooltip : bool
++ConfigFlags : ImGuiConfigFlags
++ConfigInputTextCursorBlink : bool
++ConfigInputTextEnterKeepActive : bool
++ConfigInputTrickleEventQueue : bool
++ConfigMacOSXBehaviors : bool
++ConfigMemoryCompactTimer : float
++ConfigNavCaptureKeyboard : bool
++ConfigNavCursorVisibleAlways : bool
++ConfigNavCursorVisibleAuto : bool
++ConfigNavEscapeClearFocusItem : bool
++ConfigNavEscapeClearFocusWindow : bool
++ConfigNavMoveSetMousePos : bool
++ConfigNavSwapGamepadButtons : bool
++ConfigScrollbarScrollByPage : bool
++ConfigViewportsNoAutoMerge : bool
++ConfigViewportsNoDecoration : bool
++ConfigViewportsNoDefaultParent : bool
++ConfigViewportsNoTaskBarIcon : bool
++ConfigViewportsPlatformFocusSetsImGuiFocus : bool
++ConfigWindowsCopyContentsWithCtrlC : bool
++ConfigWindowsMoveFromTitleBarOnly : bool
++ConfigWindowsResizeFromEdges : bool
++Ctx : ImGuiContext *
++DeltaTime : float
++DisplayFramebufferScale : ImVec2
++DisplaySize : ImVec2
++FontAllowUserScaling : bool
++FontDefault : ImFont *
++FontGlobalScale : float
++Fonts : ImFontAtlas *
++Framerate : float
++GetClipboardTextFn : const char *(*)(void *)
++IniFilename : const char *
++IniSavingRate : float
++InputQueueCharacters : ImVector<ImWchar>
++InputQueueSurrogate : ImWchar16
++KeyAlt : bool
++KeyCtrl : bool
++KeyMods : ImGuiKeyChord
++KeyRepeatDelay : float
++KeyRepeatRate : float
++KeyShift : bool
++KeySuper : bool
++KeysData : ImGuiKeyData[155]
++LogFilename : const char *
++MetricsActiveWindows : int
++MetricsRenderIndices : int
++MetricsRenderVertices : int
++MetricsRenderWindows : int
++MouseClicked : bool[5]
++MouseClickedCount : ImU16[5]
++MouseClickedLastCount : ImU16[5]
++MouseClickedPos : ImVec2[5]
++MouseClickedTime : double[5]
++MouseCtrlLeftAsRightClick : bool
++MouseDelta : ImVec2
++MouseDoubleClickMaxDist : float
++MouseDoubleClickTime : float
++MouseDoubleClicked : bool[5]
++MouseDown : bool[5]
++MouseDownDuration : float[5]
++MouseDownDurationPrev : float[5]
++MouseDownOwned : bool[5]
++MouseDownOwnedUnlessPopupClose : bool[5]
++MouseDragMaxDistanceAbs : ImVec2[5]
++MouseDragMaxDistanceSqr : float[5]
++MouseDragThreshold : float
++MouseDrawCursor : bool
++MouseHoveredViewport : ImGuiID
++MousePos : ImVec2
++MousePosPrev : ImVec2
++MouseReleased : bool[5]
++MouseReleasedTime : double[5]
++MouseSource : ImGuiMouseSource
++MouseWheel : float
++MouseWheelH : float
++MouseWheelRequestAxisSwap : bool
++NavActive : bool
++NavVisible : bool
++PenPressure : float
++SetClipboardTextFn : void (*)(void *,const char *)
++UserData : void *
++WantCaptureKeyboard : bool
++WantCaptureMouse : bool
++WantCaptureMouseUnlessPopupClose : bool
++WantSaveIniSettings : bool
++WantSetMousePos : bool
++WantTextInput : bool
+}
+class "ImGuiInputTextCallbackData" as C_0015277227945573868181
+class C_0015277227945573868181 {
++ImGuiInputTextCallbackData() : void
+..
++ClearSelection() : void
++DeleteChars(int pos, int bytes_count) : void
++HasSelection() const : bool
++InsertChars(int pos, const char * text, const char * text_end = 0) : void
++SelectAll() : void
++SetSelection(int s, int e) : void
+__
++Buf : char *
++BufDirty : bool
++BufSize : int
++BufTextLen : int
++Ctx : ImGuiContext *
++CursorPos : int
++EventActivated : bool
++EventChar : ImWchar
++EventFlag : ImGuiInputTextFlags
++EventKey : ImGuiKey
++Flags : ImGuiInputTextFlags
++ID : ImGuiID
++SelectionEnd : int
++SelectionStart : int
++UserData : void *
+}
+class "ImGuiSizeCallbackData" as C_0007552332553055088482
+class C_0007552332553055088482 {
+__
++CurrentSize : ImVec2
++DesiredSize : ImVec2
++Pos : ImVec2
++UserData : void *
+}
+class "ImGuiWindowClass" as C_0012004845865911585143
+class C_0012004845865911585143 {
++ImGuiWindowClass() : void
+__
++ClassId : ImGuiID
++DockNodeFlagsOverrideSet : ImGuiDockNodeFlags
++DockingAllowUnclassed : bool
++DockingAlwaysTabBar : bool
++FocusRouteParentWindowId : ImGuiID
++ParentViewportId : ImGuiID
++TabItemFlagsOverrideSet : ImGuiTabItemFlags
++ViewportFlagsOverrideClear : ImGuiViewportFlags
++ViewportFlagsOverrideSet : ImGuiViewportFlags
+}
+class "ImGuiPayload" as C_0014706128574269600221
+class C_0014706128574269600221 {
++ImGuiPayload() : void
+..
++Clear() : void
++IsDataType(const char * type) const : bool
++IsDelivery() const : bool
++IsPreview() const : bool
+__
++Data : void *
++DataFrameCount : int
++DataSize : int
++DataType : char[33]
++Delivery : bool
++Preview : bool
++SourceId : ImGuiID
++SourceParentId : ImGuiID
+}
+class "ImGuiOnceUponAFrame" as C_0007544583116093980020
+class C_0007544583116093980020 {
++ImGuiOnceUponAFrame() : void
+..
++operator bool() const : bool
+__
++RefFrame : int
+}
+class "ImVector<ImGuiTextFilter::ImGuiTextRange>" as C_0007488995099719983445
+class C_0007488995099719983445 {
+__
+}
+class "ImGuiTextFilter" as C_0014167510190179788571
+class C_0014167510190179788571 {
++ImGuiTextFilter(const char * default_filter = "") : void
+..
++Build() : void
++Clear() : void
++Draw(const char * label = "Filter (inc,-exc)", float width = 0.0f) : bool
++IsActive() const : bool
++PassFilter(const char * text, const char * text_end = 0) const : bool
+__
++CountGrep : int
++Filters : ImVector<ImGuiTextRange>
++InputBuf : char[256]
+}
+class "ImGuiTextFilter::ImGuiTextRange" as C_0008878419759859986054
+class C_0008878419759859986054 {
++ImGuiTextRange() : void
++ImGuiTextRange(const char * _b, const char * _e) : void
++empty() const : bool
++split(char separator, ImVector<ImGuiTextRange> * out) const : void
+__
++b : const char *
++e : const char *
+}
+class "ImVector<char>" as C_0013830872823886324364
+class C_0013830872823886324364 {
+__
+}
+class "ImGuiTextBuffer" as C_0003366323848114970456
+class C_0003366323848114970456 {
++ImGuiTextBuffer() : void
+..
++operator[](int i) const : char
+..
++append(const char * str, const char * str_end = 0) : void
++appendf(const char * fmt) : void
++appendfv(const char * fmt, va_list args) : void
++begin() const : const char *
++c_str() const : const char *
++clear() : void
++empty() const : bool
++end() const : const char *
++reserve(int capacity) : void
++resize(int size) : void
++size() const : int
+__
++Buf : ImVector<char>
+{static} +EmptyString : char[1]
+}
+class "ImGuiStoragePair" as C_0004474924194866692762
+class C_0004474924194866692762 {
++ImGuiStoragePair(ImGuiID _key, int _val) : void
++ImGuiStoragePair(ImGuiID _key, float _val) : void
++ImGuiStoragePair(ImGuiID _key, void * _val) : void
+__
++ : ImGuiStoragePair::()
++key : ImGuiID
+}
+class "ImGuiStoragePair::()" as C_0001048397446750487755
+class C_0001048397446750487755 {
+__
++val_f : float
++val_i : int
++val_p : void *
+}
+class "ImVector<ImGuiStoragePair>" as C_0016984491967803751636
+class C_0016984491967803751636 {
+__
+}
+class "ImGuiStorage" as C_0015115553131451351423
+class C_0015115553131451351423 {
++BuildSortByKey() : void
++Clear() : void
++GetBool(ImGuiID key, bool default_val = false) const : bool
++GetBoolRef(ImGuiID key, bool default_val = false) : bool *
++GetFloat(ImGuiID key, float default_val = 0.0f) const : float
++GetFloatRef(ImGuiID key, float default_val = 0.0f) : float *
++GetInt(ImGuiID key, int default_val = 0) const : int
++GetIntRef(ImGuiID key, int default_val = 0) : int *
++GetVoidPtr(ImGuiID key) const : void *
++GetVoidPtrRef(ImGuiID key, void * default_val = 0) : void **
++SetAllInt(int val) : void
++SetBool(ImGuiID key, bool val) : void
++SetFloat(ImGuiID key, float val) : void
++SetInt(ImGuiID key, int val) : void
++SetVoidPtr(ImGuiID key, void * val) : void
+__
++Data : ImVector<ImGuiStoragePair>
+}
+enum "ImGuiListClipperFlags_" as C_0009290860236044542111
+enum C_0009290860236044542111 {
+ImGuiListClipperFlags_None
+ImGuiListClipperFlags_NoSetTableRowCounters
+}
+class "ImGuiListClipper" as C_0007430123381961615314
+class C_0007430123381961615314 {
++ImGuiListClipper() : void
++~ImGuiListClipper() : void
+..
++Begin(int items_count, float items_height = -1.0f) : void
++End() : void
++IncludeItemByIndex(int item_index) : void
++IncludeItemsByIndex(int item_begin, int item_end) : void
++SeekCursorForItem(int item_index) : void
++Step() : bool
+__
++Ctx : ImGuiContext *
++DisplayEnd : int
++DisplayStart : int
++Flags : ImGuiListClipperFlags
++ItemsCount : int
++ItemsHeight : float
++StartPosY : double
++StartSeekOffsetY : double
++TempData : void *
+}
+class "ImColor" as C_0013983533452038736977
+class C_0013983533452038736977 {
++ImColor() : void
++ImColor(float r, float g, float b, float a = 1.0f) : void
++ImColor(const ImVec4 & col) : void
++ImColor(int r, int g, int b, int a = 255) : void
++ImColor(ImU32 rgba) : void
+..
+{static} +HSV(float h, float s, float v, float a = 1.0f) : ImColor
++SetHSV(float h, float s, float v, float a = 1.0f) : void
++operator ImVec4() const : ImVec4
++operator unsigned int() const : ImU32
+__
++Value : ImVec4
+}
+enum "ImGuiMultiSelectFlags_" as C_0018147147849927174332
+enum C_0018147147849927174332 {
+ImGuiMultiSelectFlags_None
+ImGuiMultiSelectFlags_SingleSelect
+ImGuiMultiSelectFlags_NoSelectAll
+ImGuiMultiSelectFlags_NoRangeSelect
+ImGuiMultiSelectFlags_NoAutoSelect
+ImGuiMultiSelectFlags_NoAutoClear
+ImGuiMultiSelectFlags_NoAutoClearOnReselect
+ImGuiMultiSelectFlags_BoxSelect1d
+ImGuiMultiSelectFlags_BoxSelect2d
+ImGuiMultiSelectFlags_BoxSelectNoScroll
+ImGuiMultiSelectFlags_ClearOnEscape
+ImGuiMultiSelectFlags_ClearOnClickVoid
+ImGuiMultiSelectFlags_ScopeWindow
+ImGuiMultiSelectFlags_ScopeRect
+ImGuiMultiSelectFlags_SelectOnClick
+ImGuiMultiSelectFlags_SelectOnClickRelease
+ImGuiMultiSelectFlags_NavWrapX
+ImGuiMultiSelectFlags_NoSelectOnRightClick
+}
+class "ImVector<ImGuiSelectionRequest>" as C_0011711182722645480840
+class C_0011711182722645480840 {
+__
+}
+class "ImGuiMultiSelectIO" as C_0003572472018319378369
+class C_0003572472018319378369 {
+__
++ItemsCount : int
++NavIdItem : ImGuiSelectionUserData
++NavIdSelected : bool
++RangeSrcItem : ImGuiSelectionUserData
++RangeSrcReset : bool
++Requests : ImVector<ImGuiSelectionRequest>
+}
+enum "ImGuiSelectionRequestType" as C_0000049432320602179472
+enum C_0000049432320602179472 {
+ImGuiSelectionRequestType_None
+ImGuiSelectionRequestType_SetAll
+ImGuiSelectionRequestType_SetRange
+}
+class "ImGuiSelectionRequest" as C_0004105633005983711091
+class C_0004105633005983711091 {
+__
++RangeDirection : ImS8
++RangeFirstItem : ImGuiSelectionUserData
++RangeLastItem : ImGuiSelectionUserData
++Selected : bool
++Type : ImGuiSelectionRequestType
+}
+class "ImGuiSelectionBasicStorage" as C_0012082440548262297267
+class C_0012082440548262297267 {
++ImGuiSelectionBasicStorage() : void
+..
++ApplyRequests(ImGuiMultiSelectIO * ms_io) : void
++Clear() : void
++Contains(ImGuiID id) const : bool
++GetNextSelectedItem(void ** opaque_it, ImGuiID * out_id) : bool
++GetStorageIdFromIndex(int idx) : ImGuiID
++SetItemSelected(ImGuiID id, bool selected) : void
++Swap(ImGuiSelectionBasicStorage & r) : void
+__
++AdapterIndexToStorageId : ImGuiID (*)(ImGuiSelectionBasicStorage *,int)
++PreserveOrder : bool
++Size : int
++UserData : void *
++_SelectionOrder : int
++_Storage : ImGuiStorage
+}
+class "ImGuiSelectionExternalStorage" as C_0002347876310663132702
+class C_0002347876310663132702 {
++ImGuiSelectionExternalStorage() : void
+..
++ApplyRequests(ImGuiMultiSelectIO * ms_io) : void
+__
++AdapterSetItemSelected : void (*)(ImGuiSelectionExternalStorage *,int,bool)
++UserData : void *
+}
+class "ImDrawCmd" as C_0011798351365154694063
+class C_0011798351365154694063 {
++ImDrawCmd() : void
+..
++GetTexID() const : ImTextureID
+__
++ClipRect : ImVec4
++ElemCount : unsigned int
++IdxOffset : unsigned int
++TexRef : ImTextureRef
++UserCallback : ImDrawCallback
++UserCallbackData : void *
++UserCallbackDataOffset : int
++UserCallbackDataSize : int
++VtxOffset : unsigned int
+}
+class "ImDrawVert" as C_0005134924702469605015
+class C_0005134924702469605015 {
+__
++col : ImU32
++pos : ImVec2
++uv : ImVec2
+}
+class "ImDrawCmdHeader" as C_0004836110477701461133
+class C_0004836110477701461133 {
+__
++ClipRect : ImVec4
++TexRef : ImTextureRef
++VtxOffset : unsigned int
+}
+class "ImVector<ImDrawCmd>" as C_0009964765385697312098
+class C_0009964765385697312098 {
+__
+}
+class "ImVector<ImDrawIdx>" as C_0011582436895822534110
+class C_0011582436895822534110 {
+__
+}
+class "ImDrawChannel" as C_0015777797767686423734
+class C_0015777797767686423734 {
+__
++_CmdBuffer : ImVector<ImDrawCmd>
++_IdxBuffer : ImVector<ImDrawIdx>
+}
+class "ImVector<ImDrawChannel>" as C_0008655447333683829971
+class C_0008655447333683829971 {
+__
+}
+class "ImDrawListSplitter" as C_0005088128771069141848
+class C_0005088128771069141848 {
++ImDrawListSplitter() : void
++~ImDrawListSplitter() : void
+..
++Clear() : void
++ClearFreeMemory() : void
++Merge(ImDrawList * draw_list) : void
++SetCurrentChannel(ImDrawList * draw_list, int channel_idx) : void
++Split(ImDrawList * draw_list, int count) : void
+__
++_Channels : ImVector<ImDrawChannel>
++_Count : int
++_Current : int
+}
+enum "ImDrawFlags_" as C_0006867132444564626284
+enum C_0006867132444564626284 {
+ImDrawFlags_None
+ImDrawFlags_Closed
+ImDrawFlags_RoundCornersTopLeft
+ImDrawFlags_RoundCornersTopRight
+ImDrawFlags_RoundCornersBottomLeft
+ImDrawFlags_RoundCornersBottomRight
+ImDrawFlags_RoundCornersNone
+ImDrawFlags_RoundCornersTop
+ImDrawFlags_RoundCornersBottom
+ImDrawFlags_RoundCornersLeft
+ImDrawFlags_RoundCornersRight
+ImDrawFlags_RoundCornersAll
+ImDrawFlags_RoundCornersDefault_
+ImDrawFlags_RoundCornersMask_
+}
+enum "ImDrawListFlags_" as C_0000655384407032810836
+enum C_0000655384407032810836 {
+ImDrawListFlags_None
+ImDrawListFlags_AntiAliasedLines
+ImDrawListFlags_AntiAliasedLinesUseTex
+ImDrawListFlags_AntiAliasedFill
+ImDrawListFlags_AllowVtxOffset
+}
+class "ImVector<ImDrawVert>" as C_0009471690767333703623
+class C_0009471690767333703623 {
+__
+}
+class "ImVector<ImVec2>" as C_0015440416510767548453
+class C_0015440416510767548453 {
+__
+}
+class "ImVector<ImVec4>" as C_0002849351513573831191
+class C_0002849351513573831191 {
+__
+}
+class "ImVector<ImTextureRef>" as C_0001871288954282419329
+class C_0001871288954282419329 {
+__
+}
+class "ImVector<ImU8>" as C_0012749318122479853214
+class C_0012749318122479853214 {
+__
+}
+class "ImDrawList" as C_0007043218939190558953
+class C_0007043218939190558953 {
++ImDrawList(ImDrawListSharedData * shared_data) : void
++~ImDrawList() : void
+..
++AddBezierCubic(const ImVec2 & p1, const ImVec2 & p2, const ImVec2 & p3, const ImVec2 & p4, ImU32 col, float thickness, int num_segments = 0) : void
++AddBezierQuadratic(const ImVec2 & p1, const ImVec2 & p2, const ImVec2 & p3, ImU32 col, float thickness, int num_segments = 0) : void
++AddCallback(ImDrawCallback callback, void * userdata, size_t userdata_size = 0) : void
++AddCircle(const ImVec2 & center, float radius, ImU32 col, int num_segments = 0, float thickness = 1.0f) : void
++AddCircleFilled(const ImVec2 & center, float radius, ImU32 col, int num_segments = 0) : void
++AddConcavePolyFilled(const ImVec2 * points, int num_points, ImU32 col) : void
++AddConvexPolyFilled(const ImVec2 * points, int num_points, ImU32 col) : void
++AddDrawCmd() : void
++AddEllipse(const ImVec2 & center, const ImVec2 & radius, ImU32 col, float rot = 0.0f, int num_segments = 0, float thickness = 1.0f) : void
++AddEllipseFilled(const ImVec2 & center, const ImVec2 & radius, ImU32 col, float rot = 0.0f, int num_segments = 0) : void
++AddImage(ImTextureRef tex_ref, const ImVec2 & p_min, const ImVec2 & p_max, const ImVec2 & uv_min = ImVec2(0, 0), const ImVec2 & uv_max = ImVec2(1, 1), ImU32 col = (((ImU32)(A)<<IM_COL32_A_SHIFT) | ((ImU32)(B)<<IM_COL32_B_SHIFT) | ((ImU32)(G)<<IM_COL32_G_SHIFT) | ((ImU32)(R)<<IM_COL32_R_SHIFT))) : void
++AddImageQuad(ImTextureRef tex_ref, const ImVec2 & p1, const ImVec2 & p2, const ImVec2 & p3, const ImVec2 & p4, const ImVec2 & uv1 = ImVec2(0, 0), const ImVec2 & uv2 = ImVec2(1, 0), const ImVec2 & uv3 = ImVec2(1, 1), const ImVec2 & uv4 = ImVec2(0, 1), ImU32 col = (((ImU32)(A)<<IM_COL32_A_SHIFT) | ((ImU32)(B)<<IM_COL32_B_SHIFT) | ((ImU32)(G)<<IM_COL32_G_SHIFT) | ((ImU32)(R)<<IM_COL32_R_SHIFT))) : void
++AddImageRounded(ImTextureRef tex_ref, const ImVec2 & p_min, const ImVec2 & p_max, const ImVec2 & uv_min, const ImVec2 & uv_max, ImU32 col, float rounding, ImDrawFlags flags = 0) : void
++AddLine(const ImVec2 & p1, const ImVec2 & p2, ImU32 col, float thickness = 1.0f) : void
++AddNgon(const ImVec2 & center, float radius, ImU32 col, int num_segments, float thickness = 1.0f) : void
++AddNgonFilled(const ImVec2 & center, float radius, ImU32 col, int num_segments) : void
++AddPolyline(const ImVec2 * points, int num_points, ImU32 col, ImDrawFlags flags, float thickness) : void
++AddQuad(const ImVec2 & p1, const ImVec2 & p2, const ImVec2 & p3, const ImVec2 & p4, ImU32 col, float thickness = 1.0f) : void
++AddQuadFilled(const ImVec2 & p1, const ImVec2 & p2, const ImVec2 & p3, const ImVec2 & p4, ImU32 col) : void
++AddRect(const ImVec2 & p_min, const ImVec2 & p_max, ImU32 col, float rounding = 0.0f, ImDrawFlags flags = 0, float thickness = 1.0f) : void
++AddRectFilled(const ImVec2 & p_min, const ImVec2 & p_max, ImU32 col, float rounding = 0.0f, ImDrawFlags flags = 0) : void
++AddRectFilledMultiColor(const ImVec2 & p_min, const ImVec2 & p_max, ImU32 col_upr_left, ImU32 col_upr_right, ImU32 col_bot_right, ImU32 col_bot_left) : void
++AddText(const ImVec2 & pos, ImU32 col, const char * text_begin, const char * text_end = 0) : void
++AddText(ImFont * font, float font_size, const ImVec2 & pos, ImU32 col, const char * text_begin, const char * text_end = 0, float wrap_width = 0.0f, const ImVec4 * cpu_fine_clip_rect = 0) : void
++AddTriangle(const ImVec2 & p1, const ImVec2 & p2, const ImVec2 & p3, ImU32 col, float thickness = 1.0f) : void
++AddTriangleFilled(const ImVec2 & p1, const ImVec2 & p2, const ImVec2 & p3, ImU32 col) : void
++ChannelsMerge() : void
++ChannelsSetCurrent(int n) : void
++ChannelsSplit(int count) : void
++CloneOutput() const : ImDrawList *
++GetClipRectMax() const : ImVec2
++GetClipRectMin() const : ImVec2
++PathArcTo(const ImVec2 & center, float radius, float a_min, float a_max, int num_segments = 0) : void
++PathArcToFast(const ImVec2 & center, float radius, int a_min_of_12, int a_max_of_12) : void
++PathBezierCubicCurveTo(const ImVec2 & p2, const ImVec2 & p3, const ImVec2 & p4, int num_segments = 0) : void
++PathBezierQuadraticCurveTo(const ImVec2 & p2, const ImVec2 & p3, int num_segments = 0) : void
++PathClear() : void
++PathEllipticalArcTo(const ImVec2 & center, const ImVec2 & radius, float rot, float a_min, float a_max, int num_segments = 0) : void
++PathFillConcave(ImU32 col) : void
++PathFillConvex(ImU32 col) : void
++PathLineTo(const ImVec2 & pos) : void
++PathLineToMergeDuplicate(const ImVec2 & pos) : void
++PathRect(const ImVec2 & rect_min, const ImVec2 & rect_max, float rounding = 0.0f, ImDrawFlags flags = 0) : void
++PathStroke(ImU32 col, ImDrawFlags flags = 0, float thickness = 1.0f) : void
++PopClipRect() : void
++PopTexture() : void
++PopTextureID() : void
++PrimQuadUV(const ImVec2 & a, const ImVec2 & b, const ImVec2 & c, const ImVec2 & d, const ImVec2 & uv_a, const ImVec2 & uv_b, const ImVec2 & uv_c, const ImVec2 & uv_d, ImU32 col) : void
++PrimRect(const ImVec2 & a, const ImVec2 & b, ImU32 col) : void
++PrimRectUV(const ImVec2 & a, const ImVec2 & b, const ImVec2 & uv_a, const ImVec2 & uv_b, ImU32 col) : void
++PrimReserve(int idx_count, int vtx_count) : void
++PrimUnreserve(int idx_count, int vtx_count) : void
++PrimVtx(const ImVec2 & pos, const ImVec2 & uv, ImU32 col) : void
++PrimWriteIdx(ImDrawIdx idx) : void
++PrimWriteVtx(const ImVec2 & pos, const ImVec2 & uv, ImU32 col) : void
++PushClipRect(const ImVec2 & clip_rect_min, const ImVec2 & clip_rect_max, bool intersect_with_current_clip_rect = false) : void
++PushClipRectFullScreen() : void
++PushTexture(ImTextureRef tex_ref) : void
++PushTextureID(ImTextureRef tex_ref) : void
++_CalcCircleAutoSegmentCount(float radius) const : int
++_ClearFreeMemory() : void
++_OnChangedClipRect() : void
++_OnChangedTexture() : void
++_OnChangedVtxOffset() : void
++_PathArcToFastEx(const ImVec2 & center, float radius, int a_min_sample, int a_max_sample, int a_step) : void
++_PathArcToN(const ImVec2 & center, float radius, float a_min, float a_max, int num_segments) : void
++_PopUnusedDrawCmd() : void
++_ResetForNewFrame() : void
++_SetDrawListSharedData(ImDrawListSharedData * data) : void
++_SetTexture(ImTextureRef tex_ref) : void
++_TryMergeDrawCmds() : void
+__
++CmdBuffer : ImVector<ImDrawCmd>
++Flags : ImDrawListFlags
++IdxBuffer : ImVector<ImDrawIdx>
++VtxBuffer : ImVector<ImDrawVert>
++_CallbacksDataBuf : ImVector<ImU8>
++_ClipRectStack : ImVector<ImVec4>
++_CmdHeader : ImDrawCmdHeader
++_Data : ImDrawListSharedData *
++_FringeScale : float
++_IdxWritePtr : ImDrawIdx *
++_OwnerName : const char *
++_Path : ImVector<ImVec2>
++_Splitter : ImDrawListSplitter
++_TextureStack : ImVector<ImTextureRef>
++_VtxCurrentIdx : unsigned int
++_VtxWritePtr : ImDrawVert *
+}
+class "ImVector<ImDrawList *>" as C_0012065472576974270835
+class C_0012065472576974270835 {
+__
+}
+class "ImVector<ImTextureData *>" as C_0001450616193407029189
+class C_0001450616193407029189 {
+__
+}
+class "ImDrawData" as C_0006128891640536946199
+class C_0006128891640536946199 {
++ImDrawData() : void
+..
++AddDrawList(ImDrawList * draw_list) : void
++Clear() : void
++DeIndexAllBuffers() : void
++ScaleClipRects(const ImVec2 & fb_scale) : void
+__
++CmdLists : ImVector<ImDrawList *>
++CmdListsCount : int
++DisplayPos : ImVec2
++DisplaySize : ImVec2
++FramebufferScale : ImVec2
++OwnerViewport : ImGuiViewport *
++Textures : ImVector<ImTextureData *> *
++TotalIdxCount : int
++TotalVtxCount : int
++Valid : bool
+}
+enum "ImTextureFormat" as C_0012861478940966982949
+enum C_0012861478940966982949 {
+ImTextureFormat_RGBA32
+ImTextureFormat_Alpha8
+}
+enum "ImTextureStatus" as C_0013685234474398069557
+enum C_0013685234474398069557 {
+ImTextureStatus_OK
+ImTextureStatus_Destroyed
+ImTextureStatus_WantCreate
+ImTextureStatus_WantUpdates
+ImTextureStatus_WantDestroy
+}
+class "ImTextureRect" as C_0012174816777534788401
+class C_0012174816777534788401 {
+__
++h : unsigned short
++w : unsigned short
++x : unsigned short
++y : unsigned short
+}
+class "ImVector<ImTextureRect>" as C_0000006719864014660699
+class C_0000006719864014660699 {
+__
+}
+class "ImTextureData" as C_0000612504937351809831
+class C_0000612504937351809831 {
++ImTextureData() : void
++~ImTextureData() : void
+..
++Create(ImTextureFormat format, int w, int h) : void
++DestroyPixels() : void
++GetPitch() const : int
++GetPixels() : void *
++GetPixelsAt(int x, int y) : void *
++GetSizeInBytes() const : int
++GetTexID() const : ImTextureID
++GetTexRef() : ImTextureRef
++SetStatus(ImTextureStatus status) : void
++SetTexID(ImTextureID tex_id) : void
+__
++BackendUserData : void *
++BytesPerPixel : int
++Format : ImTextureFormat
++Height : int
++Pixels : unsigned char *
++RefCount : unsigned short
++Status : ImTextureStatus
++TexID : ImTextureID
++UniqueID : int
++UnusedFrames : int
++UpdateRect : ImTextureRect
++Updates : ImVector<ImTextureRect>
++UseColors : bool
++UsedRect : ImTextureRect
++WantDestroyNextFrame : bool
++Width : int
+}
+class "ImFontConfig" as C_0004255185483531253650
+class C_0004255185483531253650 {
++ImFontConfig() : void
+__
++DstFont : ImFont *
++EllipsisChar : ImWchar
++ExtraSizeScale : float
++Flags : ImFontFlags
++FontData : void *
++FontDataOwnedByAtlas : bool
++FontDataSize : int
++FontLoader : const ImFontLoader *
++FontLoaderData : void *
++FontLoaderFlags : unsigned int
++FontNo : ImU32
++GlyphExcludeRanges : const ImWchar *
++GlyphExtraAdvanceX : float
++GlyphMaxAdvanceX : float
++GlyphMinAdvanceX : float
++GlyphOffset : ImVec2
++GlyphRanges : const ImWchar *
++MergeMode : bool
++Name : char[40]
++OversampleH : ImS8
++OversampleV : ImS8
++PixelSnapH : bool
++PixelSnapV : bool
++RasterizerDensity : float
++RasterizerMultiply : float
++SizePixels : float
+}
+class "ImFontGlyph" as C_0005701254738543081295
+class C_0005701254738543081295 {
++ImFontGlyph() : void
+__
++AdvanceX : float
++Codepoint : unsigned int
++Colored : unsigned int
++PackId : int
++SourceIdx : unsigned int
++U0 : float
++U1 : float
++V0 : float
++V1 : float
++Visible : unsigned int
++X0 : float
++X1 : float
++Y0 : float
++Y1 : float
+}
+class "ImVector<ImU32>" as C_0004550479083123729234
+class C_0004550479083123729234 {
+__
+}
+class "ImFontGlyphRangesBuilder" as C_0013369216492088436202
+class C_0013369216492088436202 {
++ImFontGlyphRangesBuilder() : void
+..
++AddChar(ImWchar c) : void
++AddRanges(const ImWchar * ranges) : void
++AddText(const char * text, const char * text_end = 0) : void
++BuildRanges(ImVector<ImWchar> * out_ranges) : void
++Clear() : void
++GetBit(size_t n) const : bool
++SetBit(size_t n) : void
+__
++UsedChars : ImVector<ImU32>
+}
+class "ImFontAtlasRect" as C_0000875454133899566882
+class C_0000875454133899566882 {
++ImFontAtlasRect() : void
+__
++h : unsigned short
++uv0 : ImVec2
++uv1 : ImVec2
++w : unsigned short
++x : unsigned short
++y : unsigned short
+}
+enum "ImFontAtlasFlags_" as C_0018227837839397359218
+enum C_0018227837839397359218 {
+ImFontAtlasFlags_None
+ImFontAtlasFlags_NoPowerOfTwoHeight
+ImFontAtlasFlags_NoMouseCursors
+ImFontAtlasFlags_NoBakedLines
+}
+class "ImVector<ImFont *>" as C_0005226775520013221966
+class C_0005226775520013221966 {
+__
+}
+class "ImVector<ImFontConfig>" as C_0014991048444522340883
+class C_0014991048444522340883 {
+__
+}
+class "ImVector<ImDrawListSharedData *>" as C_0009719208611411302400
+class C_0009719208611411302400 {
+__
+}
+class "ImFontAtlas" as C_0012516879244947909316
+class C_0012516879244947909316 {
++ImFontAtlas() : void
++~ImFontAtlas() : void
+..
++AddCustomRect(int width, int height, ImFontAtlasRect * out_r = 0) : ImFontAtlasRectId
++AddCustomRectFontGlyph(ImFont * font, ImWchar codepoint, int w, int h, float advance_x, const ImVec2 & offset = ImVec2(0, 0)) : ImFontAtlasRectId
++AddCustomRectFontGlyphForSize(ImFont * font, float font_size, ImWchar codepoint, int w, int h, float advance_x, const ImVec2 & offset = ImVec2(0, 0)) : ImFontAtlasRectId
++AddCustomRectRegular(int w, int h) : ImFontAtlasRectId
++AddFont(const ImFontConfig * font_cfg) : ImFont *
++AddFontDefault(const ImFontConfig * font_cfg = 0) : ImFont *
++AddFontDefaultBitmap(const ImFontConfig * font_cfg = 0) : ImFont *
++AddFontDefaultVector(const ImFontConfig * font_cfg = 0) : ImFont *
++AddFontFromFileTTF(const char * filename, float size_pixels = 0.0f, const ImFontConfig * font_cfg = 0, const ImWchar * glyph_ranges = 0) : ImFont *
++AddFontFromMemoryCompressedBase85TTF(const char * compressed_font_data_base85, float size_pixels = 0.0f, const ImFontConfig * font_cfg = 0, const ImWchar * glyph_ranges = 0) : ImFont *
++AddFontFromMemoryCompressedTTF(const void * compressed_font_data, int compressed_font_data_size, float size_pixels = 0.0f, const ImFontConfig * font_cfg = 0, const ImWchar * glyph_ranges = 0) : ImFont *
++AddFontFromMemoryTTF(void * font_data, int font_data_size, float size_pixels = 0.0f, const ImFontConfig * font_cfg = 0, const ImWchar * glyph_ranges = 0) : ImFont *
++Build() : bool
++CalcCustomRectUV(const ImFontAtlasRect * r, ImVec2 * out_uv_min, ImVec2 * out_uv_max) const : void
++Clear() : void
++ClearFonts() : void
++ClearInputData() : void
++ClearTexData() : void
++CompactCache() : void
++GetCustomRect(ImFontAtlasRectId id, ImFontAtlasRect * out_r) const : bool
++GetCustomRectByIndex(ImFontAtlasRectId id) : const ImFontAtlasRect *
++GetGlyphRangesChineseFull() : const ImWchar *
++GetGlyphRangesChineseSimplifiedCommon() : const ImWchar *
++GetGlyphRangesCyrillic() : const ImWchar *
++GetGlyphRangesDefault() : const ImWchar *
++GetGlyphRangesGreek() : const ImWchar *
++GetGlyphRangesJapanese() : const ImWchar *
++GetGlyphRangesKorean() : const ImWchar *
++GetGlyphRangesThai() : const ImWchar *
++GetGlyphRangesVietnamese() : const ImWchar *
++GetTexDataAsAlpha8(unsigned char ** out_pixels, int * out_width, int * out_height, int * out_bytes_per_pixel = 0) : void
++GetTexDataAsRGBA32(unsigned char ** out_pixels, int * out_width, int * out_height, int * out_bytes_per_pixel = 0) : void
++IsBuilt() const : bool
++RemoveCustomRect(ImFontAtlasRectId id) : void
++RemoveFont(ImFont * font) : void
++SetFontLoader(const ImFontLoader * font_loader) : void
++SetTexID(ImTextureRef id) : void
++SetTexID(ImTextureID id) : void
+__
++ : ImFontAtlas::()
++Builder : ImFontAtlasBuilder *
++DrawListSharedDatas : ImVector<ImDrawListSharedData *>
++Flags : ImFontAtlasFlags
++FontLoader : const ImFontLoader *
++FontLoaderData : void *
++FontLoaderFlags : unsigned int
++FontLoaderName : const char *
++FontNextUniqueID : int
++Fonts : ImVector<ImFont *>
++Locked : bool
++OwnerContext : ImGuiContext *
++RefCount : int
++RendererHasTextures : bool
++Sources : ImVector<ImFontConfig>
++TempRect : ImFontAtlasRect
++TexData : ImTextureData *
++TexDesiredFormat : ImTextureFormat
++TexGlyphPadding : int
++TexIsBuilt : bool
++TexList : ImVector<ImTextureData *>
++TexMaxHeight : int
++TexMaxWidth : int
++TexMinHeight : int
++TexMinWidth : int
++TexNextUniqueID : int
++TexPixelsUseColors : bool
++TexUvLines : ImVec4[33]
++TexUvScale : ImVec2
++TexUvWhitePixel : ImVec2
++UserData : void *
+}
+class "ImFontAtlas::()" as C_0001245741690441127863
+class C_0001245741690441127863 {
+__
++TexID : ImTextureRef
++TexRef : ImTextureRef
+}
+class "ImVector<float>" as C_0002453343523474309937
+class C_0002453343523474309937 {
+__
+}
+class "ImVector<ImU16>" as C_0004384958841503911190
+class C_0004384958841503911190 {
+__
+}
+class "ImVector<ImFontGlyph>" as C_0014640546188552491940
+class C_0014640546188552491940 {
+__
+}
+class "ImFontBaked" as C_0003987893817151015343
+class C_0003987893817151015343 {
++ImFontBaked() : void
+..
++ClearOutputData() : void
++FindGlyph(ImWchar c) : ImFontGlyph *
++FindGlyphNoFallback(ImWchar c) : ImFontGlyph *
++GetCharAdvance(ImWchar c) : float
++IsGlyphLoaded(ImWchar c) : bool
+__
++Ascent : float
++BakedId : ImGuiID
++Descent : float
++FallbackAdvanceX : float
++FallbackGlyphIndex : int
++FontLoaderDatas : void *
++Glyphs : ImVector<ImFontGlyph>
++IndexAdvanceX : ImVector<float>
++IndexLookup : ImVector<ImU16>
++LastUsedFrame : int
++LoadNoFallback : unsigned int
++LoadNoRenderOnLayout : unsigned int
++MetricsTotalSurface : unsigned int
++OwnerFont : ImFont *
++RasterizerDensity : float
++Size : float
++WantDestroy : unsigned int
+}
+enum "ImFontFlags_" as C_0016128123615521842084
+enum C_0016128123615521842084 {
+ImFontFlags_None
+ImFontFlags_NoLoadError
+ImFontFlags_NoLoadGlyphs
+ImFontFlags_LockBakedSizes
+}
+class "ImVector<ImFontConfig *>" as C_0015771525322244008136
+class C_0015771525322244008136 {
+__
+}
+class "ImFont" as C_0003563883090932305577
+class C_0003563883090932305577 {
++ImFont() : void
++~ImFont() : void
+..
++AddRemapChar(ImWchar from_codepoint, ImWchar to_codepoint) : void
++CalcTextSizeA(float size, float max_width, float wrap_width, const char * text_begin, const char * text_end = 0, const char ** out_remaining = 0) : ImVec2
++CalcWordWrapPosition(float size, const char * text, const char * text_end, float wrap_width) : const char *
++CalcWordWrapPositionA(float scale, const char * text, const char * text_end, float wrap_width) : const char *
++ClearOutputData() : void
++GetDebugName() const : const char *
++GetFontBaked(float font_size, float density = -1.0f) : ImFontBaked *
++IsGlyphInFont(ImWchar c) : bool
++IsGlyphRangeUnused(unsigned int c_begin, unsigned int c_last) : bool
++IsLoaded() const : bool
++RenderChar(ImDrawList * draw_list, float size, const ImVec2 & pos, ImU32 col, ImWchar c, const ImVec4 * cpu_fine_clip = 0) : void
++RenderText(ImDrawList * draw_list, float size, const ImVec2 & pos, ImU32 col, const ImVec4 & clip_rect, const char * text_begin, const char * text_end, float wrap_width = 0.0f, ImDrawTextFlags flags = 0) : void
+__
++CurrentRasterizerDensity : float
++EllipsisAutoBake : bool
++EllipsisChar : ImWchar
++FallbackChar : ImWchar
++Flags : ImFontFlags
++FontId : ImGuiID
++LastBaked : ImFontBaked *
++LegacySize : float
++OwnerAtlas : ImFontAtlas *
++RemapPairs : ImGuiStorage
++Scale : float
++Sources : ImVector<ImFontConfig *>
++Used8kPagesMap : ImU8[1]
+}
+enum "ImGuiViewportFlags_" as C_0000223353994711363714
+enum C_0000223353994711363714 {
+ImGuiViewportFlags_None
+ImGuiViewportFlags_IsPlatformWindow
+ImGuiViewportFlags_IsPlatformMonitor
+ImGuiViewportFlags_OwnedByApp
+ImGuiViewportFlags_NoDecoration
+ImGuiViewportFlags_NoTaskBarIcon
+ImGuiViewportFlags_NoFocusOnAppearing
+ImGuiViewportFlags_NoFocusOnClick
+ImGuiViewportFlags_NoInputs
+ImGuiViewportFlags_NoRendererClear
+ImGuiViewportFlags_NoAutoMerge
+ImGuiViewportFlags_TopMost
+ImGuiViewportFlags_CanHostOtherWindows
+ImGuiViewportFlags_IsMinimized
+ImGuiViewportFlags_IsFocused
+}
+class "ImGuiViewport" as C_0009210603161397886921
+class C_0009210603161397886921 {
++ImGuiViewport() : void
++~ImGuiViewport() : void
+..
++GetCenter() const : ImVec2
++GetWorkCenter() const : ImVec2
+__
++DpiScale : float
++DrawData : ImDrawData *
++Flags : ImGuiViewportFlags
++FramebufferScale : ImVec2
++ID : ImGuiID
++ParentViewport : ImGuiViewport *
++ParentViewportId : ImGuiID
++PlatformHandle : void *
++PlatformHandleRaw : void *
++PlatformRequestClose : bool
++PlatformRequestMove : bool
++PlatformRequestResize : bool
++PlatformUserData : void *
++PlatformWindowCreated : bool
++Pos : ImVec2
++RendererUserData : void *
++Size : ImVec2
++WorkPos : ImVec2
++WorkSize : ImVec2
+}
+class "ImVector<ImGuiPlatformMonitor>" as C_0006333617981665364862
+class C_0006333617981665364862 {
+__
+}
+class "ImVector<ImGuiViewport *>" as C_0002130905065674738848
+class C_0002130905065674738848 {
+__
+}
+class "ImGuiPlatformIO" as C_0003096626716081895416
+class C_0003096626716081895416 {
++ImGuiPlatformIO() : void
+..
++ClearPlatformHandlers() : void
++ClearRendererHandlers() : void
+__
++Monitors : ImVector<ImGuiPlatformMonitor>
++Platform_ClipboardUserData : void *
++Platform_CreateVkSurface : int (*)(ImGuiViewport *,ImU64,const void *,ImU64 *)
++Platform_CreateWindow : void (*)(ImGuiViewport *)
++Platform_DestroyWindow : void (*)(ImGuiViewport *)
++Platform_GetClipboardTextFn : const char *(*)(ImGuiContext *)
++Platform_GetWindowDpiScale : float (*)(ImGuiViewport *)
++Platform_GetWindowFocus : bool (*)(ImGuiViewport *)
++Platform_GetWindowFramebufferScale : ImVec2 (*)(ImGuiViewport *)
++Platform_GetWindowMinimized : bool (*)(ImGuiViewport *)
++Platform_GetWindowPos : ImVec2 (*)(ImGuiViewport *)
++Platform_GetWindowSize : ImVec2 (*)(ImGuiViewport *)
++Platform_GetWindowWorkAreaInsets : ImVec4 (*)(ImGuiViewport *)
++Platform_ImeUserData : void *
++Platform_LocaleDecimalPoint : ImWchar
++Platform_OnChangedViewport : void (*)(ImGuiViewport *)
++Platform_OpenInShellFn : bool (*)(ImGuiContext *,const char *)
++Platform_OpenInShellUserData : void *
++Platform_RenderWindow : void (*)(ImGuiViewport *,void *)
++Platform_SetClipboardTextFn : void (*)(ImGuiContext *,const char *)
++Platform_SetImeDataFn : void (*)(ImGuiContext *,ImGuiViewport *,ImGuiPlatformImeData *)
++Platform_SetWindowAlpha : void (*)(ImGuiViewport *,float)
++Platform_SetWindowFocus : void (*)(ImGuiViewport *)
++Platform_SetWindowPos : void (*)(ImGuiViewport *,ImVec2)
++Platform_SetWindowSize : void (*)(ImGuiViewport *,ImVec2)
++Platform_SetWindowTitle : void (*)(ImGuiViewport *,const char *)
++Platform_ShowWindow : void (*)(ImGuiViewport *)
++Platform_SwapBuffers : void (*)(ImGuiViewport *,void *)
++Platform_UpdateWindow : void (*)(ImGuiViewport *)
++Renderer_CreateWindow : void (*)(ImGuiViewport *)
++Renderer_DestroyWindow : void (*)(ImGuiViewport *)
++Renderer_RenderState : void *
++Renderer_RenderWindow : void (*)(ImGuiViewport *,void *)
++Renderer_SetWindowSize : void (*)(ImGuiViewport *,ImVec2)
++Renderer_SwapBuffers : void (*)(ImGuiViewport *,void *)
++Renderer_TextureMaxHeight : int
++Renderer_TextureMaxWidth : int
++Textures : ImVector<ImTextureData *>
++Viewports : ImVector<ImGuiViewport *>
+}
+class "ImGuiPlatformMonitor" as C_0016669488419982524161
+class C_0016669488419982524161 {
++ImGuiPlatformMonitor() : void
+__
++DpiScale : float
++MainPos : ImVec2
++MainSize : ImVec2
++PlatformHandle : void *
++WorkPos : ImVec2
++WorkSize : ImVec2
+}
+class "ImGuiPlatformImeData" as C_0004333302482615461923
+class C_0004333302482615461923 {
++ImGuiPlatformImeData() : void
+__
++InputLineHeight : float
++InputPos : ImVec2
++ViewportId : ImGuiID
++WantTextInput : bool
++WantVisible : bool
+}
+enum "ImAxis_" as C_0010423072099644768490
+enum C_0010423072099644768490 {
+ImAxis_X1
+ImAxis_X2
+ImAxis_X3
+ImAxis_Y1
+ImAxis_Y2
+ImAxis_Y3
+ImAxis_COUNT
+}
+enum "ImPlotFlags_" as C_0008019567317714352924
+enum C_0008019567317714352924 {
+ImPlotFlags_None
+ImPlotFlags_NoTitle
+ImPlotFlags_NoLegend
+ImPlotFlags_NoMouseText
+ImPlotFlags_NoInputs
+ImPlotFlags_NoMenus
+ImPlotFlags_NoBoxSelect
+ImPlotFlags_NoFrame
+ImPlotFlags_Equal
+ImPlotFlags_Crosshairs
+ImPlotFlags_CanvasOnly
+}
+enum "ImPlotAxisFlags_" as C_0007615395493179121907
+enum C_0007615395493179121907 {
+ImPlotAxisFlags_None
+ImPlotAxisFlags_NoLabel
+ImPlotAxisFlags_NoGridLines
+ImPlotAxisFlags_NoTickMarks
+ImPlotAxisFlags_NoTickLabels
+ImPlotAxisFlags_NoInitialFit
+ImPlotAxisFlags_NoMenus
+ImPlotAxisFlags_NoSideSwitch
+ImPlotAxisFlags_NoHighlight
+ImPlotAxisFlags_Opposite
+ImPlotAxisFlags_Foreground
+ImPlotAxisFlags_Invert
+ImPlotAxisFlags_AutoFit
+ImPlotAxisFlags_RangeFit
+ImPlotAxisFlags_PanStretch
+ImPlotAxisFlags_LockMin
+ImPlotAxisFlags_LockMax
+ImPlotAxisFlags_Lock
+ImPlotAxisFlags_NoDecorations
+ImPlotAxisFlags_AuxDefault
+}
+enum "ImPlotSubplotFlags_" as C_0011224734251871613922
+enum C_0011224734251871613922 {
+ImPlotSubplotFlags_None
+ImPlotSubplotFlags_NoTitle
+ImPlotSubplotFlags_NoLegend
+ImPlotSubplotFlags_NoMenus
+ImPlotSubplotFlags_NoResize
+ImPlotSubplotFlags_NoAlign
+ImPlotSubplotFlags_ShareItems
+ImPlotSubplotFlags_LinkRows
+ImPlotSubplotFlags_LinkCols
+ImPlotSubplotFlags_LinkAllX
+ImPlotSubplotFlags_LinkAllY
+ImPlotSubplotFlags_ColMajor
+}
+enum "ImPlotLegendFlags_" as C_0015634640618301227219
+enum C_0015634640618301227219 {
+ImPlotLegendFlags_None
+ImPlotLegendFlags_NoButtons
+ImPlotLegendFlags_NoHighlightItem
+ImPlotLegendFlags_NoHighlightAxis
+ImPlotLegendFlags_NoMenus
+ImPlotLegendFlags_Outside
+ImPlotLegendFlags_Horizontal
+ImPlotLegendFlags_Sort
+ImPlotLegendFlags_Reverse
+}
+enum "ImPlotMouseTextFlags_" as C_0003241964543885008144
+enum C_0003241964543885008144 {
+ImPlotMouseTextFlags_None
+ImPlotMouseTextFlags_NoAuxAxes
+ImPlotMouseTextFlags_NoFormat
+ImPlotMouseTextFlags_ShowAlways
+}
+enum "ImPlotDragToolFlags_" as C_0012396460797148565124
+enum C_0012396460797148565124 {
+ImPlotDragToolFlags_None
+ImPlotDragToolFlags_NoCursors
+ImPlotDragToolFlags_NoFit
+ImPlotDragToolFlags_NoInputs
+ImPlotDragToolFlags_Delayed
+}
+enum "ImPlotColormapScaleFlags_" as C_0014749535932025617674
+enum C_0014749535932025617674 {
+ImPlotColormapScaleFlags_None
+ImPlotColormapScaleFlags_NoLabel
+ImPlotColormapScaleFlags_Opposite
+ImPlotColormapScaleFlags_Invert
+}
+enum "ImPlotItemFlags_" as C_0013904441469545184247
+enum C_0013904441469545184247 {
+ImPlotItemFlags_None
+ImPlotItemFlags_NoLegend
+ImPlotItemFlags_NoFit
+}
+enum "ImPlotLineFlags_" as C_0004830108288811526402
+enum C_0004830108288811526402 {
+ImPlotLineFlags_None
+ImPlotLineFlags_Segments
+ImPlotLineFlags_Loop
+ImPlotLineFlags_SkipNaN
+ImPlotLineFlags_NoClip
+ImPlotLineFlags_Shaded
+}
+enum "ImPlotScatterFlags_" as C_0006468924150511020041
+enum C_0006468924150511020041 {
+ImPlotScatterFlags_None
+ImPlotScatterFlags_NoClip
+}
+enum "ImPlotStairsFlags_" as C_0017772592473263390458
+enum C_0017772592473263390458 {
+ImPlotStairsFlags_None
+ImPlotStairsFlags_PreStep
+ImPlotStairsFlags_Shaded
+}
+enum "ImPlotShadedFlags_" as C_0009364071426438257503
+enum C_0009364071426438257503 {
+ImPlotShadedFlags_None
+}
+enum "ImPlotBarsFlags_" as C_0006330039379132498667
+enum C_0006330039379132498667 {
+ImPlotBarsFlags_None
+ImPlotBarsFlags_Horizontal
+}
+enum "ImPlotBarGroupsFlags_" as C_0011289193629360866960
+enum C_0011289193629360866960 {
+ImPlotBarGroupsFlags_None
+ImPlotBarGroupsFlags_Horizontal
+ImPlotBarGroupsFlags_Stacked
+}
+enum "ImPlotErrorBarsFlags_" as C_0006573978671214571289
+enum C_0006573978671214571289 {
+ImPlotErrorBarsFlags_None
+ImPlotErrorBarsFlags_Horizontal
+}
+enum "ImPlotStemsFlags_" as C_0015923567448319797955
+enum C_0015923567448319797955 {
+ImPlotStemsFlags_None
+ImPlotStemsFlags_Horizontal
+}
+enum "ImPlotInfLinesFlags_" as C_0003669315896190123994
+enum C_0003669315896190123994 {
+ImPlotInfLinesFlags_None
+ImPlotInfLinesFlags_Horizontal
+}
+enum "ImPlotPieChartFlags_" as C_0017100071753901171562
+enum C_0017100071753901171562 {
+ImPlotPieChartFlags_None
+ImPlotPieChartFlags_Normalize
+ImPlotPieChartFlags_IgnoreHidden
+ImPlotPieChartFlags_Exploding
+}
+enum "ImPlotHeatmapFlags_" as C_0006121753597557088263
+enum C_0006121753597557088263 {
+ImPlotHeatmapFlags_None
+ImPlotHeatmapFlags_ColMajor
+}
+enum "ImPlotHistogramFlags_" as C_0013554023754191591164
+enum C_0013554023754191591164 {
+ImPlotHistogramFlags_None
+ImPlotHistogramFlags_Horizontal
+ImPlotHistogramFlags_Cumulative
+ImPlotHistogramFlags_Density
+ImPlotHistogramFlags_NoOutliers
+ImPlotHistogramFlags_ColMajor
+}
+enum "ImPlotDigitalFlags_" as C_0015432244221312017892
+enum C_0015432244221312017892 {
+ImPlotDigitalFlags_None
+}
+enum "ImPlotImageFlags_" as C_0005636527207072374591
+enum C_0005636527207072374591 {
+ImPlotImageFlags_None
+}
+enum "ImPlotTextFlags_" as C_0011713490632136333145
+enum C_0011713490632136333145 {
+ImPlotTextFlags_None
+ImPlotTextFlags_Vertical
+}
+enum "ImPlotDummyFlags_" as C_0000918127913244468223
+enum C_0000918127913244468223 {
+ImPlotDummyFlags_None
+}
+enum "ImPlotCond_" as C_0010381044051506826317
+enum C_0010381044051506826317 {
+ImPlotCond_None
+ImPlotCond_Always
+ImPlotCond_Once
+}
+enum "ImPlotCol_" as C_0010026180737280872441
+enum C_0010026180737280872441 {
+ImPlotCol_Line
+ImPlotCol_Fill
+ImPlotCol_MarkerOutline
+ImPlotCol_MarkerFill
+ImPlotCol_ErrorBar
+ImPlotCol_FrameBg
+ImPlotCol_PlotBg
+ImPlotCol_PlotBorder
+ImPlotCol_LegendBg
+ImPlotCol_LegendBorder
+ImPlotCol_LegendText
+ImPlotCol_TitleText
+ImPlotCol_InlayText
+ImPlotCol_AxisText
+ImPlotCol_AxisGrid
+ImPlotCol_AxisTick
+ImPlotCol_AxisBg
+ImPlotCol_AxisBgHovered
+ImPlotCol_AxisBgActive
+ImPlotCol_Selection
+ImPlotCol_Crosshairs
+ImPlotCol_COUNT
+}
+enum "ImPlotStyleVar_" as C_0014953478536144315198
+enum C_0014953478536144315198 {
+ImPlotStyleVar_LineWeight
+ImPlotStyleVar_Marker
+ImPlotStyleVar_MarkerSize
+ImPlotStyleVar_MarkerWeight
+ImPlotStyleVar_FillAlpha
+ImPlotStyleVar_ErrorBarSize
+ImPlotStyleVar_ErrorBarWeight
+ImPlotStyleVar_DigitalBitHeight
+ImPlotStyleVar_DigitalBitGap
+ImPlotStyleVar_PlotBorderSize
+ImPlotStyleVar_MinorAlpha
+ImPlotStyleVar_MajorTickLen
+ImPlotStyleVar_MinorTickLen
+ImPlotStyleVar_MajorTickSize
+ImPlotStyleVar_MinorTickSize
+ImPlotStyleVar_MajorGridSize
+ImPlotStyleVar_MinorGridSize
+ImPlotStyleVar_PlotPadding
+ImPlotStyleVar_LabelPadding
+ImPlotStyleVar_LegendPadding
+ImPlotStyleVar_LegendInnerPadding
+ImPlotStyleVar_LegendSpacing
+ImPlotStyleVar_MousePosPadding
+ImPlotStyleVar_AnnotationPadding
+ImPlotStyleVar_FitPadding
+ImPlotStyleVar_PlotDefaultSize
+ImPlotStyleVar_PlotMinSize
+ImPlotStyleVar_COUNT
+}
+enum "ImPlotScale_" as C_0003483210600140634658
+enum C_0003483210600140634658 {
+ImPlotScale_Linear
+ImPlotScale_Time
+ImPlotScale_Log10
+ImPlotScale_SymLog
+}
+enum "ImPlotMarker_" as C_0017883645668076957207
+enum C_0017883645668076957207 {
+ImPlotMarker_None
+ImPlotMarker_Circle
+ImPlotMarker_Square
+ImPlotMarker_Diamond
+ImPlotMarker_Up
+ImPlotMarker_Down
+ImPlotMarker_Left
+ImPlotMarker_Right
+ImPlotMarker_Cross
+ImPlotMarker_Plus
+ImPlotMarker_Asterisk
+ImPlotMarker_COUNT
+}
+enum "ImPlotColormap_" as C_0004113375651272973532
+enum C_0004113375651272973532 {
+ImPlotColormap_Deep
+ImPlotColormap_Dark
+ImPlotColormap_Pastel
+ImPlotColormap_Paired
+ImPlotColormap_Viridis
+ImPlotColormap_Plasma
+ImPlotColormap_Hot
+ImPlotColormap_Cool
+ImPlotColormap_Pink
+ImPlotColormap_Jet
+ImPlotColormap_Twilight
+ImPlotColormap_RdBu
+ImPlotColormap_BrBG
+ImPlotColormap_PiYG
+ImPlotColormap_Spectral
+ImPlotColormap_Greys
+}
+enum "ImPlotLocation_" as C_0006083572211187758285
+enum C_0006083572211187758285 {
+ImPlotLocation_Center
+ImPlotLocation_North
+ImPlotLocation_South
+ImPlotLocation_West
+ImPlotLocation_East
+ImPlotLocation_NorthWest
+ImPlotLocation_NorthEast
+ImPlotLocation_SouthWest
+ImPlotLocation_SouthEast
+}
+enum "ImPlotBin_" as C_0017503881362340091930
+enum C_0017503881362340091930 {
+ImPlotBin_Sqrt
+ImPlotBin_Sturges
+ImPlotBin_Rice
+ImPlotBin_Scott
+}
+class "ImPlotPoint" as C_0010132548371569888536
+class C_0010132548371569888536 {
++ImPlotPoint() : void
++ImPlotPoint(double _x, double _y) : void
++ImPlotPoint(const ImVec2 & p) : void
+..
++operator[](size_t idx) : double &
++operator[](size_t idx) const : double
+__
++x : double
++y : double
+}
+class "ImPlotRange" as C_0017168075678928134086
+class C_0017168075678928134086 {
++ImPlotRange() : void
++ImPlotRange(double _min, double _max) : void
+..
++Clamp(double value) const : double
++Contains(double value) const : bool
++Size() const : double
+__
++Max : double
++Min : double
+}
+class "ImPlotRect" as C_0009971097416803822632
+class C_0009971097416803822632 {
++ImPlotRect() : void
++ImPlotRect(double x_min, double x_max, double y_min, double y_max) : void
+..
++Clamp(const ImPlotPoint & p) : ImPlotPoint
++Clamp(double x, double y) : ImPlotPoint
++Contains(const ImPlotPoint & p) const : bool
++Contains(double x, double y) const : bool
++Max() const : ImPlotPoint
++Min() const : ImPlotPoint
++Size() const : ImPlotPoint
+__
++X : ImPlotRange
++Y : ImPlotRange
+}
+class "ImPlotStyle" as C_0004966632917739994123
+class C_0004966632917739994123 {
++ImPlotStyle() : void
+__
++AnnotationPadding : ImVec2
++Colormap : ImPlotColormap
++Colors : ImVec4[21]
++DigitalBitGap : float
++DigitalBitHeight : float
++ErrorBarSize : float
++ErrorBarWeight : float
++FillAlpha : float
++FitPadding : ImVec2
++LabelPadding : ImVec2
++LegendInnerPadding : ImVec2
++LegendPadding : ImVec2
++LegendSpacing : ImVec2
++LineWeight : float
++MajorGridSize : ImVec2
++MajorTickLen : ImVec2
++MajorTickSize : ImVec2
++Marker : int
++MarkerSize : float
++MarkerWeight : float
++MinorAlpha : float
++MinorGridSize : ImVec2
++MinorTickLen : ImVec2
++MinorTickSize : ImVec2
++MousePosPadding : ImVec2
++PlotBorderSize : float
++PlotDefaultSize : ImVec2
++PlotMinSize : ImVec2
++PlotPadding : ImVec2
++Use24HourClock : bool
++UseISO8601 : bool
++UseLocalTime : bool
+}
+class "ImPlotInputMap" as C_0010283456111227814517
+class C_0010283456111227814517 {
++ImPlotInputMap() : void
+__
++Fit : ImGuiMouseButton
++Menu : ImGuiMouseButton
++OverrideMod : int
++Pan : ImGuiMouseButton
++PanMod : int
++Select : ImGuiMouseButton
++SelectCancel : ImGuiMouseButton
++SelectHorzMod : int
++SelectMod : int
++SelectVertMod : int
++ZoomMod : int
++ZoomRate : float
+}
+enum "ImPlotFlagsObsolete_" as C_0015026045343532845700
+enum C_0015026045343532845700 {
+ImPlotFlags_YAxis2
+ImPlotFlags_YAxis3
+}
+class "AnimationManager<std::chrono::high_resolution_clock>" as C_0016364042332862071011
+class C_0016364042332862071011 {
+__
+}
+class "MyWindow" as C_0008275891181392909974
+class C_0008275891181392909974 {
++MyWindow(int argc, const char ** argv) : void
+..
+-animationSetup() : void
+-clear() : void
+-cursorPosCallback(double xpos, double ypos) : void
+-initLogger() : void
+-keyCallback(int key, int scancode, int action, int mode) : void
+-mouseButtonCallback(int button, int action, int mods) : void
+-setupStartup() : void
++uiUpdate() : void
++update(double dt) : void
+__
+-anim : AnimationManager<std::chrono::high_resolution_clock>
+-animationState : Subscribers::CallbackSubscriber
+-dirty : bool
+-displayRefreshSubscriber : Subscribers::CallbackSubscriber
+-end : Vec2
+-initChain : Chain::GridAllocatorChain
+-m_collisionPoints : std::vector<Vec2>
+-m_enableTick : bool
+-m_tickTimeStamp : std::optional<Clock::time_point>
+-mouseHolding : int
+-out : FILE *
+-pathRefreshSubscriber : Subscribers::CallbackSubscriber
+-refresh : bool
+-restore : int
+-simManager : Simulation::Manager &
+-start : Vec2
+}
+class "ImFontAtlasBuilder" as C_0003884191943987116786
+class C_0003884191943987116786 {
+__
+}
+class "_cl_context" as C_0005505353034777529899
+class C_0005505353034777529899 {
+__
+}
+class "__GLsync" as C_0005656535728663299924
+class C_0005656535728663299924 {
+__
+}
+class "ImFontLoader" as C_0006761674829871321807
+class C_0006761674829871321807 {
+__
+}
+class "GLFWwindow" as C_0008434725962297335764
+class C_0008434725962297335764 {
+__
+}
+class "ImPlotContext" as C_0008625922460572761671
+class C_0008625922460572761671 {
+__
+}
+class "ImGuiContext" as C_0008778555029687894679
+class C_0008778555029687894679 {
+__
+}
+class "GLFWcursor" as C_0010724029348525148739
+class C_0010724029348525148739 {
+__
+}
+class "GLFWmonitor" as C_0013121967087840993840
+class C_0013121967087840993840 {
+__
+}
+class "ImDrawListSharedData" as C_0014704053094806871321
+class C_0014704053094806871321 {
+__
+}
+class "PathManager::PathID" as C_0015983514335218059689
+class C_0015983514335218059689 {
+__
+}
+class "_cl_event" as C_0016742860404031477541
+class C_0016742860404031477541 {
+__
+}
+C_0017614144533568309161 ..> C_0012415743977570969849
+C_0006135738021633781134 ..> C_0017614144533568309161
+C_0014328005042205008466 ..> C_0001275076681856179721
+C_0014328005042205008466 ..> C_0006332989992941243028
+C_0002539092574143936661 ..> C_0003046615137435745376
+C_0001950562844437850433 ..> C_0008422761201490794599
+C_0007432155581095808926 ..> C_0009810031281855847319
+C_0012803677092076106623 ..> C_0009810031281855847319
+C_0010562499307471491601 ..> C_0014655922757185255660
+C_0011385432641056735404 ..> C_0014655922757185255660
+C_0001620721779665700036 ..> C_0003115881373451800007
+C_0002228295796337985589 ..> C_0016726297106288310335
+C_0011541246556000069736 ..> C_0017990578196595389321
+C_0001347152004389415025 ..> C_0001275076681856179721
+C_0011923903168730565843 ..> C_0001275076681856179721
+C_0006768016179079868705 ..> C_0001275076681856179721
+C_0006768016179079868705 ..> C_0011923903168730565843
+C_0014556251967261241151 ..> C_0015525581018586802988
+C_0012322381635794884228 ..> C_0014556251967261241151
+C_0005923753518013068657 ..> C_0014556251967261241151
+C_0009610230603899660979 ..> C_0013784868073774302216
+C_0013566849599595529376 ..> C_0000994511990246631929
+C_0001488291031702088781 ..> C_0007524051125027650422
+C_0011578180343120307699 ..> C_0001642024242126274810
+C_0001016014061568123944 ..> C_0011614116359736977436
+C_0016181972057543612761 ..> C_0001016014061568123944
+C_0009982156784235106586 ..> C_0011614116359736977436
+C_0015578192558011062777 ..> C_0000056909946344020665
+C_0008666991674172501298 ..> C_0011031694641276016248
+C_0018104166817325631871 ..> C_0016830943016957620265
+C_0016619464092053922477 ..> C_0009610230603899660979
+C_0011712112788078757981 ..> C_0001893470601361278794
+C_0004144496444048943581 ..> C_0011109651401294498108
+C_0012108311327286886128 ..> C_0003082058397422627119
+C_0007994895661285551473 ..> C_0018413845961660969714
+C_0007579341737334202035 ..> C_0018413845961660969714
+C_0010134079326376607663 ..> C_0018413845961660969714
+C_0013903104245794535002 ..> C_0018413845961660969714
+C_0012652156542792376693 ..> C_0007994895661285551473
+C_0015004038434732040862 ..> C_0006135738021633781134
+C_0016657878585287031157 ..> C_0016830943016957620265
+C_0014992418250357455111 ..|> C_0003348486584261383332
+C_0012040601268495348826 ..|> C_0003348486584261383332
+C_0003348486584261383332 ..> C_0010619012294112118834
+C_0003348486584261383332 ..> C_0014992418250357455111
+C_0003348486584261383332 ..> C_0012040601268495348826
+C_0004621064861470387694 ..|> C_0003348486584261383332
+C_0006833969788498267893 ..|> C_0001405566653863255530
+C_0001405566653863255530 ..> C_0004621064861470387694
+C_0001405566653863255530 ..> C_0003348486584261383332
+C_0001405566653863255530 ..> C_0006833969788498267893
+C_0006863323950975451041 ..|> C_0003348486584261383332
+C_0014655922757185255660 ..|> C_0003348486584261383332
+C_0004421601367316582408 ..|> C_0001405566653863255530
+C_0002739534453154856813 ..|> C_0004621064861470387694
+C_0016830943016957620265 ..|> C_0004621064861470387694
+C_0013784868073774302216 ..|> C_0004621064861470387694
+C_0001951113896505040197 ..|> C_0003348486584261383332
+C_0006332989992941243028 o-- C_0008015409205204797935 : -m_shaders
+C_0000614546160742051811 ..> C_0013247086971467822611
+C_0000614546160742051811 ..> C_0006332989992941243028
+C_0000614546160742051811 o-- C_0014328005042205008466 : -m_shaders
+C_0003046615137435745376 --> C_0006332989992941243028 : +shader
+C_0008422761201490794599 o-- C_0006863323950975451041 : +color
+C_0008422761201490794599 o-- C_0006863323950975451041 : +borderColor
+C_0008422761201490794599 --> C_0006332989992941243028 : +shader
+C_0002088975552499886084 o-- C_0018110337699185100992 : -available
+C_0003267318088240048309 ..> C_0000576645092526226755
+C_0003267318088240048309 ..> C_0003046615137435745376
+C_0003267318088240048309 ..> C_0008422761201490794599
+C_0003267318088240048309 ..> C_0010964578208775186054
+C_0003267318088240048309 ..> C_0006087540299216406522
+C_0003267318088240048309 ..> C_0015372026597303525006
+C_0003267318088240048309 o-- C_0000618757574769403656 : -solver
+C_0003267318088240048309 o-- C_0002088975552499886084 : -uuid
+C_0003267318088240048309 o-- C_0002591437917088692538 : -data
+C_0003267318088240048309 o-- C_0001901164363097582429 : -m_count
+C_0015372026597303525006 --+ C_0003267318088240048309
+C_0015372026597303525006 ..> C_0002539092574143936661
+C_0015372026597303525006 ..> C_0003046615137435745376
+C_0015372026597303525006 ..> C_0001950562844437850433
+C_0015372026597303525006 ..> C_0008422761201490794599
+C_0001901164363097582429 --+ C_0003267318088240048309
+C_0000576645092526226755 --+ C_0003267318088240048309
+C_0000136662589974312360 --+ C_0003267318088240048309
+C_0000136662589974312360 ..> C_0009810031281855847319
+C_0002591437917088692538 --+ C_0003267318088240048309
+C_0002591437917088692538 o-- C_0002539092574143936661 : +points
+C_0002591437917088692538 o-- C_0002539092574143936661 : +lines
+C_0002591437917088692538 o-- C_0001950562844437850433 : +polys
+C_0002591437917088692538 o-- C_0007432155581095808926 : +uuid2ii
+C_0002591437917088692538 o-- C_0012803677092076106623 : +ii2uuid
+C_0016726297106288310335 ..> C_0014655922757185255660
+C_0016726297106288310335 ..> C_0003348486584261383332
+C_0016726297106288310335 ..> C_0006332989992941243028
+C_0016726297106288310335 ..> C_0003046615137435745376
+C_0016726297106288310335 o-- C_0010562499307471491601 : -m_verts
+C_0016726297106288310335 o-- C_0006863323950975451041 : -m_color
+C_0016726297106288310335 --> C_0003267318088240048309 : -m_manager
+C_0003115881373451800007 ..> C_0003348486584261383332
+C_0003115881373451800007 o-- C_0004421601367316582408 : -m_model
+C_0003115881373451800007 o-- C_0014655922757185255660 : -m_pos
+C_0003115881373451800007 o-- C_0006863323950975451041 : -m_color
+C_0003115881373451800007 --> C_0003267318088240048309 : -m_manager
+C_0017990578196595389321 ..> C_0003348486584261383332
+C_0017990578196595389321 ..> C_0006332989992941243028
+C_0017990578196595389321 ..> C_0014655922757185255660
+C_0017990578196595389321 ..> C_0008422761201490794599
+C_0017990578196595389321 o-- C_0011385432641056735404 : -m_verts
+C_0017990578196595389321 o-- C_0008015409205204797935 : -m_indices
+C_0017990578196595389321 o-- C_0006863323950975451041 : -m_color
+C_0017990578196595389321 o-- C_0006863323950975451041 : -m_borderColor
+C_0017990578196595389321 --> C_0003267318088240048309 : -m_manager
+C_0013249249226652506748 ..> C_0003348486584261383332
+C_0013249249226652506748 ..> C_0013808655339847284184
+C_0013249249226652506748 ..> C_0008422761201490794599
+C_0013249249226652506748 ..> C_0003046615137435745376
+C_0013249249226652506748 ..> C_0014655922757185255660
+C_0013249249226652506748 ..> C_0006863323950975451041
+C_0013249249226652506748 ..> C_0003115881373451800007
+C_0013249249226652506748 ..> C_0016726297106288310335
+C_0013249249226652506748 ..> C_0011385432641056735404
+C_0013249249226652506748 ..> C_0017990578196595389321
+C_0013249249226652506748 ..> C_0016830943016957620265
+C_0013249249226652506748 ..> C_0001901164363097582429
+C_0013249249226652506748 o-- C_0001620721779665700036 : -m_points
+C_0013249249226652506748 o-- C_0002228295796337985589 : -m_lines
+C_0013249249226652506748 o-- C_0011541246556000069736 : -m_polys
+C_0013249249226652506748 o-- C_0002739534453154856813 : -m_windowSize
+C_0013249249226652506748 o-- C_0003267318088240048309 : -m_objManager
+C_0013249249226652506748 o-- C_0000614546160742051811 : -m_shaderManager
+C_0013249249226652506748 --> C_0006332989992941243028 : -currentShader
+C_0013249249226652506748 --> C_0013249249226652506748 : -m_instance
+C_0008411340913254138607 ..> C_0002739534453154856813
+C_0008411340913254138607 ..> C_0003348486584261383332
+C_0008411340913254138607 ..> C_0008778555029687894679
+C_0008411340913254138607 ..> C_0008625922460572761671
+C_0008411340913254138607 o-- C_0016830943016957620265 : #m_mouse
+C_0008411340913254138607 o-- C_0016830943016957620265 : #m_windowSize
+C_0008411340913254138607 o-- C_0007565751239023035126 : #m_state
+C_0008411340913254138607 o-- C_0004276277466396066764 : #m_log
+C_0008411340913254138607 --> C_0008434725962297335764 : #m_window
+C_0008411340913254138607 --> C_0013249249226652506748 : #m_engine
+C_0008411340913254138607 o-- C_0002360312306824742041 : #m_lastTime
+C_0008411340913254138607 o-- C_0002360312306824742041 : #m_startTime
+C_0008411340913254138607 o-- C_0016639757653164927497 : #gen
+C_0007565751239023035126 --+ C_0008411340913254138607
+C_0007565751239023035126 ..> C_0011923903168730565843
+C_0007565751239023035126 o-- C_0001347152004389415025 : -m_headers
+C_0007565751239023035126 o-- C_0006768016179079868705 : -m_vars
+C_0009460517425703679938 ..> C_0015525581018586802988
+C_0009460517425703679938 o-- C_0012322381635794884228 : -m_queue
+C_0009460517425703679938 o-- C_0005923753518013068657 : -m_restoreStack
+C_0007524051125027650422 ..> C_0013249249226652506748
+C_0007524051125027650422 ..> C_0003348486584261383332
+C_0007524051125027650422 o-- C_0013784868073774302216 : #m_pos
+C_0005434895093103671544 ..> C_0008917128763581520149
+C_0005434895093103671544 ..> C_0013784868073774302216
+C_0005434895093103671544 ..> C_0003348486584261383332
+C_0005434895093103671544 ..> C_0007524051125027650422
+C_0005434895093103671544 --> C_0005434895093103671544 : -m_instance
+C_0008917128763581520149 --+ C_0005434895093103671544
+C_0000056909946344020665 ..> C_0013784868073774302216
+C_0000056909946344020665 ..> C_0003348486584261383332
+C_0000056909946344020665 ..> C_0009610230603899660979
+C_0011614116359736977436 ..> C_0003348486584261383332
+C_0011614116359736977436 ..> C_0007524051125027650422
+C_0011614116359736977436 ..> C_0013249249226652506748
+C_0011614116359736977436 ..> C_0000994511990246631929
+C_0011614116359736977436 ..> C_0016830943016957620265
+C_0011614116359736977436 o-- C_0001488291031702088781 : #m_cell
+C_0011614116359736977436 o-- C_0010203260831736923132 : #m_cellChanged
+C_0011614116359736977436 o-- C_0001951113896505040197 : #m_fill
+C_0011614116359736977436 o-- C_0013784868073774302216 : #m_coord
+C_0010203260831736923132 ..> C_0000994511990246631929
+C_0010203260831736923132 o-- C_0013566849599595529376 : #m_observers
+C_0001642024242126274810 ..> C_0013784868073774302216
+C_0001642024242126274810 ..> C_0003348486584261383332
+C_0001642024242126274810 ..> C_0011614116359736977436
+C_0001642024242126274810 ..> C_0000056909946344020665
+C_0001642024242126274810 ..> C_0016830943016957620265
+C_0010588216749841672638 o-- C_0013286274850898176297 : -m_onChanged
+C_0000994511990246631929 <|-- C_0010588216749841672638
+C_0000187593043476956552 ..> C_0010469210913964836578
+C_0000187593043476956552 ..> C_0003348486584261383332
+C_0000187593043476956552 ..> C_0001642024242126274810
+C_0000187593043476956552 ..> C_0011614116359736977436
+C_0000187593043476956552 ..> C_0000056909946344020665
+C_0000187593043476956552 ..> C_0013249249226652506748
+C_0000187593043476956552 ..> C_0004878870595026580347
+C_0000187593043476956552 ..> C_0000994511990246631929
+C_0000187593043476956552 o-- C_0011578180343120307699 : -m_factory
+C_0000187593043476956552 o-- C_0010588216749841672638 : -m_changed
+C_0000187593043476956552 o-- C_0010203260831736923132 : -m_cellPublisher
+C_0000187593043476956552 o-- C_0010203260831736923132 : -m_gridPublisher
+C_0000187593043476956552 o-- C_0016181972057543612761 : -m_grid
+C_0000187593043476956552 o-- C_0009982156784235106586 : -m_uuidLookUp
+C_0000187593043476956552 o-- C_0015578192558011062777 : -m_graph
+C_0000187593043476956552 o-- C_0013784868073774302216 : -m_gridSize
+C_0000187593043476956552 o-- "2" C_0016830943016957620265 : -m_area
+C_0000187593043476956552 o-- C_0016830943016957620265 : -m_delta
+C_0000187593043476956552 --> C_0000187593043476956552 : -m_instance
+C_0010469210913964836578 --+ C_0000187593043476956552
+C_0010469210913964836578 o-- C_0013784868073774302216 : +gridConfig
+C_0010469210913964836578 o-- C_0016830943016957620265 : +start
+C_0010469210913964836578 o-- C_0016830943016957620265 : +end
+C_0010469210913964836578 --> C_0001642024242126274810 : +gridFactory
+C_0008547169733880865913 ..> C_0003348486584261383332
+C_0008547169733880865913 --> C_0007524051125027650422 : -m_cell
+C_0008547169733880865913 o-- C_0013784868073774302216 : -m_position
+C_0015525581018586802988 <|-- C_0008547169733880865913
+C_0010665470809809381566 ..> C_0003348486584261383332
+C_0010665470809809381566 o-- C_0001488291031702088781 : -m_cell
+C_0010665470809809381566 o-- C_0013784868073774302216 : -m_position
+C_0015525581018586802988 <|-- C_0010665470809809381566
+C_0011031694641276016248 ..|> C_0011031694641276016248
+C_0010198723229293439659 ..> C_0010469210913964836578
+C_0000708210251265098836 <|-- C_0010198723229293439659
+C_0005855383950052472276 ..> C_0010469210913964836578
+C_0010198723229293439659 <|-- C_0005855383950052472276
+C_0010067145397289361700 ..> C_0010469210913964836578
+C_0010198723229293439659 <|-- C_0010067145397289361700
+C_0002355428982340356818 ..> C_0010469210913964836578
+C_0010198723229293439659 <|-- C_0002355428982340356818
+C_0000708210251265098836 ..|> C_0011031694641276016248
+C_0002380464098281245062 ..> C_0000994511990246631929
+C_0002380464098281245062 o-- C_0005038039747272111559 : -play
+C_0002380464098281245062 o-- C_0013286274850898176297 : -idle
+C_0002380464098281245062 o-- C_0010203260831736923132 : -onStateChanged
+C_0002380464098281245062 o-- C_0000908478690702565473 : -m_start
+C_0002380464098281245062 o-- C_0000961498124090157081 : -state
+C_0000961498124090157081 --+ C_0002380464098281245062
+C_0010039632802079899908 ..> C_0007994493599829033402
+C_0010039632802079899908 ..> C_0013784868073774302216
+C_0010039632802079899908 ..> C_0003348486584261383332
+C_0010039632802079899908 ..> C_0000056909946344020665
+C_0010039632802079899908 ..> C_0001256189216294270405
+C_0010039632802079899908 ..> C_0015983514335218059689
+C_0010039632802079899908 ..> C_0001861949267240608698
+C_0010039632802079899908 ..> C_0018104166817325631871
+C_0010039632802079899908 o-- C_0016619464092053922477 : -m_pathStore
+C_0010039632802079899908 o-- C_0001861447740016456248 : -m_registry
+C_0010039632802079899908 o-- C_0010588216749841672638 : -m_onGridChange
+C_0001861949267240608698 --+ C_0010039632802079899908
+C_0001861949267240608698 ..> C_0015983514335218059689
+C_0007994493599829033402 --+ C_0010039632802079899908
+C_0001893470601361278794 ..> C_0018413845961660969714
+C_0001893470601361278794 ..> C_0009975635823236801458
+C_0001893470601361278794 ..> C_0016830943016957620265
+C_0001893470601361278794 ..> C_0003348486584261383332
+C_0003082058397422627119 ..> C_0004144496444048943581
+C_0003082058397422627119 ..> C_0011109651401294498108
+C_0003082058397422627119 ..> C_0011712112788078757981
+C_0003082058397422627119 ..> C_0001893470601361278794
+C_0005842271853596682475 ..> C_0004144496444048943581
+C_0005842271853596682475 ..> C_0011109651401294498108
+C_0005842271853596682475 ..> C_0011712112788078757981
+C_0005842271853596682475 ..> C_0001893470601361278794
+C_0005842271853596682475 --> C_0015899031353631526703 : -currentSystem
+C_0003082058397422627119 <|-- C_0005842271853596682475
+C_0009822241482809889321 ..> C_0004144496444048943581
+C_0009822241482809889321 ..> C_0011109651401294498108
+C_0009822241482809889321 ..> C_0011712112788078757981
+C_0009822241482809889321 ..> C_0001893470601361278794
+C_0009822241482809889321 --> C_0005505475280958631509 : -currentSystem
+C_0003082058397422627119 <|-- C_0009822241482809889321
+C_0014516658824998915067 ..> C_0004144496444048943581
+C_0014516658824998915067 ..> C_0011109651401294498108
+C_0014516658824998915067 ..> C_0011712112788078757981
+C_0014516658824998915067 ..> C_0001893470601361278794
+C_0014516658824998915067 --> C_0001353520021860913053 : -currentSystem
+C_0003082058397422627119 <|-- C_0014516658824998915067
+C_0018413845961660969714 ..> C_0003348486584261383332
+C_0018413845961660969714 ..> C_0015983514335218059689
+C_0018413845961660969714 ..> C_0001861949267240608698
+C_0018413845961660969714 ..> C_0001893470601361278794
+C_0018413845961660969714 ..> C_0013249249226652506748
+C_0018413845961660969714 ..> C_0009975635823236801458
+C_0018413845961660969714 o-- C_0016830943016957620265 : +position
+C_0018413845961660969714 o-- C_0016830943016957620265 : +velocity
+C_0018413845961660969714 o-- C_0016830943016957620265 : +preferredVelocity
+C_0018413845961660969714 o-- C_0016830943016957620265 : +startPos
+C_0018413845961660969714 o-- C_0001256189216294270405 : +pathID
+C_0018413845961660969714 o-- C_0011712112788078757981 : +strategy
+C_0017667979732313679097 ..> C_0003082058397422627119
+C_0017667979732313679097 ..> C_0007994895661285551473
+C_0017667979732313679097 ..> C_0018413845961660969714
+C_0017667979732313679097 ..> C_0010134079326376607663
+C_0017667979732313679097 ..> C_0013903104245794535002
+C_0017667979732313679097 ..> C_0013249249226652506748
+C_0017667979732313679097 o-- C_0012652156542792376693 : -agents
+C_0017667979732313679097 o-- C_0012108311327286886128 : -factory
+C_0017667979732313679097 o-- C_0004144496444048943581 : -system
+C_0003978164807005583507 --> C_0000612504937351809831 : +_TexData
+C_0012654776286871146784 --> C_0003654583433469720863 : +Specs
+C_0003654583433469720863 o-- C_0011148453948041068262 : +SortDirection
+C_0017222341547090171578 ..|> C_0017222341547090171578
+C_0003927669054485617009 o-- C_0004154694326974958552 : +WindowPadding
+C_0003927669054485617009 o-- C_0004154694326974958552 : +WindowMinSize
+C_0003927669054485617009 o-- C_0004154694326974958552 : +WindowTitleAlign
+C_0003927669054485617009 o-- C_0011084735886282898336 : +WindowMenuButtonPosition
+C_0003927669054485617009 o-- C_0004154694326974958552 : +FramePadding
+C_0003927669054485617009 o-- C_0004154694326974958552 : +ItemSpacing
+C_0003927669054485617009 o-- C_0004154694326974958552 : +ItemInnerSpacing
+C_0003927669054485617009 o-- C_0004154694326974958552 : +CellPadding
+C_0003927669054485617009 o-- C_0004154694326974958552 : +TouchExtraPadding
+C_0003927669054485617009 o-- C_0004154694326974958552 : +TableAngledHeadersTextAlign
+C_0003927669054485617009 o-- C_0011084735886282898336 : +ColorButtonPosition
+C_0003927669054485617009 o-- C_0004154694326974958552 : +ButtonTextAlign
+C_0003927669054485617009 o-- C_0004154694326974958552 : +SelectableTextAlign
+C_0003927669054485617009 o-- C_0004154694326974958552 : +SeparatorTextAlign
+C_0003927669054485617009 o-- C_0004154694326974958552 : +SeparatorTextPadding
+C_0003927669054485617009 o-- C_0004154694326974958552 : +DisplayWindowPadding
+C_0003927669054485617009 o-- C_0004154694326974958552 : +DisplaySafeAreaPadding
+C_0003927669054485617009 o-- "62" C_0011915251363486582223 : +Colors
+C_0002529884925411634324 ..|> C_0017222341547090171578
+C_0017917329880291855174 ..> C_0003912077364433944654
+C_0017917329880291855174 o-- C_0004154694326974958552 : +DisplaySize
+C_0017917329880291855174 o-- C_0004154694326974958552 : +DisplayFramebufferScale
+C_0017917329880291855174 --> C_0012516879244947909316 : +Fonts
+C_0017917329880291855174 --> C_0003563883090932305577 : +FontDefault
+C_0017917329880291855174 o-- C_0004154694326974958552 : +MouseDelta
+C_0017917329880291855174 --> C_0008778555029687894679 : +Ctx
+C_0017917329880291855174 o-- C_0004154694326974958552 : +MousePos
+C_0017917329880291855174 o-- C_0014282128709844040922 : +MouseSource
+C_0017917329880291855174 o-- "155" C_0009686165277601049830 : +KeysData
+C_0017917329880291855174 o-- C_0004154694326974958552 : +MousePosPrev
+C_0017917329880291855174 o-- "5" C_0004154694326974958552 : +MouseClickedPos
+C_0017917329880291855174 o-- "5" C_0004154694326974958552 : +MouseDragMaxDistanceAbs
+C_0017917329880291855174 o-- C_0002529884925411634324 : +InputQueueCharacters
+C_0015277227945573868181 --> C_0008778555029687894679 : +Ctx
+C_0015277227945573868181 o-- C_0003912077364433944654 : +EventKey
+C_0007552332553055088482 o-- C_0004154694326974958552 : +Pos
+C_0007552332553055088482 o-- C_0004154694326974958552 : +CurrentSize
+C_0007552332553055088482 o-- C_0004154694326974958552 : +DesiredSize
+C_0007488995099719983445 ..|> C_0017222341547090171578
+C_0014167510190179788571 o-- C_0007488995099719983445 : +Filters
+C_0008878419759859986054 --+ C_0014167510190179788571
+C_0008878419759859986054 ..> C_0017222341547090171578
+C_0013830872823886324364 ..|> C_0017222341547090171578
+C_0003366323848114970456 o-- C_0013830872823886324364 : +Buf
+C_0004474924194866692762 o-- C_0001048397446750487755
+C_0016984491967803751636 ..> C_0004474924194866692762
+C_0016984491967803751636 ..|> C_0017222341547090171578
+C_0015115553131451351423 o-- C_0016984491967803751636 : +Data
+C_0007430123381961615314 --> C_0008778555029687894679 : +Ctx
+C_0013983533452038736977 o-- C_0011915251363486582223 : +Value
+C_0011711182722645480840 ..> C_0004105633005983711091
+C_0011711182722645480840 ..|> C_0017222341547090171578
+C_0003572472018319378369 o-- C_0011711182722645480840 : +Requests
+C_0004105633005983711091 o-- C_0000049432320602179472 : +Type
+C_0012082440548262297267 ..> C_0003572472018319378369
+C_0012082440548262297267 o-- C_0015115553131451351423 : +_Storage
+C_0002347876310663132702 ..> C_0003572472018319378369
+C_0011798351365154694063 o-- C_0011915251363486582223 : +ClipRect
+C_0011798351365154694063 o-- C_0003978164807005583507 : +TexRef
+C_0005134924702469605015 o-- C_0004154694326974958552 : +pos
+C_0005134924702469605015 o-- C_0004154694326974958552 : +uv
+C_0004836110477701461133 o-- C_0011915251363486582223 : +ClipRect
+C_0004836110477701461133 o-- C_0003978164807005583507 : +TexRef
+C_0009964765385697312098 ..> C_0011798351365154694063
+C_0009964765385697312098 ..|> C_0017222341547090171578
+C_0011582436895822534110 ..|> C_0017222341547090171578
+C_0015777797767686423734 o-- C_0009964765385697312098 : +_CmdBuffer
+C_0015777797767686423734 o-- C_0011582436895822534110 : +_IdxBuffer
+C_0008655447333683829971 ..> C_0015777797767686423734
+C_0008655447333683829971 ..|> C_0017222341547090171578
+C_0005088128771069141848 ..> C_0007043218939190558953
+C_0005088128771069141848 o-- C_0008655447333683829971 : +_Channels
+C_0009471690767333703623 ..> C_0005134924702469605015
+C_0009471690767333703623 ..|> C_0017222341547090171578
+C_0015440416510767548453 ..> C_0004154694326974958552
+C_0015440416510767548453 ..|> C_0017222341547090171578
+C_0002849351513573831191 ..> C_0011915251363486582223
+C_0002849351513573831191 ..|> C_0017222341547090171578
+C_0001871288954282419329 ..> C_0003978164807005583507
+C_0001871288954282419329 ..|> C_0017222341547090171578
+C_0012749318122479853214 ..|> C_0017222341547090171578
+C_0007043218939190558953 ..> C_0004154694326974958552
+C_0007043218939190558953 ..> C_0003978164807005583507
+C_0007043218939190558953 ..> C_0003563883090932305577
+C_0007043218939190558953 ..> C_0011915251363486582223
+C_0007043218939190558953 o-- C_0009964765385697312098 : +CmdBuffer
+C_0007043218939190558953 o-- C_0011582436895822534110 : +IdxBuffer
+C_0007043218939190558953 o-- C_0009471690767333703623 : +VtxBuffer
+C_0007043218939190558953 --> C_0014704053094806871321 : +_Data
+C_0007043218939190558953 --> C_0005134924702469605015 : +_VtxWritePtr
+C_0007043218939190558953 o-- C_0015440416510767548453 : +_Path
+C_0007043218939190558953 o-- C_0004836110477701461133 : +_CmdHeader
+C_0007043218939190558953 o-- C_0005088128771069141848 : +_Splitter
+C_0007043218939190558953 o-- C_0002849351513573831191 : +_ClipRectStack
+C_0007043218939190558953 o-- C_0001871288954282419329 : +_TextureStack
+C_0007043218939190558953 o-- C_0012749318122479853214 : +_CallbacksDataBuf
+C_0012065472576974270835 ..> C_0007043218939190558953
+C_0012065472576974270835 ..|> C_0017222341547090171578
+C_0001450616193407029189 ..> C_0000612504937351809831
+C_0001450616193407029189 ..|> C_0017222341547090171578
+C_0006128891640536946199 ..> C_0007043218939190558953
+C_0006128891640536946199 o-- C_0012065472576974270835 : +CmdLists
+C_0006128891640536946199 o-- C_0004154694326974958552 : +DisplayPos
+C_0006128891640536946199 o-- C_0004154694326974958552 : +DisplaySize
+C_0006128891640536946199 o-- C_0004154694326974958552 : +FramebufferScale
+C_0006128891640536946199 --> C_0009210603161397886921 : +OwnerViewport
+C_0006128891640536946199 --> C_0000612504937351809831 : +Textures
+C_0006128891640536946199 --> C_0001450616193407029189 : +Textures
+C_0006128891640536946199 --> C_0017222341547090171578 : +Textures
+C_0000006719864014660699 ..> C_0012174816777534788401
+C_0000006719864014660699 ..|> C_0017222341547090171578
+C_0000612504937351809831 ..> C_0003978164807005583507
+C_0000612504937351809831 o-- C_0013685234474398069557 : +Status
+C_0000612504937351809831 o-- C_0012861478940966982949 : +Format
+C_0000612504937351809831 o-- C_0012174816777534788401 : +UsedRect
+C_0000612504937351809831 o-- C_0012174816777534788401 : +UpdateRect
+C_0000612504937351809831 o-- C_0000006719864014660699 : +Updates
+C_0004255185483531253650 o-- C_0004154694326974958552 : +GlyphOffset
+C_0004255185483531253650 --> C_0003563883090932305577 : +DstFont
+C_0004255185483531253650 --> C_0006761674829871321807 : +FontLoader
+C_0004550479083123729234 ..|> C_0017222341547090171578
+C_0013369216492088436202 ..> C_0017222341547090171578
+C_0013369216492088436202 o-- C_0004550479083123729234 : +UsedChars
+C_0000875454133899566882 o-- C_0004154694326974958552 : +uv0
+C_0000875454133899566882 o-- C_0004154694326974958552 : +uv1
+C_0005226775520013221966 ..> C_0003563883090932305577
+C_0005226775520013221966 ..|> C_0017222341547090171578
+C_0014991048444522340883 ..> C_0004255185483531253650
+C_0014991048444522340883 ..|> C_0017222341547090171578
+C_0009719208611411302400 ..> C_0014704053094806871321
+C_0009719208611411302400 ..|> C_0017222341547090171578
+C_0012516879244947909316 ..> C_0004255185483531253650
+C_0012516879244947909316 ..> C_0003563883090932305577
+C_0012516879244947909316 ..> C_0003978164807005583507
+C_0012516879244947909316 o-- C_0012861478940966982949 : +TexDesiredFormat
+C_0012516879244947909316 --> C_0000612504937351809831 : +TexData
+C_0012516879244947909316 o-- C_0001450616193407029189 : +TexList
+C_0012516879244947909316 o-- C_0004154694326974958552 : +TexUvScale
+C_0012516879244947909316 o-- C_0004154694326974958552 : +TexUvWhitePixel
+C_0012516879244947909316 o-- C_0005226775520013221966 : +Fonts
+C_0012516879244947909316 o-- C_0014991048444522340883 : +Sources
+C_0012516879244947909316 o-- "33" C_0011915251363486582223 : +TexUvLines
+C_0012516879244947909316 o-- C_0009719208611411302400 : +DrawListSharedDatas
+C_0012516879244947909316 --> C_0003884191943987116786 : +Builder
+C_0012516879244947909316 --> C_0006761674829871321807 : +FontLoader
+C_0012516879244947909316 --> C_0008778555029687894679 : +OwnerContext
+C_0012516879244947909316 o-- C_0000875454133899566882 : +TempRect
+C_0012516879244947909316 o-- C_0001245741690441127863
+C_0001245741690441127863 o-- C_0003978164807005583507 : +TexRef
+C_0001245741690441127863 o-- C_0003978164807005583507 : +TexID
+C_0002453343523474309937 ..|> C_0017222341547090171578
+C_0004384958841503911190 ..|> C_0017222341547090171578
+C_0014640546188552491940 ..> C_0005701254738543081295
+C_0014640546188552491940 ..|> C_0017222341547090171578
+C_0003987893817151015343 ..> C_0005701254738543081295
+C_0003987893817151015343 o-- C_0002453343523474309937 : +IndexAdvanceX
+C_0003987893817151015343 o-- C_0004384958841503911190 : +IndexLookup
+C_0003987893817151015343 o-- C_0014640546188552491940 : +Glyphs
+C_0003987893817151015343 --> C_0003563883090932305577 : +OwnerFont
+C_0015771525322244008136 ..> C_0004255185483531253650
+C_0015771525322244008136 ..|> C_0014991048444522340883
+C_0003563883090932305577 ..> C_0004154694326974958552
+C_0003563883090932305577 ..> C_0007043218939190558953
+C_0003563883090932305577 ..> C_0011915251363486582223
+C_0003563883090932305577 --> C_0003987893817151015343 : +LastBaked
+C_0003563883090932305577 --> C_0012516879244947909316 : +OwnerAtlas
+C_0003563883090932305577 o-- C_0015771525322244008136 : +Sources
+C_0003563883090932305577 o-- C_0015115553131451351423 : +RemapPairs
+C_0009210603161397886921 o-- C_0004154694326974958552 : +Pos
+C_0009210603161397886921 o-- C_0004154694326974958552 : +Size
+C_0009210603161397886921 o-- C_0004154694326974958552 : +FramebufferScale
+C_0009210603161397886921 o-- C_0004154694326974958552 : +WorkPos
+C_0009210603161397886921 o-- C_0004154694326974958552 : +WorkSize
+C_0009210603161397886921 --> C_0009210603161397886921 : +ParentViewport
+C_0009210603161397886921 --> C_0006128891640536946199 : +DrawData
+C_0006333617981665364862 ..> C_0016669488419982524161
+C_0006333617981665364862 ..|> C_0017222341547090171578
+C_0002130905065674738848 ..> C_0009210603161397886921
+C_0002130905065674738848 ..|> C_0017222341547090171578
+C_0003096626716081895416 o-- C_0006333617981665364862 : +Monitors
+C_0003096626716081895416 o-- C_0001450616193407029189 : +Textures
+C_0003096626716081895416 o-- C_0002130905065674738848 : +Viewports
+C_0016669488419982524161 o-- C_0004154694326974958552 : +MainPos
+C_0016669488419982524161 o-- C_0004154694326974958552 : +MainSize
+C_0016669488419982524161 o-- C_0004154694326974958552 : +WorkPos
+C_0016669488419982524161 o-- C_0004154694326974958552 : +WorkSize
+C_0004333302482615461923 o-- C_0004154694326974958552 : +InputPos
+C_0010132548371569888536 ..> C_0004154694326974958552
+C_0009971097416803822632 ..> C_0010132548371569888536
+C_0009971097416803822632 o-- C_0017168075678928134086 : +X
+C_0009971097416803822632 o-- C_0017168075678928134086 : +Y
+C_0004966632917739994123 o-- C_0004154694326974958552 : +MajorTickLen
+C_0004966632917739994123 o-- C_0004154694326974958552 : +MinorTickLen
+C_0004966632917739994123 o-- C_0004154694326974958552 : +MajorTickSize
+C_0004966632917739994123 o-- C_0004154694326974958552 : +MinorTickSize
+C_0004966632917739994123 o-- C_0004154694326974958552 : +MajorGridSize
+C_0004966632917739994123 o-- C_0004154694326974958552 : +MinorGridSize
+C_0004966632917739994123 o-- C_0004154694326974958552 : +PlotPadding
+C_0004966632917739994123 o-- C_0004154694326974958552 : +LabelPadding
+C_0004966632917739994123 o-- C_0004154694326974958552 : +LegendPadding
+C_0004966632917739994123 o-- C_0004154694326974958552 : +LegendInnerPadding
+C_0004966632917739994123 o-- C_0004154694326974958552 : +LegendSpacing
+C_0004966632917739994123 o-- C_0004154694326974958552 : +MousePosPadding
+C_0004966632917739994123 o-- C_0004154694326974958552 : +AnnotationPadding
+C_0004966632917739994123 o-- C_0004154694326974958552 : +FitPadding
+C_0004966632917739994123 o-- C_0004154694326974958552 : +PlotDefaultSize
+C_0004966632917739994123 o-- C_0004154694326974958552 : +PlotMinSize
+C_0004966632917739994123 o-- "21" C_0011915251363486582223 : +Colors
+C_0016364042332862071011 ..|> C_0002380464098281245062
+C_0008275891181392909974 o-- C_0016830943016957620265 : -start
+C_0008275891181392909974 o-- C_0016830943016957620265 : -end
+C_0008275891181392909974 o-- C_0010588216749841672638 : -displayRefreshSubscriber
+C_0008275891181392909974 o-- C_0010588216749841672638 : -pathRefreshSubscriber
+C_0008275891181392909974 o-- C_0010588216749841672638 : -animationState
+C_0008275891181392909974 --> C_0017667979732313679097 : -simManager
+C_0008275891181392909974 o-- C_0016364042332862071011 : -anim
+C_0008275891181392909974 o-- C_0010198723229293439659 : -initChain
+C_0008275891181392909974 o-- C_0015004038434732040862 : -m_tickTimeStamp
+C_0008275891181392909974 o-- C_0016657878585287031157 : -m_collisionPoints
+C_0008411340913254138607 <|-- C_0008275891181392909974
+C_0015983514335218059689 --+ C_0010039632802079899908
+
+'Generated with clang-uml, version 0.6.2-27-g4e76f03
+'LLVM version clang version 21.1.8
+@enduml

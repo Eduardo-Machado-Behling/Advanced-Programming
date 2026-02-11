@@ -1,0 +1,84 @@
+# Core Configuration
+compilation_database_dir: build
+output_directory: docs/diagrams
+
+diagrams:
+  # --------------------------------------------------------
+  # 1. Architecture (Package Diagram)
+  # --------------------------------------------------------
+  architecture_overview:
+    type: package
+    glob:
+      - src/**/*.cpp
+      - include/**/*.hpp
+    include:
+      paths:
+        - src
+        - include
+
+    exclude:
+      namespaces:
+        - std
+        - ImGui
+        - Tracy
+        - spdlog
+
+  # --------------------------------------------------------
+  # 2. Class Hierarchy (Class Diagram)
+  # --------------------------------------------------------
+  class_structure:
+    type: class
+    glob:
+      - src/**/*.cpp
+      - include/**/*.hpp
+    include:
+      paths:
+        - src
+        - include
+
+    exclude:
+      namespaces:
+        - std
+        - ImGui
+        - ImPlot
+        - Tracy
+        - spdlog
+    using_namespace:
+      - Simulation
+      - Grid
+      - Actions
+    plantuml:
+      before:
+        - left to right direction
+
+  full_codebase_overview:
+    type: class
+    # GLOB: Grab everything in src
+    glob:
+      - src/**/*.cpp
+      - include/**/*.hpp
+    include:
+      paths:
+        - src
+        - include
+    
+    # CRITICAL: Filter out third-party libraries or it becomes unreadable
+    exclude:
+      namespaces:
+        - std
+        - ImGui
+        - ImPlot
+        - Tracy
+        - spdlog
+        - "::Engine::Vendor" # If you have vendored code
+      
+      # Optional: Hide private members to keep boxes smaller
+      access:
+        - private 
+
+    # Cosmetic: Arrange namespaces into folders
+    package_type: namespace
+    plantuml:
+      before:
+        - left to right direction
+        - skinparam packageStyle rectangle

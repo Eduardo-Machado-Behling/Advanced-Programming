@@ -1,0 +1,804 @@
+@startuml
+left to right direction
+abstract "::Command" as C_0015525581018586802988
+abstract C_0015525581018586802988 {
++~Command() : void
+..
+{abstract} +execute() = 0 : bool
++restore() : void
+__
+}
+class "::Engine::Math::Vector<2,size_t>" as C_0013784868073774302216
+class C_0013784868073774302216 {
+__
+}
+class "::Engine::Math::Vector<3,float>" as C_0001951113896505040197
+class C_0001951113896505040197 {
+__
+}
+class "::Engine::Math::Vector<2,float>" as C_0016830943016957620265
+class C_0016830943016957620265 {
+__
+}
+class "::Engine::Engine" as C_0013249249226652506748
+class C_0013249249226652506748 {
+__
+}
+abstract "::Cells::ICell" as C_0007524051125027650422
+abstract C_0007524051125027650422 {
++~ICell() : void
+..
++clear() : void
+{abstract} +draw(Engine::Engine & engine) = 0 : void
++getPos() : Vec2u
++isBlocking() : bool
++reset() : void
+{abstract} +tick(Engine::Engine & engine, double dt) = 0 : bool
++tickSetup() : void
+__
+#m_pos : Vec2u
+}
+class "::Cells::CellDecorator" as C_0003074354526260398626
+class C_0003074354526260398626 {
++CellDecorator(ICell * cell) : void
++~CellDecorator() = default : void
+..
++clear() : void
++draw(Engine::Engine & engine) : void
++isBlocking() : bool
++reset() : void
++tick(Engine::Engine & engine, double dt) : bool
++tickSetup() : void
+__
+#m_wrappedCell : std::unique_ptr<ICell>
+}
+class "::Cells::PulsingDecorator" as C_0005401941007822599491
+class C_0005401941007822599491 {
++PulsingDecorator(ICell * cell) : void
+..
++draw(Engine::Engine & engine) : void
++tick(Engine::Engine & engine, double dt) : bool
+__
+-i : int
+-m_time : double
+-ticked : bool
+}
+class "::Cells::Obstacle" as C_0003468196988026877165
+class C_0003468196988026877165 {
++Obstacle(Vec2u pos) : void
+..
++draw(Engine::Engine & engine) : void
++isBlocking() : bool
++tick(Engine::Engine & engine, double dt) : bool
+__
+}
+class "::Cells::PathDestination" as C_0013535233541265128367
+class C_0013535233541265128367 {
++PathDestination(Vec2u destination, Vec2u origin) : void
+..
++clear() : void
++draw(Engine::Engine & engine) : void
++tick(Engine::Engine & engine, double dt) : bool
+__
+-m_dest : Vec2u
+-m_origin : Vec2u
+}
+class "::Cells::PathOrigin" as C_0016659428856756321521
+class C_0016659428856756321521 {
++PathOrigin(Vec2u origin, Vec2u destination) : void
++~PathOrigin() : void
+..
++clear() : void
++draw(Engine::Engine & engine) : void
++reset() : void
++tick(Engine::Engine & engine, double dt) : bool
++tickSetup() : void
+__
+-m_agent : Manager::AgentID
+-m_curr : Vec2
+-m_dest : Vec2u
+-m_ended : bool
+-m_origin : Vec2u
+-m_path : PathManager::PathPtr
+-m_pos : Vec2
+}
+class "::Commands::AddCell" as C_0008547169733880865913
+class C_0008547169733880865913 {
++AddCell(Cells::ICell * cell, Vec2u position) : void
++~AddCell() = default : void
+..
++execute() : bool
+__
+-m_cell : Cells::ICell *
+-m_position : Vec2u
+}
+class "::Commands::MoveCell" as C_0001668414440552387241
+class C_0001668414440552387241 {
++MoveCell(Vec2u position, Vec2u target) : void
++~MoveCell() = default : void
+..
++execute() : bool
++restore() : void
+__
+-m_dest : std::unique_ptr<Cells::ICell>
+-m_orig : Cells::ICell *
+-m_position : Vec2u
+-m_target : Vec2u
+}
+class "::Commands::RemoveCell" as C_0010665470809809381566
+class C_0010665470809809381566 {
++RemoveCell(Vec2u position, bool clear = true, bool save = false) : void
++~RemoveCell() = default : void
+..
++execute() : bool
++restore() : void
+__
+-m_cell : std::unique_ptr<Cells::ICell>
+-m_clear : bool
+-m_position : Vec2u
+-m_save : bool
+}
+abstract "::Grid::IGraph" as C_0000056909946344020665
+abstract C_0000056909946344020665 {
++~IGraph() constexpr = default : void
+..
+{abstract} +getNeighbors(Vec2u coord) = 0 : std::vector<Vec2u>
+{abstract} +isValid(Vec2u coord) = 0 : bool
+__
+}
+abstract "::Grid::IGrid" as C_0011614116359736977436
+abstract C_0011614116359736977436 {
++IGrid(Vec2u coord) : void
+{abstract} +~IGrid() = 0 : void
+..
+{abstract} +center() const = 0 : Vec2
++clear() : void
+{abstract} +draw(Engine::Engine & engine) = 0 : void
++empty() const : bool
++fill(Color color) : void
++isBlocking() const : bool
+{abstract} +offsetRow(size_t row) const = 0 : float
++reset() : Cells::ICell *
++set(Cells::ICell * cell) : void
++subscribeOnChanged(Subscriber * sub) : void
++tick(Engine::Engine & engine, double dt) : bool
++tickSetup() : void
+__
+#m_cell : std::unique_ptr<Cells::ICell>
+#m_cellChanged : Publisher
+#m_coord : Vec2u
+#m_fill : Color
+}
+class "::Grid::HexagonalGrid" as C_0013206082937532241754
+class C_0013206082937532241754 {
++HexagonalGrid(Vec2u coord) : void
+..
++center() const : Vec2
++draw(Engine::Engine & engine) : void
++offsetRow(size_t row) const : float
+__
+}
+class "::Grid::SquareGrid" as C_0006906442157039522599
+class C_0006906442157039522599 {
++SquareGrid(Vec2u coord) : void
+..
++center() const : Vec2
++draw(Engine::Engine & engine) : void
++offsetRow(size_t row) const : float
+__
+}
+abstract "::Subscriber" as C_0000994511990246631929
+abstract C_0000994511990246631929 {
++~Subscriber() : void
+..
+{abstract} +update() = 0 : void
+__
+}
+class "::Publisher" as C_0010203260831736923132
+class C_0010203260831736923132 {
++~Publisher() : void
+..
++notifySubscribers() const : void
++subscribe(Subscriber * obs) : void
++unsubscribe(Subscriber * obs) : void
+__
+#m_observers : std::vector<Subscriber *>
+}
+abstract "::GridFactories::IFactory" as C_0001642024242126274810
+abstract C_0001642024242126274810 {
++~IFactory() constexpr = default : void
+..
+{abstract} +calculateDelta(Vec2 areaSize, size_t rows, size_t cols) const = 0 : Vec2
+{abstract} +createGraph() const = 0 : Grid::IGraph *
+{abstract} +createGrid(Vec2u pos) const = 0 : Grid::IGrid *
+{abstract} +getGridCoord(Vec2 mousePos, Vec2 start, Vec2 delta, size_t rows, size_t cols) const = 0 : Vec2u
+__
+}
+class "::GridFactories::HexagonalFactory" as C_0017930567536014498243
+class C_0017930567536014498243 {
++calculateDelta(Vec2 areaSize, size_t rows, size_t cols) const : Vec2
++createGraph() const : Grid::IGraph *
++createGrid(Vec2u pos) const : Grid::IGrid *
++getGridCoord(Vec2 mousePos, Vec2 start, Vec2 delta, size_t rows, size_t cols) const : Vec2u
+__
+}
+class "::GridFactories::SquareFactory" as C_0007990458545539615266
+class C_0007990458545539615266 {
++calculateDelta(Vec2 areaSize, size_t rows, size_t cols) const : Vec2
++createGraph() const : Grid::IGraph *
++createGrid(Vec2u pos) const : Grid::IGrid *
++getGridCoord(Vec2 mousePos, Vec2 start, Vec2 delta, size_t rows, size_t cols) const : Vec2u
+__
+}
+class "::Subscribers::CallbackSubscriber" as C_0010588216749841672638
+class C_0010588216749841672638 {
++~CallbackSubscriber() = default : void
+..
++setOnChange(Callback callback) : void
++update() : void
+__
+-m_onChanged : Callback
+}
+class "::GridManager" as C_0000187593043476956552
+class C_0000187593043476956552 {
+-GridManager() : void
+..
++allocate(AllocationParam param) : GridManager &
++allocate(size_t rows, size_t cols, Vec2 start, Vec2 end, GridFactories::IFactory * gridFactory = nullptr) : GridManager &
++allocated() const : bool
++cget(size_t row, size_t col) const : const Grid::IGrid *
++cget(Vec2u coord) const : const Grid::IGrid *
++cget(Vec2 mouseCoord) const : const Grid::IGrid *
++clear() : GridManager &
++cols() const : size_t
++deallocate() : GridManager &
++end() const : Vec2
++get(size_t row, size_t col) const : Grid::IGrid *
++get(Vec2u coord) const : Grid::IGrid *
++get(Vec2 mouseCoord) const : Grid::IGrid *
+{static} +get() : GridManager &
++getCellSize() : Vec2
++getCenter(Vec2u gridCoord) const : Vec2
++getCoord(Vec2u gridCoord) const : Vec2
++getCoord(Vec2 mouseCoord) const : Vec2u
++getGraph() : Grid::IGraph *
+-impl_get(size_t row, size_t col) const : Grid::IGrid *
++rows() const : size_t
++setup() : void
++start() const : Vec2
++subscribeOnCellChange(Subscriber * obs) : GridManager &
++subscribeOnGridChange(Subscriber * obs) : GridManager &
++update(Engine::Engine & engine, std::optional<double> dt = std::nullopt) const : bool
+__
+-m_area : Vec2[2]
+-m_cellPublisher : Publisher
+-m_changed : Subscribers::CallbackSubscriber
+-m_delta : Vec2
+-m_factory : std::unique_ptr<GridFactories::IFactory>
+-m_graph : std::unique_ptr<Grid::IGraph>
+-m_grid : std::vector<std::unique_ptr<Grid::IGrid>>
+-m_gridPublisher : Publisher
+-m_gridSize : Vec2u
+{static} -m_instance : std::unique_ptr<GridManager>
+-m_uuidLookUp : std::unordered_map<Engine::Objects::ObjectUUID::UUID,Grid::IGrid *>
+}
+class "::GridManager::AllocationParam" as C_0010469210913964836578
+class C_0010469210913964836578 {
+__
++end : Vec2
++gridConfig : Vec2u
++gridFactory : GridFactories::IFactory *
++start : Vec2
+}
+class "::Invoker" as C_0009460517425703679938
+class C_0009460517425703679938 {
++addCommand(Command * command) : void
++execute() : void
+{static} +get() : Invoker &
++restore(size_t amount = std::numeric_limits<size_t>::max()) : void
+__
+-m_queue : std::queue<std::unique_ptr<Command>>
+-m_restoreStack : std::stack<std::unique_ptr<Command>>
+}
+class "::CellFactory" as C_0005434895093103671544
+class C_0005434895093103671544 {
+-CellFactory() = default : void
+..
++Create(CellType type, Vec2u pos, Vec2u arg = = {0, 0}) const : Cells::ICell *
+{static} +get() : const CellFactory &
+__
+{static} -m_instance : std::unique_ptr<CellFactory>
+}
+enum "::CellFactory::CellType" as C_0008917128763581520149
+enum C_0008917128763581520149 {
+EMPTY
+OBS
+ORIGIN
+DESTINATION
+}
+class "::PathManager" as C_0010039632802079899908
+class C_0010039632802079899908 {
+-PathManager() : void
+-~PathManager() : void
+..
+{static} +get() : PathManager &
++getSegment(PathID * id, size_t i) : std::optional<Vec2>
++invalidateAll() : void
++requestPath(DynamicInfo info, Vec2u start, Vec2u end, Grid::IGraph * graph) : PathPtr
+-unregisterPath(PathID * id) : void
++update() : void
+__
+-m_onGridChange : Subscribers::CallbackSubscriber
+-m_pathStore : std::list<std::vector<Vec2u>>
+-m_registry : std::unordered_set<PathID *>
+}
+class "::PathManager::PathDeleter" as C_0001861949267240608698
+class C_0001861949267240608698 {
++operator()(PathID * p) const : void
+__
+}
+class "::PathManager::DynamicInfo" as C_0007994493599829033402
+class C_0007994493599829033402 {
+__
++radius : double
++velocity : double
+}
+abstract "Collision::IStrategy" as C_0001893470601361278794
+abstract C_0001893470601361278794 {
++~IStrategy() constexpr = default : void
+..
+{abstract} +computeVelocity(Agent * me, const std::vector<Agent *> & neighbors) = 0 : Vec2
+__
+}
+class "Collision::ISystem" as C_0011109651401294498108
+class C_0011109651401294498108 {
++~ISystem() constexpr = default : void
+..
++postStep() : void
++preStep(double dt) : void
+__
+}
+abstract "Collision::IFactory" as C_0003082058397422627119
+abstract C_0003082058397422627119 {
++~IFactory() constexpr = default : void
+..
+{abstract} +createStrategy() = 0 : std::unique_ptr<IStrategy>
+{abstract} +createSystem() = 0 : std::unique_ptr<ISystem>
+__
+}
+class "Collision::DirectSystem" as C_0015899031353631526703
+class C_0015899031353631526703 {
++postStep() : void
++preStep(double dt) : void
+__
+}
+class "Collision::DirectStrategy" as C_0012111671450339608975
+class C_0012111671450339608975 {
++DirectStrategy(DirectSystem & sys) : void
+..
++computeVelocity(Agent * me, const std::vector<Agent *> & neighbors) : Vec2
+__
+-system : DirectSystem &
+}
+class "Collision::GridSystem" as C_0005505475280958631509
+class C_0005505475280958631509 {
++GridSystem(float cellSize = 20.0f) : void
+..
++getCellID(Engine::Math::Vector<2,float> pos) : long long
++postStep() : void
++preStep(double dt) : void
++tryReserve(Engine::Math::Vector<2,float> pos) : bool
+__
+-cellSize : float
+-reservedCells : std::unordered_set<long long>
+}
+class "Collision::GridStrategy" as C_0010623132148261888817
+class C_0010623132148261888817 {
++GridStrategy(GridSystem & sys) : void
+..
++computeVelocity(Agent * me, const std::vector<Agent *> & neighbors) : Vec2
+__
+-system : GridSystem &
+}
+class "Collision::RvoSystem" as C_0001353520021860913053
+class C_0001353520021860913053 {
++RvoSystem() : void
+..
++operator->() : RVO::RVOSimulator *
+..
++postStep() : void
++preStep(double dt) : void
+__
+-sim : RVO::RVOSimulator
+}
+class "Collision::RvoStrategy" as C_0007225876362000938390
+class C_0007225876362000938390 {
++RvoStrategy(RvoSystem & sys) : void
+..
++computeVelocity(Agent * me, const std::vector<Agent *> & neighbors) : Vec2
+__
+-initialized : bool
+-rvoAgentID : int
+-system : RvoSystem &
+}
+class "Collision::DirectFactory" as C_0005842271853596682475
+class C_0005842271853596682475 {
++createStrategy() : std::unique_ptr<IStrategy>
++createSystem() : std::unique_ptr<ISystem>
+__
+-currentSystem : DirectSystem *
+}
+class "Collision::GridFactory" as C_0009822241482809889321
+class C_0009822241482809889321 {
++createStrategy() : std::unique_ptr<IStrategy>
++createSystem() : std::unique_ptr<ISystem>
+__
+-currentSystem : GridSystem *
+}
+class "Collision::RvoFactory" as C_0014516658824998915067
+class C_0014516658824998915067 {
++createStrategy() : std::unique_ptr<IStrategy>
++createSystem() : std::unique_ptr<ISystem>
+__
+-currentSystem : RvoSystem *
+}
+class "Agent" as C_0018413845961660969714
+class C_0018413845961660969714 {
++Agent(Vec2 startPos, float r, float speed, PathManager::PathPtr pathID) : void
+..
++draw(Engine::Engine & engine) : void
++reset() : void
++setStrategy(std::unique_ptr<Collision::IStrategy> newStrategy) : void
++update(double dt, const std::vector<Agent *> & neighbors) : void
+__
++i : int
++maxSpeed : float
++pathID : PathManager::PathPtr
++position : Vec2
++preferredVelocity : Vec2
++radius : float
++startPos : Vec2
++strategy : std::unique_ptr<Collision::IStrategy>
++velocity : Vec2
+}
+class "Manager" as C_0017667979732313679097
+class C_0017667979732313679097 {
++Manager(const Manager &) = deleted : void
++Manager() = default : void
+..
++operator=(const Manager &) = deleted : Manager &
+..
++addAgent(std::unique_ptr<Agent> agent) : AgentID
+{static} +get() : Manager &
++getAgent(AgentID it) : Agent &
++init(std::unique_ptr<Collision::IFactory> factory) : void
++reset() : void
++rmvAgent(AgentID it) : void
++syncVisuals(Engine::Engine & engine) : void
++update(double dt) : void
+__
+-agents : std::list<std::unique_ptr<Agent>>
+-factory : std::unique_ptr<Collision::IFactory>
+-system : std::unique_ptr<Collision::ISystem>
+}
+class "::PathManager::PathID" as C_0015983514335218059689
+class C_0015983514335218059689 {
++PathID(decltype(dataRef) ref, DynamicInfo i, Vec2u s, Vec2u e, Grid::IGraph * g) : void
+__
++dataRef : std::list<std::vector<Vec2u>>::iterator
++end : Vec2u
++graph : Grid::IGraph *
++info : DynamicInfo
++start : Vec2u
+}
+class "::Dijkstra" as C_0000838382530281597328
+class C_0000838382530281597328 {
+{static} -ShortestPath(Vec2u start, Vec2u end, Grid::IGraph * graph) : std::vector<Vec2u>
+__
+}
+class "::Dijkstra::Node" as C_0012405280105990750540
+class C_0012405280105990750540 {
++operator>(const Node & other) const : bool
+..
++Node(int dist, Vec2u pos) : void
+__
++dist : int
++pos : Vec2u
+}
+abstract "::Handler<T>" as C_0011031694641276016248
+abstract C_0011031694641276016248 {
++~Handler() : void
+..
++handle(T & param) : bool
+{abstract} #process(T & param) = 0 : bool
++setNext(Handler<T> * handler) : Handler<T> *
+__
+#m_next : std::unique_ptr<Handler<T>>
+}
+class "::Chain::GridAllocatorChain" as C_0010198723229293439659
+class C_0010198723229293439659 {
++GridAllocatorChain() = default : void
++~GridAllocatorChain() = default : void
+..
+#process(GridManager::AllocationParam & param) : bool
+__
+}
+class "::Chain::GridConfig" as C_0005855383950052472276
+class C_0005855383950052472276 {
++GridConfig(bool skip = false) : void
++~GridConfig() = default : void
+..
+#process(GridManager::AllocationParam & param) : bool
+__
+-m_ask : bool
+}
+class "::Chain::GridFactory" as C_0010067145397289361700
+class C_0010067145397289361700 {
++GridFactory(bool ask = true) : void
++~GridFactory() = default : void
+..
+#process(GridManager::AllocationParam & param) : bool
+__
+-m_ask : bool
+}
+class "::Chain::GridManager" as C_0002355428982340356818
+class C_0002355428982340356818 {
++GridManager() = default : void
++~GridManager() = default : void
+..
+#process(GridManager::AllocationParam & param) : bool
+__
+}
+class "::Handler<GridManager::AllocationParam>" as C_0000708210251265098836
+class C_0000708210251265098836 {
+__
+}
+class "::HexagonalGridAdapter" as C_0001557607623917107314
+class C_0001557607623917107314 {
+-getNeighbors(Vec2u u) : std::vector<Vec2u>
+-isValid(Vec2u coord) : bool
+__
+}
+class "::SquareGridAdapter" as C_0009895801960656343322
+class C_0009895801960656343322 {
+-getNeighbors(Vec2u u) : std::vector<Vec2u>
+-isValid(Vec2u coord) : bool
+__
+}
+class "::AnimationManager<Clock>" as C_0002380464098281245062
+class C_0002380464098281245062 {
++getState() : PlayerState
++loop() : void
++pause() : void
++registerOnStateChanged(Subscriber * sub) : void
++reset() : void
++setIdleFunction(IdleFunc func) : void
++setPlayFunction(PlayFunc func) : void
++start() : void
+__
+-idle : IdleFunc
+-m_backTrack : double
+-m_firstTick : bool
+-m_start : std::chrono::time_point<Clock>
+-onStateChanged : Publisher
+-play : PlayFunc
+-state : PlayerState
+}
+enum "::AnimationManager::PlayerState" as C_0000961498124090157081
+enum C_0000961498124090157081 {
+INIT
+PLAYING
+PAUSED
+ENDED
+}
+class "::AnimationManager<std::chrono::high_resolution_clock>" as C_0016364042332862071011
+class C_0016364042332862071011 {
+__
+}
+class "::MyWindow" as C_0008275891181392909974
+class C_0008275891181392909974 {
++MyWindow(int argc, const char ** argv) : void
+..
+-animationSetup() : void
+-clear() : void
+-cursorPosCallback(double xpos, double ypos) : void
+-initLogger() : void
+-keyCallback(int key, int scancode, int action, int mode) : void
+-mouseButtonCallback(int button, int action, int mods) : void
+-setupStartup() : void
++uiUpdate() : void
++update(double dt) : void
+__
+-anim : AnimationManager<std::chrono::high_resolution_clock>
+-animationState : Subscribers::CallbackSubscriber
+-dirty : bool
+-displayRefreshSubscriber : Subscribers::CallbackSubscriber
+-end : Vec2
+-initChain : Chain::GridAllocatorChain
+-m_collisionPoints : std::vector<Vec2>
+-m_enableTick : bool
+-m_tickTimeStamp : std::optional<Clock::time_point>
+-mouseHolding : int
+-out : FILE *
+-pathRefreshSubscriber : Subscribers::CallbackSubscriber
+-refresh : bool
+-restore : int
+-simManager : Manager &
+-start : Vec2
+}
+C_0007524051125027650422 o-- C_0013784868073774302216 : #m_pos
+C_0003074354526260398626 o-- C_0007524051125027650422 : #m_wrappedCell
+C_0007524051125027650422 <|-- C_0003074354526260398626
+C_0005401941007822599491 ..> C_0007524051125027650422
+C_0003074354526260398626 <|-- C_0005401941007822599491
+C_0003468196988026877165 ..> C_0013784868073774302216
+C_0007524051125027650422 <|-- C_0003468196988026877165
+C_0013535233541265128367 o-- C_0013784868073774302216 : -m_dest
+C_0013535233541265128367 o-- C_0013784868073774302216 : -m_origin
+C_0007524051125027650422 <|-- C_0013535233541265128367
+C_0016659428856756321521 o-- C_0013784868073774302216 : -m_origin
+C_0016659428856756321521 o-- C_0013784868073774302216 : -m_dest
+C_0016659428856756321521 o-- C_0016830943016957620265 : -m_curr
+C_0016659428856756321521 o-- C_0016830943016957620265 : -m_pos
+C_0016659428856756321521 o-- C_0018413845961660969714 : -m_agent
+C_0007524051125027650422 <|-- C_0016659428856756321521
+C_0008547169733880865913 --> C_0007524051125027650422 : -m_cell
+C_0008547169733880865913 o-- C_0013784868073774302216 : -m_position
+C_0015525581018586802988 <|-- C_0008547169733880865913
+C_0001668414440552387241 --> C_0007524051125027650422 : -m_orig
+C_0001668414440552387241 o-- C_0007524051125027650422 : -m_dest
+C_0001668414440552387241 o-- C_0013784868073774302216 : -m_position
+C_0001668414440552387241 o-- C_0013784868073774302216 : -m_target
+C_0015525581018586802988 <|-- C_0001668414440552387241
+C_0010665470809809381566 o-- C_0007524051125027650422 : -m_cell
+C_0010665470809809381566 o-- C_0013784868073774302216 : -m_position
+C_0015525581018586802988 <|-- C_0010665470809809381566
+C_0000056909946344020665 ..> C_0013784868073774302216
+C_0011614116359736977436 ..> C_0000994511990246631929
+C_0011614116359736977436 ..> C_0016830943016957620265
+C_0011614116359736977436 o-- C_0007524051125027650422 : #m_cell
+C_0011614116359736977436 o-- C_0010203260831736923132 : #m_cellChanged
+C_0011614116359736977436 o-- C_0001951113896505040197 : #m_fill
+C_0011614116359736977436 o-- C_0013784868073774302216 : #m_coord
+C_0013206082937532241754 ..> C_0013784868073774302216
+C_0013206082937532241754 ..> C_0016830943016957620265
+C_0011614116359736977436 <|-- C_0013206082937532241754
+C_0006906442157039522599 ..> C_0013784868073774302216
+C_0006906442157039522599 ..> C_0016830943016957620265
+C_0011614116359736977436 <|-- C_0006906442157039522599
+C_0010203260831736923132 --> C_0000994511990246631929 : #m_observers
+C_0001642024242126274810 ..> C_0013784868073774302216
+C_0001642024242126274810 ..> C_0011614116359736977436
+C_0001642024242126274810 ..> C_0000056909946344020665
+C_0001642024242126274810 ..> C_0016830943016957620265
+C_0017930567536014498243 ..> C_0013784868073774302216
+C_0017930567536014498243 ..> C_0011614116359736977436
+C_0017930567536014498243 ..> C_0000056909946344020665
+C_0017930567536014498243 ..> C_0016830943016957620265
+C_0001642024242126274810 <|-- C_0017930567536014498243
+C_0007990458545539615266 ..> C_0013784868073774302216
+C_0007990458545539615266 ..> C_0011614116359736977436
+C_0007990458545539615266 ..> C_0000056909946344020665
+C_0007990458545539615266 ..> C_0016830943016957620265
+C_0001642024242126274810 <|-- C_0007990458545539615266
+C_0000994511990246631929 <|-- C_0010588216749841672638
+C_0000187593043476956552 ..> C_0010469210913964836578
+C_0000187593043476956552 ..> C_0000994511990246631929
+C_0000187593043476956552 o-- C_0001642024242126274810 : -m_factory
+C_0000187593043476956552 o-- C_0010588216749841672638 : -m_changed
+C_0000187593043476956552 o-- C_0010203260831736923132 : -m_cellPublisher
+C_0000187593043476956552 o-- C_0010203260831736923132 : -m_gridPublisher
+C_0000187593043476956552 o-- C_0011614116359736977436 : -m_grid
+C_0000187593043476956552 --> C_0011614116359736977436 : -m_uuidLookUp
+C_0000187593043476956552 o-- C_0000056909946344020665 : -m_graph
+C_0000187593043476956552 o-- C_0013784868073774302216 : -m_gridSize
+C_0000187593043476956552 o-- "2" C_0016830943016957620265 : -m_area
+C_0000187593043476956552 o-- C_0016830943016957620265 : -m_delta
+C_0000187593043476956552 --> C_0000187593043476956552 : -m_instance
+C_0010469210913964836578 --+ C_0000187593043476956552
+C_0010469210913964836578 o-- C_0013784868073774302216 : +gridConfig
+C_0010469210913964836578 o-- C_0016830943016957620265 : +start
+C_0010469210913964836578 o-- C_0016830943016957620265 : +end
+C_0010469210913964836578 --> C_0001642024242126274810 : +gridFactory
+C_0009460517425703679938 o-- C_0015525581018586802988 : -m_queue
+C_0009460517425703679938 o-- C_0015525581018586802988 : -m_restoreStack
+C_0005434895093103671544 ..> C_0008917128763581520149
+C_0005434895093103671544 ..> C_0013784868073774302216
+C_0005434895093103671544 ..> C_0007524051125027650422
+C_0005434895093103671544 --> C_0005434895093103671544 : -m_instance
+C_0008917128763581520149 --+ C_0005434895093103671544
+C_0010039632802079899908 ..> C_0007994493599829033402
+C_0010039632802079899908 ..> C_0000056909946344020665
+C_0010039632802079899908 ..> C_0001861949267240608698
+C_0010039632802079899908 ..> C_0016830943016957620265
+C_0010039632802079899908 o-- C_0013784868073774302216 : -m_pathStore
+C_0010039632802079899908 --> C_0015983514335218059689 : -m_registry
+C_0010039632802079899908 o-- C_0010588216749841672638 : -m_onGridChange
+C_0001861949267240608698 --+ C_0010039632802079899908
+C_0001861949267240608698 ..> C_0015983514335218059689
+C_0007994493599829033402 --+ C_0010039632802079899908
+C_0001893470601361278794 ..> C_0018413845961660969714
+C_0001893470601361278794 ..> C_0016830943016957620265
+C_0003082058397422627119 ..> C_0011109651401294498108
+C_0003082058397422627119 ..> C_0001893470601361278794
+C_0011109651401294498108 <|-- C_0015899031353631526703
+C_0012111671450339608975 ..> C_0018413845961660969714
+C_0012111671450339608975 ..> C_0016830943016957620265
+C_0012111671450339608975 --> C_0015899031353631526703 : -system
+C_0001893470601361278794 <|-- C_0012111671450339608975
+C_0005505475280958631509 ..> C_0016830943016957620265
+C_0011109651401294498108 <|-- C_0005505475280958631509
+C_0010623132148261888817 ..> C_0018413845961660969714
+C_0010623132148261888817 ..> C_0016830943016957620265
+C_0010623132148261888817 --> C_0005505475280958631509 : -system
+C_0001893470601361278794 <|-- C_0010623132148261888817
+C_0011109651401294498108 <|-- C_0001353520021860913053
+C_0007225876362000938390 ..> C_0018413845961660969714
+C_0007225876362000938390 ..> C_0016830943016957620265
+C_0007225876362000938390 --> C_0001353520021860913053 : -system
+C_0001893470601361278794 <|-- C_0007225876362000938390
+C_0005842271853596682475 ..> C_0011109651401294498108
+C_0005842271853596682475 ..> C_0001893470601361278794
+C_0005842271853596682475 --> C_0015899031353631526703 : -currentSystem
+C_0003082058397422627119 <|-- C_0005842271853596682475
+C_0009822241482809889321 ..> C_0011109651401294498108
+C_0009822241482809889321 ..> C_0001893470601361278794
+C_0009822241482809889321 --> C_0005505475280958631509 : -currentSystem
+C_0003082058397422627119 <|-- C_0009822241482809889321
+C_0014516658824998915067 ..> C_0011109651401294498108
+C_0014516658824998915067 ..> C_0001893470601361278794
+C_0014516658824998915067 --> C_0001353520021860913053 : -currentSystem
+C_0003082058397422627119 <|-- C_0014516658824998915067
+C_0018413845961660969714 ..> C_0015983514335218059689
+C_0018413845961660969714 ..> C_0001861949267240608698
+C_0018413845961660969714 o-- C_0016830943016957620265 : +position
+C_0018413845961660969714 o-- C_0016830943016957620265 : +velocity
+C_0018413845961660969714 o-- C_0016830943016957620265 : +preferredVelocity
+C_0018413845961660969714 o-- C_0016830943016957620265 : +startPos
+C_0018413845961660969714 o-- C_0001893470601361278794 : +strategy
+C_0017667979732313679097 o-- C_0018413845961660969714 : -agents
+C_0017667979732313679097 o-- C_0003082058397422627119 : -factory
+C_0017667979732313679097 o-- C_0011109651401294498108 : -system
+C_0015983514335218059689 --+ C_0010039632802079899908
+C_0015983514335218059689 o-- C_0007994493599829033402 : +info
+C_0015983514335218059689 o-- C_0013784868073774302216 : +start
+C_0015983514335218059689 o-- C_0013784868073774302216 : +end
+C_0015983514335218059689 --> C_0000056909946344020665 : +graph
+C_0000838382530281597328 ..> C_0013784868073774302216
+C_0000838382530281597328 ..> C_0000056909946344020665
+C_0000838382530281597328 <.. C_0010039632802079899908 : +<<friend>>
+C_0012405280105990750540 --+ C_0000838382530281597328
+C_0012405280105990750540 o-- C_0013784868073774302216 : +pos
+C_0011031694641276016248 ..|> C_0011031694641276016248
+C_0011031694641276016248 o-- C_0011031694641276016248 : #m_next
+C_0010198723229293439659 ..> C_0010469210913964836578
+C_0000708210251265098836 <|-- C_0010198723229293439659
+C_0005855383950052472276 ..> C_0010469210913964836578
+C_0010198723229293439659 <|-- C_0005855383950052472276
+C_0010067145397289361700 ..> C_0010469210913964836578
+C_0010198723229293439659 <|-- C_0010067145397289361700
+C_0002355428982340356818 ..> C_0010469210913964836578
+C_0010198723229293439659 <|-- C_0002355428982340356818
+C_0000708210251265098836 ..|> C_0011031694641276016248
+C_0001557607623917107314 ..> C_0013784868073774302216
+C_0000056909946344020665 <|-- C_0001557607623917107314
+C_0009895801960656343322 ..> C_0013784868073774302216
+C_0000056909946344020665 <|-- C_0009895801960656343322
+C_0002380464098281245062 ..> C_0000994511990246631929
+C_0002380464098281245062 o-- C_0010203260831736923132 : -onStateChanged
+C_0002380464098281245062 o-- C_0000961498124090157081 : -state
+C_0000961498124090157081 --+ C_0002380464098281245062
+C_0016364042332862071011 ..|> C_0002380464098281245062
+C_0008275891181392909974 o-- C_0016830943016957620265 : -start
+C_0008275891181392909974 o-- C_0016830943016957620265 : -end
+C_0008275891181392909974 o-- C_0010588216749841672638 : -displayRefreshSubscriber
+C_0008275891181392909974 o-- C_0010588216749841672638 : -pathRefreshSubscriber
+C_0008275891181392909974 o-- C_0010588216749841672638 : -animationState
+C_0008275891181392909974 --> C_0017667979732313679097 : -simManager
+C_0008275891181392909974 o-- C_0016364042332862071011 : -anim
+C_0008275891181392909974 o-- C_0010198723229293439659 : -initChain
+C_0008275891181392909974 o-- C_0016830943016957620265 : -m_collisionPoints
+
+'Generated with clang-uml, version 0.6.2-27-g4e76f03
+'LLVM version clang version 21.1.8
+@enduml
